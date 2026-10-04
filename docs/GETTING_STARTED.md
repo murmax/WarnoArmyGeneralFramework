@@ -87,6 +87,18 @@ supply-malus effect is used.
 remaining attack waypoints in one native mission. `cooperate: true` allows
 nearby formations to participate in attacks.
 
+With refreshed continuous routes, `retain_route_progress: true` remembers
+intermediate positions once secured by the army. Each operational group owns
+one-shot capture latches; a later rear-area recapture does not reset its
+advance. Final objectives remain live and can be recaptured. This records
+secured positions, not a per-pawn movement log.
+`aggressive_until: {nato: 9}` assigns the native `Agressif` battle-start profile
+only to NATO attack missions on turns 1–9. On turn 10 they receive `Default`;
+Soviet and defensive/support missions remain `Default`. The profiles are
+mission-scoped, with no global attack/fatigue threshold changes. An aggressive
+profile permits less favorable predicted outcomes; it does not guarantee that
+the engine accepts every attack or commits every nearby battalion.
+
 `victory.time_limit` accepts `draw`, `nato` or `pact`. The latter two are
 scripted deadline outcomes when the configured final turn begins. V10 closes
 at the start of turn 20: turns 15–19 provide its five-turn carrier-withdrawal

@@ -1026,7 +1026,7 @@ def compile_campaign(source, profile_path, destination=None):
 
     if 'ai_policy' in campaign:
         policy = campaign['ai_policy']
-        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route'})
+        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until'})
         if type(policy['attack_radius']) is not int or not 530 <= policy['attack_radius'] <= 2120 or type(policy['cooperate']) is not bool:
             raise ValueError('Invalid campaign AI attack policy')
         if 'refresh_each_turn' in policy and type(policy['refresh_each_turn']) is not bool:
@@ -1034,6 +1034,14 @@ def compile_campaign(source, profile_path, destination=None):
         if 'continuous_route' in policy and (type(policy['continuous_route']) is not bool
                 or not policy.get('refresh_each_turn')):
             raise ValueError('AI continuous_route requires per-turn refresh')
+        if 'retain_route_progress' in policy and (type(policy['retain_route_progress']) is not bool
+                or not policy.get('continuous_route')):
+            raise ValueError('AI retained progress requires continuous routes')
+        aggression=policy.get('aggressive_until',{})
+        if (not isinstance(aggression,dict) or any(side not in ('nato','pact')
+                or type(turn) is not int or not 1<=turn<=campaign['turns'] for side,turn in aggression.items())
+                or aggression and not policy.get('refresh_each_turn')):
+            raise ValueError('AI aggressive_until needs side-specific dated refresh plans')
         phases=policy.get('phase_orders',{})
         if not isinstance(phases,dict) or any(key not in battalion_by_id for key in phases):
             raise ValueError('AI phase_orders references an unknown battalion')
@@ -1093,7 +1101,7 @@ def compile_campaign(source, profile_path, destination=None):
         **({'cinematics': cinematics} if cinematics is not None else {}),
         "ai": {"orders": [order_by_unit[row["id"]] for row in resolved_deployments]},
         "adapter": {
-            "ai_mission_version": 5 if campaign.get('ai_policy',{}).get('continuous_route') else 4 if campaign.get('ai_policy',{}).get('refresh_each_turn') else 3 if 'ai_policy' in campaign else 2,
+            "ai_mission_version": 6 if (campaign.get('ai_policy',{}).get('retain_route_progress') or campaign.get('ai_policy',{}).get('aggressive_until')) else 5 if campaign.get('ai_policy',{}).get('continuous_route') else 4 if campaign.get('ai_policy',{}).get('refresh_each_turn') else 3 if 'ai_policy' in campaign else 2,
             **({'ai_startup_version':2} if 'ai_policy' in campaign else {}),
             **({'frozen_lifecycle_version': 4}
                if dynamic and any(row['frozen_turns'] for row in resolved_deployments) else {}),
