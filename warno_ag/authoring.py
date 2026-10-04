@@ -1026,9 +1026,21 @@ def compile_campaign(source, profile_path, destination=None):
 
     if 'ai_policy' in campaign:
         policy = campaign['ai_policy']
-        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until'})
+        from .ai_distances import FIELDS as distance_fields
+        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until','transit_waypoints'}|distance_fields)
         if type(policy['attack_radius']) is not int or not 530 <= policy['attack_radius'] <= 2120 or type(policy['cooperate']) is not bool:
             raise ValueError('Invalid campaign AI attack policy')
+        if set(policy)&distance_fields:
+            import math
+            if (set(policy)&distance_fields!=distance_fields or not policy.get('refresh_each_turn') or not policy.get('continuous_route')
+                    or any(type(policy[key]) not in (int,float) or not math.isfinite(policy[key])
+                           or not 0<policy[key]<=12 for key in distance_fields)):
+                raise ValueError('AI cell radii require four positive bounded values and refreshed missions')
+        transit=policy.get('transit_waypoints',[])
+        if (not isinstance(transit,list) or any(not isinstance(key,str) for key in transit) or len(set(transit))!=len(transit)
+                or any(key not in target_ids or key in flag_ids for key in transit)
+                or transit and not set(policy)&distance_fields):
+            raise ValueError('AI transit_waypoints require unique non-flag targets and cell radii')
         if 'refresh_each_turn' in policy and type(policy['refresh_each_turn']) is not bool:
             raise ValueError('AI refresh_each_turn must be boolean')
         if 'continuous_route' in policy and (type(policy['continuous_route']) is not bool
@@ -1101,7 +1113,7 @@ def compile_campaign(source, profile_path, destination=None):
         **({'cinematics': cinematics} if cinematics is not None else {}),
         "ai": {"orders": [order_by_unit[row["id"]] for row in resolved_deployments]},
         "adapter": {
-            "ai_mission_version": 6 if (campaign.get('ai_policy',{}).get('retain_route_progress') or campaign.get('ai_policy',{}).get('aggressive_until')) else 5 if campaign.get('ai_policy',{}).get('continuous_route') else 4 if campaign.get('ai_policy',{}).get('refresh_each_turn') else 3 if 'ai_policy' in campaign else 2,
+            "ai_mission_version": 7 if 'attack_radius_cells' in campaign.get('ai_policy',{}) else 6 if (campaign.get('ai_policy',{}).get('retain_route_progress') or campaign.get('ai_policy',{}).get('aggressive_until')) else 5 if campaign.get('ai_policy',{}).get('continuous_route') else 4 if campaign.get('ai_policy',{}).get('refresh_each_turn') else 3 if 'ai_policy' in campaign else 2,
             **({'ai_startup_version':2} if 'ai_policy' in campaign else {}),
             **({'frozen_lifecycle_version': 4}
                if dynamic and any(row['frozen_turns'] for row in resolved_deployments) else {}),
@@ -1113,6 +1125,9 @@ def compile_campaign(source, profile_path, destination=None):
             "script": copy.deepcopy(profile["script"]), "profile_sha256": sha256(Path(profile_path).read_bytes()),
         },
     }
+    if result['adapter']['ai_mission_version']==7:
+        from .ai_distances import compile_distance_units
+        result['adapter']['ai_distance_units']=compile_distance_units(result)
     localisation=root/'localization.yaml'
     if localisation.is_file():
         from .localisation import compile_localisation

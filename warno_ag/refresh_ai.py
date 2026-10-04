@@ -53,15 +53,18 @@ def scheduled_missions(group,order,side,members,compiled,*,add,prop,ref,boolean,
         continuous=compiled['adapter'].get('ai_mission_version',0)>=5
         route=plan.get('route',[plan['target']])
         def mission(target):
+            from .ai_distances import mission_radii
+            attack_radius,waypoint_radius=mission_radii(compiled,defensive=defensive,
+                target=target,final_target=plan['target'],support=plan['type'] in {'support','reserve','air_support'})
             remaining=route[route.index(target):] if continuous and not defensive else [target]
             properties=[prop(cls,'Blocking',boolean(False)),prop(cls,'Group',ref(group,'TGDVariableUnitGroup')),
                 prop(cls,'ExecuteOnlyOnIAActivated',boolean(False)),prop(cls,'OrderCancelable',boolean(True)),
-                prop(cls,'AttackEnemyInRadius',integer(compiled['campaign']['ai_policy']['attack_radius'])),
+                prop(cls,'AttackEnemyInRadius',integer(attack_radius)),
                 prop(cls,'UseOnlyUnitInMissionToAttack',boolean(not compiled['campaign']['ai_policy']['cooperate'])),
-                prop(cls,'WaypointReachedRadius',integer(707)),
+                prop(cls,'WaypointReachedRadius',integer(waypoint_radius)),
                 prop(cls,'Position' if defensive else 'Positions',ref(tags[target],'TGDTagPosition') if defensive
                      else listref([ref(tags[point],'TGDTagPosition') for point in remaining]))]
-            if compiled['adapter'].get('ai_mission_version')==6:
+            if compiled['adapter'].get('ai_mission_version',0)>=6:
                 # Native enum: Default=0, Agressif=4. Scope is this mission,
                 # never global constants or the human-controlled army.
                 properties.append(prop(cls,'StartBattleDescriptorType',integer(

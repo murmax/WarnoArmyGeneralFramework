@@ -99,6 +99,18 @@ mission-scoped, with no global attack/fatigue threshold changes. An aggressive
 profile permits less favorable predicted outcomes; it does not guarantee that
 the engine accepts every attack or commits every nearby battalion.
 
+For maps with a different cell scale, do not copy stock GRU radii blindly.
+With refreshed continuous missions you can specify all four native AP-cell
+radii: `attack_radius_cells`, `transit_radius_cells`, `support_radius_cells`,
+and `waypoint_radius_cells`. `transit_waypoints` lists non-flag intermediate
+positions that should avoid opportunistic fights. Other assault waypoints
+and frontline defenders use the attack radius; support/reserve orders use
+the support radius. The legacy `attack_radius` remains the GRU fallback.
+The compiler reads the installed LBU/GRU conversion and records its checksum.
+Example: attack 1.5 cells, transit/support 0.5 cells, waypoint tolerance 0.8.
+On Kacha's 13,000-GU native AP grid, stock values 2120/707 GRU were approximately
+12/4 cells. They allowed inland routes to divert toward Sevastopol prematurely.
+
 `victory.time_limit` accepts `draw`, `nato` or `pact`. The latter two are
 scripted deadline outcomes when the configured final turn begins. V10 closes
 at the start of turn 20: turns 15–19 provide its five-turn carrier-withdrawal

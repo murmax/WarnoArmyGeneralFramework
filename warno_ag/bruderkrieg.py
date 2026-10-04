@@ -1306,7 +1306,7 @@ def authored_script_contract(raw, compiled):
     all_groups = set(initial_groups + runtime_groups)
     mission_groups = [_property(item, "Group")["object_id"] for item in missions]
     ai_mission_version = compiled['adapter'].get('ai_mission_version', 1)
-    if ai_mission_version not in (1, 2, 3, 4, 5, 6):
+    if ai_mission_version not in (1, 2, 3, 4, 5, 6, 7):
         raise ValueError('Unknown authored AI mission version')
     expected_counts = {}
     group_members = {}
@@ -1368,6 +1368,18 @@ def authored_script_contract(raw, compiled):
                     actual=tuple(graph['exports'].get(p['object_id']) for p in _property(item,'Positions')['items'])
                     if actual not in allowed_routes:
                         raise ValueError('Continuous AI must retain its own remaining route to the final objective')
+                if ai_mission_version==7:
+                    from .ai_distances import mission_radii
+                    reverse={path:key for key,path in targets.items()}
+                    positions=([_property(item,'Position')] if item['class']=='TGDDescriptorStrategicDefend'
+                               else _property(item,'Positions')['items'])
+                    points=[reverse[graph['exports'][p['object_id']]] for p in positions]
+                    expected=mission_radii(compiled,defensive=item['class']=='TGDDescriptorStrategicDefend',
+                                           target=points[0],final_target=points[-1],support=any(
+                                               plan['type'] in {'support','reserve','air_support'}
+                                               and plan['target']==points[-1] for plan in plans))
+                    if (_property(item,'AttackEnemyInRadius')['value'],_property(item,'WaypointReachedRadius')['value'])!=expected:
+                        raise ValueError('AI radii do not match native AP-cell distance units')
             return
         if ai_mission_version == 3:
             mission_ids = {item['id'] for item in group_missions}
@@ -1452,7 +1464,7 @@ def authored_script_contract(raw, compiled):
             check_order(production_groups[production_group['id']][export], order, production_group['side'])
     if reachable_classes.count("TGDDescriptorIAStrategicScripted") != 2:
         raise ValueError("Both generic strategic AI controllers must remain reachable")
-    if ai_mission_version==6:
+    if ai_mission_version>=6:
         from .refresh_ai import validate_refresh_profiles
         validate_refresh_profiles(graph,compiled)
     if reachable_classes.count("TGDDescriptorGereObjectifWithVariableOwner") != len(compiled["map"]["flags"]):
@@ -1511,7 +1523,7 @@ def compile_authored_script(raw, compiled):
         raw=ensure_aa_schema(raw)
     doc, graph = decode(raw)
     ai_mission_version = compiled['adapter'].get('ai_mission_version', 1)
-    if ai_mission_version not in (1, 2, 3, 4, 5, 6):
+    if ai_mission_version not in (1, 2, 3, 4, 5, 6, 7):
         raise ValueError('Unknown authored AI mission version')
     production_ai_version = compiled['adapter'].get('production_ai_version', 1)
     if production_ai_version not in (1, 2):
