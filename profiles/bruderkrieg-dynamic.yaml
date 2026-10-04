@@ -1,0 +1,33 @@
+schema: 1
+id: bruderkrieg_map
+registration: dynamic
+template:
+  campaign_id: CampagneStrat_Bruderkrieg
+  definition_sha256: 5e872980e8a817346f8e66729624e6f80a6186b189b77b296515f937407c7999
+  details_sha256: 8deb7b08fcc9a58b35b2bff0f7ba52afaec1ee6dc64da13dee67837a4b218944
+bounds: [150000, 780000, 1320000, 1260000]
+battalion_catalog: {}
+event_images:
+  nato_reserve: general_RFA
+  pact_reserve: general_DDR
+capacity:
+  initial_per_side: 0
+  flags: 0
+  influence_sources: 0
+  labels: 0
+  runtime_positions: 0
+slots:
+  spawns: {nato: [], pact: []}
+  flags: []
+  influence_sources: []
+  labels: []
+  runtime_positions: []
+script:
+  root: 282
+  launch: 290
+  startup_groups: 291
+  strategic_kernel: 301
+  turn_loop: 318
+  campaign_content: 353
+  score_victory: [384, 385]
+  legacy_launch_presentations: [298, 299, 300]

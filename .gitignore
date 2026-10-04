@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+artifacts/
+local.json
+*.egg-info/
+build/
+dist/
+warno_ag/vendor/
+editor/**/bin/
+editor/**/obj/

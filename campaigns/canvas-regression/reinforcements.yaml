@@ -1,0 +1,14 @@
+schema: 1
+reinforcements:
+- id: nato_turn_two
+  battalion: nato_turn_reinforcement
+  side: nato
+  turn: 2
+  position: [617500, 630500]
+  ai: {type: support, target: central_field}
+- id: pact_turn_two
+  battalion: pact_turn_reinforcement
+  side: pact
+  turn: 2
+  position: [682500, 630500]
+  ai: {type: attack, target: central_field}

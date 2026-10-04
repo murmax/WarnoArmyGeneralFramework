@@ -1,0 +1,43 @@
+{
+  "source_sha256": "70f34d844ebf23eea92d535fad0fffb6e0bc60dd1f64cc80c2b903d06abab3a8",
+  "evidence": {
+    "manual_acceptance": false,
+    "scope": "Static native edges and field selectors only; not proof of gameplay acceptance.",
+    "destruction": "Strategic TSequenceKill calls the roster destruction predicate and credits the enemy relation with score category 0. The score getter selects the owning alliance and the requested category, not total score.",
+    "aviation": "Airport controller reads the wing LinkTeam reference, selects only airports with an equal LinkTeam reference, chooses the nearest by squared positional distance, writes aerial module airport reference at +0x18 and allocates a slot. This proves same-team candidate filtering, not capture/rebinding or availability gameplay acceptance."
+  },
+  "checks": [
+    {"id": "strategic-kill-rtti", "kind": "ascii", "rva": "0x2f51750", "expected": ".?AVTSequenceKill@StrategicSequence@IA@Eugen@@"},
+    {"id": "kill-to-score", "kind": "call_rel32", "rva": "0xbc79da", "target_rva": "0xb75a50"},
+    {"id": "enemy-relation-call", "kind": "call_rel32", "rva": "0xb75b57", "target_rva": "0x740500"},
+    {"id": "enemy-relation-value", "kind": "bytes", "rva": "0x740553", "expected": "833cb0020f94c0"},
+    {"id": "destruction-category-zero", "kind": "bytes", "rva": "0xb75b8c", "expected": "4531c9"},
+    {"id": "destruction-to-accumulator", "kind": "call_rel32", "rva": "0xb75b8f", "target_rva": "0x7fe3b0"},
+    {"id": "score-read-fields", "kind": "bytes", "rva": "0x615dbb", "expected": "488b71308b51388b4928e806151200"},
+    {"id": "score-read-index", "kind": "bytes", "rva": "0x73736b", "expected": "4863ce8b0488"},
+    {"id": "aerial-module-kind", "kind": "bytes", "rva": "0xb4b664", "expected": "c6411017"},
+    {"id": "airport-module-kind", "kind": "bytes", "rva": "0xb57744", "expected": "c6411018"},
+    {"id": "airport-select-call", "kind": "call_rel32", "rva": "0xb59381", "target_rva": "0xb59550"},
+    {"id": "aerial-airport-reference", "kind": "bytes", "rva": "0xb59392", "expected": "488b470848894618"},
+    {"id": "airport-slot-call", "kind": "call_rel32", "rva": "0xb593b6", "target_rva": "0xb57280"},
+    {"id": "link-team-rtti", "kind": "ascii", "rva": "0x2f15c20", "expected": ".?AVTLinkTeamModule@IA@Eugen@@"},
+    {"id": "link-team-module-kind", "kind": "bytes", "rva": "0x8a6e74", "expected": "c6411061"},
+    {"id": "link-team-module-kind-slot", "kind": "bytes", "rva": "0x2302f60", "expected": "706e8a4001000000"},
+    {"id": "airport-link-team-registry", "kind": "bytes", "rva": "0xb58f74", "expected": "b16131d2"},
+    {"id": "airport-wing-team-call", "kind": "call_rel32", "rva": "0xb592df", "target_rva": "0x8c6960"},
+    {"id": "airport-candidate-team-call", "kind": "call_rel32", "rva": "0xb596a5", "target_rva": "0x8c6960"},
+    {"id": "airport-team-reference-read", "kind": "bytes", "rva": "0x8c699f", "expected": "488b4018488907"},
+    {"id": "airport-candidate-team-equality", "kind": "bytes", "rva": "0xb596aa", "expected": "488b07483b4528758d"}
+  ],
+  "targets": [
+    {"label": "Strategic kill sequence", "rva": "0xbc7860"},
+    {"label": "Strategic battalion destruction scoring", "rva": "0xb75a50"},
+    {"label": "GetAllianceActualScore dispatch", "rva": "0x615db0"},
+    {"label": "Alliance selected score read", "rva": "0x7372d0"},
+    {"label": "Airport controller", "rva": "0xb58f00"},
+    {"label": "Nearest candidate airport selection", "rva": "0xb59550"},
+    {"label": "Airport slot allocation", "rva": "0xb57280"},
+    {"label": "LinkTeam module kind", "rva": "0x8a6e70"},
+    {"label": "LinkTeam reference extraction", "rva": "0x8c6960"}
+  ]
+}

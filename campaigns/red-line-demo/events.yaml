@@ -1,0 +1,62 @@
+schema: 1
+events:
+  - id: nato_operational_reserve
+    side: nato
+    trigger: {turn: 2}
+    title: {ru: Оперативный резерв НАТО, en: NATO Operational Reserve}
+    text: {ru: Выберите соединение для контрудара у Альсфельда., en: Choose a formation for the Alsfeld counterattack.}
+    image: nato_reserve
+    choices:
+      - label: {ru: Тяжёлая группа, en: Heavy Group}
+        effects:
+          - {spawn: nato_event_heavy, position: [470000, 1170000], ai: {type: counterattack, target: alsfeld}}
+      - label: {ru: Мобильная группа и ППВО, en: Mobile Group and SEAD}
+        effects:
+          - {spawn: nato_event_mobile, position: [485000, 1030000], ai: {type: support, target: alsfeld}}
+    effects: []
+  - id: pact_operational_reserve
+    side: pact
+    trigger: {flag: alsfeld, owner: pact}
+    title: {ru: Оперативный резерв ОВД, en: Pact Operational Reserve}
+    text: {ru: Выберите соединение для развития наступления., en: Choose a formation to exploit the attack.}
+    image: pact_reserve
+    choices:
+      - label: {ru: Гвардейский авангард, en: Guards Spearhead}
+        effects:
+          - {spawn: pact_event_guards, position: [805000, 1160000], ai: {type: attack, target: western_crossroads}}
+      - label: {ru: Группа прорыва и ППВО, en: Breakthrough Group and SEAD}
+        effects:
+          - {spawn: pact_event_breakthrough, position: [815000, 1010000], ai: {type: attack, target: western_crossroads}}
+    effects: []
+  - id: nato_first_enemy_destroyed
+    side: nato
+    trigger: {first_enemy_destroyed: true}
+    title: {ru: Первый батальон противника уничтожен, en: First Enemy Battalion Destroyed}
+    text: {ru: Вражеский батальон уничтожен. Командование подтверждает первый успех наших войск., en: An enemy battalion has been destroyed. Command confirms the first success of our forces.}
+    image: null
+    choices: []
+    effects: []
+  - id: nato_first_alsfeld_capture
+    side: nato
+    trigger: {capture: alsfeld}
+    title: {ru: Альсфельд захвачен, en: Alsfeld Captured}
+    text: {ru: Наши войска впервые отобрали Альсфельд у противника. Узел дорог под нашим контролем., en: Our forces have captured Alsfeld from the enemy for the first time. The road junction is under our control.}
+    image: null
+    choices: []
+    effects: []
+  - id: pact_first_enemy_destroyed
+    side: pact
+    trigger: {first_enemy_destroyed: true}
+    title: {ru: Первый батальон противника уничтожен, en: First Enemy Battalion Destroyed}
+    text: {ru: Вражеский батальон уничтожен. Командование подтверждает первый успех наших войск., en: An enemy battalion has been destroyed. Command confirms the first success of our forces.}
+    image: null
+    choices: []
+    effects: []
+  - id: pact_first_alsfeld_capture
+    side: pact
+    trigger: {capture: alsfeld}
+    title: {ru: Альсфельд захвачен, en: Alsfeld Captured}
+    text: {ru: Наши войска впервые отобрали Альсфельд у противника. Узел дорог под нашим контролем., en: Our forces have captured Alsfeld from the enemy for the first time. The road junction is under our control.}
+    image: null
+    choices: []
+    effects: []

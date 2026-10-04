@@ -1,0 +1,32 @@
+schema: 1
+influence_sources:
+  - {side: nato, position: [245000, 1220000], value: 0.5}
+  - {side: nato, position: [225000, 1040000], value: 0.5}
+  - {side: nato, position: [245000, 840000], value: 0.5}
+  - {side: pact, position: [1245000, 1220000], value: 0.5}
+  - {side: pact, position: [1265000, 1040000], value: 0.5}
+  - {side: pact, position: [1245000, 840000], value: 0.5}
+flags:
+  - id: western_crossroads
+    position: [475000, 1110000]
+    initial_owner: nato
+    capture_score: 25
+    hold_score: 0
+    name: {ru: Западный перекрёсток, en: Western Crossroads}
+  - id: alsfeld
+    position: [620000, 1137500]
+    initial_owner: nato
+    capture_score: 25
+    hold_score: 0
+    name: {ru: Альсфельд, en: Alsfeld}
+  - id: eastern_crossroads
+    position: [760000, 1100000]
+    initial_owner: pact
+    capture_score: 25
+    hold_score: 0
+    name: {ru: Восточный перекрёсток, en: Eastern Crossroads}
+labels:
+  - {id: western_crossroads, position: [475000, 1095000], text: {ru: Западный рубеж, en: Western Line}, size: medium}
+  - {id: alsfeld, position: [620000, 1122500], text: {ru: Альсфельд, en: Alsfeld}, size: large}
+  - {id: eastern_crossroads, position: [760000, 1085000], text: {ru: Восточный рубеж, en: Eastern Line}, size: medium}
+  - {id: reserve_area, position: [610000, 960000], text: {ru: Район резервов, en: Reserve Area}, size: small}

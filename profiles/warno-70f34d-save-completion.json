@@ -1,0 +1,183 @@
+{
+  "source_sha256": "70f34d844ebf23eea92d535fad0fffb6e0bc60dd1f64cc80c2b903d06abab3a8",
+  "evidence": {
+    "date": "2026-09-09",
+    "dump_sha256": "06753a6161b0e4ea07b378318cfccf53f2d62eacc4a8b948fc793d0470d944c3",
+    "bundle_id": "159667add4844fc29e7d8cd9b218f1a61e936fcaabdd93eb12eca0af41f8b39d",
+    "new_campaign_confirmed": true,
+    "runtime_fix_verified": false,
+    "queue_destruction_proven_by_dump": false,
+    "exception_rva": "0x935aa8",
+    "observed_queue_count": 0,
+    "observed_queue_capacity": 0,
+    "observed_erase_count_minus_one": "0xffffffff",
+    "scope": "Static native evidence, not a gameplay patch, executable hook, or proof of the initiating action.",
+    "unresolved": [
+      "Why the save callback sees an empty queue",
+      "Whether the saved queue context was retired",
+      "Whether any campaign event initiated the invalid state"
+    ]
+  },
+  "checks": [
+    {
+      "id": "enqueue_request",
+      "kind": "call_rel32",
+      "rva": "0x7fada8",
+      "target_rva": "0x9356b0"
+    },
+    {
+      "id": "poll_requests",
+      "kind": "jump_rel32",
+      "rva": "0x7fb13e",
+      "target_rva": "0x935720"
+    },
+    {
+      "id": "begin_save",
+      "kind": "jump_rel32",
+      "rva": "0x935738",
+      "target_rva": "0x7f4e90"
+    },
+    {
+      "id": "schedule_serialization",
+      "kind": "call_rel32",
+      "rva": "0x7f4f8b",
+      "target_rva": "0x5bba90"
+    },
+    {
+      "id": "forward_completion",
+      "kind": "call_rel32",
+      "rva": "0x93576e",
+      "target_rva": "0x9357d0"
+    },
+    {
+      "id": "queue_erase",
+      "kind": "call_rel32",
+      "rva": "0x9358de",
+      "target_rva": "0x935a40"
+    },
+    {
+      "id": "reinitialize_old_queue",
+      "kind": "call_rel32",
+      "rva": "0x7f96b2",
+      "target_rva": "0x935610"
+    },
+    {
+      "id": "teardown_old_queue",
+      "kind": "call_rel32",
+      "rva": "0x7f9cff",
+      "target_rva": "0x935610"
+    },
+    {
+      "id": "queue_nonempty_guard",
+      "kind": "bytes",
+      "rva": "0x935724",
+      "expected": "837908007413"
+    },
+    {
+      "id": "store_callback_function",
+      "kind": "bytes",
+      "rva": "0x7f4eae",
+      "expected": "48890d0bafb902"
+    },
+    {
+      "id": "store_callback_context",
+      "kind": "bytes",
+      "rva": "0x7f4eb5",
+      "expected": "4889150cafb902"
+    },
+    {
+      "id": "callback_dispatch",
+      "kind": "bytes",
+      "rva": "0x7f4e1a",
+      "expected": "41ffd0"
+    },
+    {
+      "id": "erase_count_decrement",
+      "kind": "bytes",
+      "rva": "0x935a59",
+      "expected": "8b4108ffc8"
+    },
+    {
+      "id": "crash_read",
+      "kind": "bytes",
+      "rva": "0x935aa8",
+      "expected": "498b4530"
+    },
+    {
+      "id": "previous_crash_read",
+      "kind": "bytes",
+      "rva": "0x935b2a",
+      "expected": "498b8590000000"
+    },
+    {
+      "id": "clear_count",
+      "kind": "bytes",
+      "rva": "0x93564f",
+      "expected": "c7460800000000"
+    },
+    {
+      "id": "clear_capacity",
+      "kind": "bytes",
+      "rva": "0x935674",
+      "expected": "c7461000000000"
+    },
+    {
+      "id": "gameplay_services_rtti",
+      "kind": "ascii",
+      "rva": "0x2f09250",
+      "expected": ".?AVTGameplayServices@IA@Eugen@@"
+    },
+    {
+      "id": "save_ended_rtti",
+      "kind": "ascii",
+      "rva": "0x2f29ca0",
+      "expected": ".?AVTSaveGameEndedSynchroItem@?A0xED1C704F@IA@Eugen@@"
+    }
+  ],
+  "targets": [
+    {
+      "label": "Enqueue save request",
+      "rva": "0x7fad60"
+    },
+    {
+      "label": "Poll save request queue",
+      "rva": "0x7fb0c0"
+    },
+    {
+      "label": "Start save if queue is not empty",
+      "rva": "0x935720"
+    },
+    {
+      "label": "Store completion function and context; schedule serialization",
+      "rva": "0x7f4e90"
+    },
+    {
+      "label": "Deferred save completion uses stored function and context",
+      "rva": "0x7f4dc0"
+    },
+    {
+      "label": "Forward completion stream to saved queue context",
+      "rva": "0x935740"
+    },
+    {
+      "label": "Dispatch completion before erasing the front request",
+      "rva": "0x9357d0"
+    },
+    {
+      "label": "Erase front request: unchecked count decrement",
+      "rva": "0x935a40"
+    },
+    {
+      "label": "Clear queue: zero count and capacity; free buffer",
+      "rva": "0x935610"
+    },
+    {
+      "label": "Reinitialize gameplay services and replace old queue",
+      "rva": "0x7f94f0"
+    },
+    {
+      "label": "Gameplay services teardown and release old queue",
+      "rva": "0x7f9c50"
+    }
+  ]
+}

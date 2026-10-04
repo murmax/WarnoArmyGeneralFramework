@@ -1,0 +1,12 @@
+schema: 1
+deployments:
+  - {id: nato_militia, battalion: nato_militia, side: nato, position: [455000, 1110000], fatigue: 4, action_points: 6, frozen_turns: 3, initial_losses: {max_percent: 30}}
+  - {id: nato_heavy, battalion: nato_line_heavy, side: nato, position: [520000, 1140000], fatigue: 1, action_points: 10, frozen_turns: 0}
+  - {id: nato_mobile, battalion: nato_line_mobile, side: nato, position: [500000, 1060000], fatigue: 0, action_points: 12, frozen_turns: 0}
+  - {id: pact_militia, battalion: pact_militia, side: pact, position: [780000, 1090000], fatigue: 2, action_points: 9, frozen_turns: 0, initial_losses: {max_percent: 20}}
+  - {id: pact_guards, battalion: pact_line_guards, side: pact, position: [700000, 1170000], fatigue: 1, action_points: 12, frozen_turns: 0}
+  - {id: pact_breakthrough, battalion: pact_line_breakthrough, side: pact, position: [735000, 1135000], fatigue: 0, action_points: 12, frozen_turns: 0}
+  - {id: nato_air_defence, battalion: nato_air_defence, side: nato, position: [485000, 1110000], fatigue: 0, action_points: 12, frozen_turns: 0}
+  - {id: nato_artillery, battalion: nato_artillery, side: nato, position: [390000, 1090000], fatigue: 0, action_points: 8, frozen_turns: 0}
+  - {id: pact_air_defence, battalion: pact_air_defence, side: pact, position: [870000, 1110000], fatigue: 0, action_points: 12, frozen_turns: 0}
+  - {id: pact_artillery, battalion: pact_artillery, side: pact, position: [810000, 1150000], fatigue: 0, action_points: 8, frozen_turns: 0}

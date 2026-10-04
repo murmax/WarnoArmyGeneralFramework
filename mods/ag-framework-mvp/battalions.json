@@ -1,0 +1,279 @@
+{
+  "schema": 1,
+  "battalions": [
+    {
+      "id": "RDLN_NATO_Tank_Alpha",
+      "mode": "clone_replace",
+      "role": "blue_tank",
+      "unit_export": "Descriptor_Unit_RDLN_NATO_Tank_Alpha",
+      "deck_export": "Descriptor_Deck_RDLN_NATO_Tank_Alpha",
+      "base_unit": "Descriptor_Unit_pion_RFA_10PzD_281MxPz",
+      "base_deck": "Descriptor_Deck_pion_RFA_10PzD_281MxPz",
+      "replace_pack": {"old": "Descriptor_StrategicPack_Leopard_2A4_RFA_1", "new": "Descriptor_StrategicPack_Leopard_1A5_RFA_1"},
+      "expected_slots": 82,
+      "expected_changed_slots": 24,
+      "map": {"spawn": "P0_C0_pion_RFA_5PzD_141MxPz_1", "x": 492500.0, "y": 1162500.0}
+    },
+    {
+      "id": "RDLN_NATO_Airmobile_Beta",
+      "mode": "clone_replace",
+      "role": "blue_airmobile",
+      "unit_export": "Descriptor_Unit_RDLN_NATO_Airmobile_Beta",
+      "deck_export": "Descriptor_Deck_RDLN_NATO_Airmobile_Beta",
+      "base_unit": "Descriptor_Unit_pion_US_11ACR_4",
+      "base_deck": "Descriptor_Deck_pion_US_11ACR_4",
+      "replace_pack": {"old": "Descriptor_StrategicPack_AH1F_Hog_US_2", "new": "Descriptor_StrategicPack_AH1F_HeavyHog_US_2"},
+      "expected_slots": 92,
+      "expected_changed_slots": 12,
+      "map": {"spawn": "P0_C0_pion_RFA_5PzD_143Pz_1", "x": 522500.0, "y": 1102500.0}
+    },
+    {
+      "id": "RDLN_NATO_AirDefence_Gamma",
+      "mode": "clone_replace",
+      "role": "blue_air_defence",
+      "unit_export": "Descriptor_Unit_RDLN_NATO_AirDefence_Gamma",
+      "deck_export": "Descriptor_Deck_RDLN_NATO_AirDefence_Gamma",
+      "base_unit": "Descriptor_Unit_pion_RFA_2K_FlaKdo2_FlaK200",
+      "base_deck": "Descriptor_Deck_pion_RFA_2K_FlaKdo2_FlaK200",
+      "replace_pack": {"old": "Descriptor_StrategicPack_Faun_kraka_RFA_DCA_FK20_2_20mm_RFA_2", "new": "Descriptor_StrategicPack_Marder_Roland_2_RFA_2"},
+      "expected_slots": 177,
+      "expected_changed_slots": 4,
+      "map": {"spawn": "P0_C0_pion_RFA_3K_FlaK330_1", "x": 542500.0, "y": 1042500.0}
+    },
+    {
+      "id": "RDLN_PACT_Tank_RedOne",
+      "mode": "clone_replace",
+      "role": "red_tank",
+      "unit_export": "Descriptor_Unit_RDLN_PACT_Tank_RedOne",
+      "deck_export": "Descriptor_Deck_RDLN_PACT_Tank_RedOne",
+      "base_unit": "Descriptor_Unit_pion_RDA_7PzD_14PzR_1",
+      "base_deck": "Descriptor_Deck_pion_RDA_7PzD_14PzR_1",
+      "replace_pack": {"old": "Descriptor_StrategicPack_T55A_DDR_2", "new": "Descriptor_StrategicPack_T72M1_DDR_2"},
+      "expected_slots": 69,
+      "expected_changed_slots": 28,
+      "map": {"spawn": "P0_C0_pion_RDA_4MSD_4PzR_1_1", "x": 687500.0, "y": 1182500.0}
+    },
+    {
+      "id": "RDLN_PACT_Tank_RedTwo",
+      "mode": "clone_replace",
+      "role": "red_tank",
+      "unit_export": "Descriptor_Unit_RDLN_PACT_Tank_RedTwo",
+      "deck_export": "Descriptor_Deck_RDLN_PACT_Tank_RedTwo",
+      "base_unit": "Descriptor_Unit_pion_SOV_10GTkD_61GTk_1",
+      "base_deck": "Descriptor_Deck_pion_SOV_10GTkD_61GTk_1",
+      "replace_pack": {"old": "Descriptor_StrategicPack_T80BV_SOV_1", "new": "Descriptor_StrategicPack_T72B1_SOV_1"},
+      "expected_slots": 75,
+      "expected_changed_slots": 27,
+      "map": {"spawn": "P0_C0_pion_RDA_4MSD_4PzR_2_1", "x": 727500.0, "y": 1132500.0}
+    },
+    {
+      "id": "RDLN_PACT_AirDefence_RedOne",
+      "mode": "clone_replace",
+      "role": "red_air_defence",
+      "unit_export": "Descriptor_Unit_RDLN_PACT_AirDefence_RedOne",
+      "deck_export": "Descriptor_Deck_RDLN_PACT_AirDefence_RedOne",
+      "base_unit": "Descriptor_Unit_pion_RDA_20MSD_20SAM",
+      "base_deck": "Descriptor_Deck_pion_RDA_20MSD_20SAM",
+      "replace_pack": {"old": "Descriptor_StrategicPack_2K12_KUB_DDR_1", "new": "Descriptor_StrategicPack_ZSU_23_Shilka_DDR_1"},
+      "expected_slots": 36,
+      "expected_changed_slots": 8,
+      "map": {"spawn": "P0_C0_pion_RDA_4MSD_4SAM_1", "x": 697500.0, "y": 1062500.0}
+    },
+    {
+      "id": "RDLN_PACT_AirDefence_RedTwo",
+      "mode": "clone_replace",
+      "role": "red_air_defence",
+      "unit_export": "Descriptor_Unit_RDLN_PACT_AirDefence_RedTwo",
+      "deck_export": "Descriptor_Deck_RDLN_PACT_AirDefence_RedTwo",
+      "base_unit": "Descriptor_Unit_pion_SOV_10GTkD_359SAM",
+      "base_deck": "Descriptor_Deck_pion_SOV_10GTkD_359SAM",
+      "replace_pack": {"old": "Descriptor_StrategicPack_2K12_KUB_SOV_1", "new": "Descriptor_StrategicPack_Tunguska_2K22_SOV_1"},
+      "expected_slots": 42,
+      "expected_changed_slots": 8,
+      "map": {"spawn": "P0_C0_pion_RDA_4MSD_4Art_2_1", "x": 747500.0, "y": 1022500.0}
+    },
+    {
+      "id": "RDLN_RFA_Ragtag_Hessen",
+      "mode": "authored",
+      "role": "blue_militia",
+      "unit_export": "Descriptor_Unit_RDLN_RFA_Ragtag_Hessen",
+      "deck_export": "Descriptor_Deck_RDLN_RFA_Ragtag_Hessen",
+      "base_unit": "Descriptor_Unit_pion_RFA_TKSud_Jag711",
+      "coalition": "NATO",
+      "country": "RFA",
+      "name": "Ополчение «Гессен»",
+      "name_token": "RDLNWGB001",
+      "base_division": "Descriptor_Deck_Division_RFA_Heimat71_solo",
+      "division": "Descriptor_Deck_Division_RDLN_RFA_Ragtag_Hessen",
+      "organization": {
+        "export": "RDLN_RFA_Hessen_Subordination",
+        "name": "Группа «Гессен»",
+        "name_token": "RDLNWGO001",
+        "superior": "RFA_TKSud_Subordination",
+        "texture": "UIBackgroundTexture_regiment"
+      },
+      "map": {"spawn": "P0_C0_pion_RFA_5PzD_142PzG_1", "x": 467500.0, "y": 1117500.0},
+      "state": {
+        "fatigue": 4,
+        "action_points": {"initial": 6, "recovery": 8},
+        "frozen_turns": 3,
+        "casualties": {"count": 40, "random_range": 0, "type": 1}
+      },
+      "companies": [
+        {"id": "hq", "name": "Сводная штабная рота", "name_token": "RDLNWGC001", "hq": true, "platoons": [
+          {"id": "command", "name": "Взвод управления и связи", "name_token": "RDLNWGP001", "hq": true, "packs": [
+            {"pack": "Descriptor_StrategicPack_M577_RFA_1", "count": 1},
+            {"pack": "Descriptor_StrategicPack_Iltis_trans_RFA_Scout_RFA_1", "count": 2}
+          ]}
+        ]},
+        {"id": "rifles", "name": "Рота территориальных стрелков", "name_token": "RDLNWGC002", "platoons": [
+          {"id": "rifles_1", "name": "1-й сводный взвод", "name_token": "RDLNWGP002", "packs": [{"pack": "Descriptor_StrategicPack_Unimog_trans_RFA_HeimatschutzJager_RFA_0", "count": 3}]},
+          {"id": "rifles_2", "name": "2-й сводный взвод", "name_token": "RDLNWGP003", "packs": [{"pack": "Descriptor_StrategicPack_Unimog_trans_RFA_HeimatschutzJager_RFA_0", "count": 3}]},
+          {"id": "weapons", "name": "Взвод тяжёлого оружия", "name_token": "RDLNWGP004", "packs": [
+            {"pack": "Descriptor_StrategicPack_Iltis_trans_RFA_HMGteam_MG3_RFA_1", "count": 2},
+            {"pack": "Descriptor_StrategicPack_Iltis_trans_RFA_ATteam_RCL_M40A1_RFA_0", "count": 2}
+          ]}
+        ]},
+        {"id": "armor", "name": "Смешанная бронерота", "name_token": "RDLNWGC003", "platoons": [
+          {"id": "old_tanks", "name": "Взвод старых танков", "name_token": "RDLNWGP005", "packs": [{"pack": "Descriptor_StrategicPack_M48A2C_RFA_1", "count": 3}]},
+          {"id": "leopards", "name": "Взвод сборных «Леопардов»", "name_token": "RDLNWGP006", "packs": [{"pack": "Descriptor_StrategicPack_Leopard_1A1_RFA_1", "count": 3}]}
+        ]},
+        {"id": "air_defence", "name": "Зенитная батарея ополчения", "name_token": "RDLNWGC004", "platoons": [
+          {"id": "guns", "name": "Взвод 20-мм установок", "name_token": "RDLNWGP007", "packs": [{"pack": "Descriptor_StrategicPack_Faun_kraka_RFA_DCA_FK20_2_20mm_RFA_0", "count": 3}]},
+          {"id": "manpads", "name": "Расчёты ПЗРК «Редай»", "name_token": "RDLNWGP008", "packs": [{"pack": "Descriptor_StrategicPack_Iltis_trans_RFA_MANPAD_Redeye_RFA_0", "count": 3}]}
+        ]}
+      ]
+    },
+    {
+      "id": "RDLN_RDA_Ragtag_Erfurt",
+      "mode": "authored",
+      "role": "red_militia",
+      "unit_export": "Descriptor_Unit_RDLN_RDA_Ragtag_Erfurt",
+      "deck_export": "Descriptor_Deck_RDLN_RDA_Ragtag_Erfurt",
+      "base_unit": "Descriptor_Unit_pion_RDA_4MSD_22MSR_1",
+      "coalition": "PACT",
+      "country": "RDA",
+      "name": "Дружина «Эрфурт»",
+      "name_token": "RDLNEGB001",
+      "base_division": "Descriptor_Deck_Division_RDA_KdA_Bezirk_Erfurt_multi",
+      "division": "Descriptor_Deck_Division_RDLN_RDA_Ragtag_Erfurt",
+      "organization": {
+        "export": "RDLN_RDA_Erfurt_Subordination",
+        "name": "Группа «Эрфурт»",
+        "name_token": "RDLNEGO001",
+        "superior": "RDA_MBIII_Subordination",
+        "texture": "UIBackgroundTexture_regiment"
+      },
+      "map": {"spawn": "P0_C0_pion_RDA_4MSD_4PzR_3_1", "x": 782500.0, "y": 1087500.0},
+      "state": {
+        "fatigue": 2,
+        "action_points": {"initial": 9, "recovery": 10},
+        "frozen_turns": 0,
+        "casualties": {"count": 30, "random_range": 0, "type": 1}
+      },
+      "companies": [
+        {"id": "hq", "name": "Штабная группа", "name_token": "RDLNEGC001", "hq": true, "platoons": [
+          {"id": "command", "name": "Группа управления", "name_token": "RDLNEGP001", "hq": true, "packs": [
+            {"pack": "Descriptor_StrategicPack_UAZ_469_CMD_DDR_0", "count": 1},
+            {"pack": "Descriptor_StrategicPack_BRDM_1_DDR_Scout_Reserve_DDR_0", "count": 2}
+          ]}
+        ]},
+        {"id": "workers", "name": "Рабочая стрелковая рота", "name_token": "RDLNEGC002", "platoons": [
+          {"id": "workers_1", "name": "1-й заводской взвод", "name_token": "RDLNEGP002", "packs": [{"pack": "Descriptor_StrategicPack_SPW_152K_DDR_Reserve_DDR_0", "count": 3}]},
+          {"id": "workers_2", "name": "2-й заводской взвод", "name_token": "RDLNEGP003", "packs": [{"pack": "Descriptor_StrategicPack_SPW_152K_DDR_Reserve_DDR_0", "count": 3}]},
+          {"id": "workers_3", "name": "3-й заводской взвод", "name_token": "RDLNEGP004", "packs": [{"pack": "Descriptor_StrategicPack_SPW_152K_DDR_Reserve_DDR_0", "count": 3}]}
+        ]},
+        {"id": "armor", "name": "Танковая рота резерва", "name_token": "RDLNEGC003", "platoons": [
+          {"id": "t34", "name": "Взвод Т-34 из хранения", "name_token": "RDLNEGP005", "packs": [{"pack": "Descriptor_StrategicPack_T34_85M_DDR_0", "count": 2}]},
+          {"id": "t54", "name": "Взвод Т-54Б", "name_token": "RDLNEGP006", "packs": [{"pack": "Descriptor_StrategicPack_T54B_DDR_0", "count": 3}]}
+        ]},
+        {"id": "support", "name": "Рота поддержки", "name_token": "RDLNEGC004", "platoons": [
+          {"id": "machine_guns", "name": "Пулемётный взвод", "name_token": "RDLNEGP007", "packs": [{"pack": "Descriptor_StrategicPack_UAZ_469_trans_DDR_HMGteam_PKM_DDR_0", "count": 2}]},
+          {"id": "mortars", "name": "Миномётный взвод", "name_token": "RDLNEGP008", "packs": [{"pack": "Descriptor_StrategicPack_UAZ_469_trans_DDR_Mortier_M43_82mm_DDR_0", "count": 2}]},
+          {"id": "air_defence", "name": "Зенитный взвод ЗПУ-4", "name_token": "RDLNEGP009", "packs": [{"pack": "Descriptor_StrategicPack_UAZ_469_trans_DDR_DCA_ZPU4_DDR_0", "count": 2}]},
+          {"id": "anti_tank", "name": "ПТ-взвод «Малютка»", "name_token": "RDLNEGP010", "packs": [{"pack": "Descriptor_StrategicPack_BRDM_Malyu_P_DDR_0", "count": 2}]}
+        ]}
+      ]
+    },
+    {
+      "id": "RDLN_NATO_TF_Iron",
+      "mode": "authored",
+      "role": "nato_choice_armor",
+      "unit_export": "Descriptor_Unit_RDLN_NATO_TF_Iron",
+      "deck_export": "Descriptor_Deck_RDLN_NATO_TF_Iron",
+      "base_unit": "Descriptor_Unit_pion_RFA_10PzD_281MxPz",
+      "coalition": "NATO", "country": "RFA",
+      "name": "Группа «Айрон»", "name_token": "RDLNNTB001",
+      "base_division": "Descriptor_Deck_Division_RFA_Heimat71_solo",
+      "division": "Descriptor_Deck_Division_RDLN_NATO_TF_Iron",
+      "organization": {"export":"RDLN_NATO_Iron_Subordination","name":"Оперативная группа НАТО","name_token":"RDLNNTO001","superior":"RFA_TKSud_Subordination","texture":"UIBackgroundTexture_regiment"},
+      "event_deployment": {"event":"nato","choice":0,"position_guid":"101dbeab0ba3d02d4f6f7a277938cbea","objective_guid":"101dbeab0ba3d02d4f6f7a277938cbea"},
+      "state": {"fatigue":0,"action_points":{"initial":12,"recovery":12},"frozen_turns":0,"casualties":{"count":0,"random_range":0,"type":1}},
+      "companies": [
+        {"id":"hq","name":"Штаб группы","name_token":"RDLNNTC001","hq":true,"platoons":[{"id":"hq","name":"Командный взвод","name_token":"RDLNNTP001","hq":true,"packs":[{"pack":"Descriptor_StrategicPack_M577_RFA_1","count":1}]}]},
+        {"id":"armor","name":"Танковая рота «Леопард»","name_token":"RDLNNTC002","platoons":[{"id":"leo_a","name":"1-й танковый взвод","name_token":"RDLNNTP002","packs":[{"pack":"Descriptor_StrategicPack_Leopard_2A4_RFA_1","count":3}]},{"id":"leo_b","name":"2-й танковый взвод","name_token":"RDLNNTP003","packs":[{"pack":"Descriptor_StrategicPack_Leopard_2A4_RFA_1","count":3}]}]},
+        {"id":"support","name":"Рота огневой поддержки","name_token":"RDLNNTC003","platoons":[{"id":"roland","name":"Зенитный взвод «Роланд»","name_token":"RDLNNTP004","packs":[{"pack":"Descriptor_StrategicPack_Marder_Roland_2_RFA_2","count":3}]}]}
+      ]
+    },
+    {
+      "id": "RDLN_NATO_TF_Jaguar",
+      "mode": "authored",
+      "role": "nato_choice_mobile",
+      "unit_export": "Descriptor_Unit_RDLN_NATO_TF_Jaguar",
+      "deck_export": "Descriptor_Deck_RDLN_NATO_TF_Jaguar",
+      "base_unit": "Descriptor_Unit_pion_US_11ACR_4",
+      "coalition": "NATO", "country": "RFA",
+      "name": "Группа «Ягуар»", "name_token": "RDLNNTB002",
+      "base_division": "Descriptor_Deck_Division_RFA_Heimat71_solo",
+      "division": "Descriptor_Deck_Division_RDLN_NATO_TF_Jaguar",
+      "organization": {"export":"RDLN_NATO_Jaguar_Subordination","name":"Мобильная группа НАТО","name_token":"RDLNNTO002","superior":"RFA_TKSud_Subordination","texture":"UIBackgroundTexture_regiment"},
+      "event_deployment": {"event":"nato","choice":1,"position_guid":"101dbeab0ba3d02d4f6f7a277938cbea","objective_guid":"101dbeab0ba3d02d4f6f7a277938cbea"},
+      "state": {"fatigue":0,"action_points":{"initial":12,"recovery":12},"frozen_turns":0,"casualties":{"count":0,"random_range":0,"type":1}},
+      "companies": [
+        {"id":"hq","name":"Штаб группы","name_token":"RDLNNTC004","hq":true,"platoons":[{"id":"hq","name":"Командный взвод","name_token":"RDLNNTP005","hq":true,"packs":[{"pack":"Descriptor_StrategicPack_M577_RFA_1","count":1}]}]},
+        {"id":"armor","name":"Манёвренная танковая рота","name_token":"RDLNNTC005","platoons":[{"id":"tank_a","name":"1-й бронетанковый взвод","name_token":"RDLNNTP006","packs":[{"pack":"Descriptor_StrategicPack_Leopard_1A5_RFA_1","count":3}]},{"id":"tank_b","name":"2-й бронетанковый взвод","name_token":"RDLNNTP007","packs":[{"pack":"Descriptor_StrategicPack_Leopard_1A5_RFA_1","count":3}]}]},
+        {"id":"air","name":"Ударная вертолётная рота","name_token":"RDLNNTC006","platoons":[{"id":"hog","name":"Взвод «Хог»","name_token":"RDLNNTP008","packs":[{"pack":"Descriptor_StrategicPack_AH1F_HeavyHog_US_2","count":3}]}]}
+      ]
+    },
+    {
+      "id": "RDLN_PACT_Guards_Spearhead",
+      "mode": "authored",
+      "role": "pact_choice_guard",
+      "unit_export": "Descriptor_Unit_RDLN_PACT_Guards_Spearhead",
+      "deck_export": "Descriptor_Deck_RDLN_PACT_Guards_Spearhead",
+      "base_unit": "Descriptor_Unit_pion_SOV_10GTkD_61GTk_1",
+      "coalition": "PACT", "country": "SOV",
+      "name": "Гвардейский авангард", "name_token": "RDLNPTB001",
+      "base_division": "Descriptor_Deck_Division_RDA_KdA_Bezirk_Erfurt_multi",
+      "division": "Descriptor_Deck_Division_RDLN_PACT_Guards_Spearhead",
+      "organization": {"export":"RDLN_PACT_Guards_Subordination","name":"Передовой отряд ОВД","name_token":"RDLNPTO001","superior":"RDA_MBIII_Subordination","texture":"UIBackgroundTexture_regiment"},
+      "event_deployment": {"event":"pact","choice":0,"position_guid":"0e820e269ba0781e2f4a2dad99c38576","objective_guid":"101dbeab0ba3d02d4f6f7a277938cbea"},
+      "state": {"fatigue":0,"action_points":{"initial":12,"recovery":12},"frozen_turns":0,"casualties":{"count":0,"random_range":0,"type":1}},
+      "companies": [
+        {"id":"hq","name":"Штаб авангарда","name_token":"RDLNPTC001","hq":true,"platoons":[{"id":"hq","name":"Командный взвод","name_token":"RDLNPTP001","hq":true,"packs":[{"pack":"Descriptor_StrategicPack_UAZ_469_CMD_DDR_0","count":1}]}]},
+        {"id":"armor","name":"Гвардейская танковая рота","name_token":"RDLNPTC002","platoons":[{"id":"t80a","name":"1-й взвод Т-80","name_token":"RDLNPTP002","packs":[{"pack":"Descriptor_StrategicPack_T80BV_SOV_1","count":3}]},{"id":"t80b","name":"2-й взвод Т-80","name_token":"RDLNPTP003","packs":[{"pack":"Descriptor_StrategicPack_T80BV_SOV_1","count":3}]}]},
+        {"id":"aa","name":"Зенитная батарея","name_token":"RDLNPTC003","platoons":[{"id":"tung","name":"Взвод «Тунгуска»","name_token":"RDLNPTP004","packs":[{"pack":"Descriptor_StrategicPack_Tunguska_2K22_SOV_1","count":3}]}]}
+      ]
+    },
+    {
+      "id": "RDLN_PACT_Breakthrough_Group",
+      "mode": "authored",
+      "role": "pact_choice_breakthrough",
+      "unit_export": "Descriptor_Unit_RDLN_PACT_Breakthrough_Group",
+      "deck_export": "Descriptor_Deck_RDLN_PACT_Breakthrough_Group",
+      "base_unit": "Descriptor_Unit_pion_RDA_7PzD_14PzR_1",
+      "coalition": "PACT", "country": "RDA",
+      "name": "Группа прорыва «Эльба»", "name_token": "RDLNPTB002",
+      "base_division": "Descriptor_Deck_Division_RDA_KdA_Bezirk_Erfurt_multi",
+      "division": "Descriptor_Deck_Division_RDLN_PACT_Breakthrough_Group",
+      "organization": {"export":"RDLN_PACT_Elbe_Subordination","name":"Группа прорыва ОВД","name_token":"RDLNPTO002","superior":"RDA_MBIII_Subordination","texture":"UIBackgroundTexture_regiment"},
+      "event_deployment": {"event":"pact","choice":1,"position_guid":"0e820e269ba0781e2f4a2dad99c38576","objective_guid":"101dbeab0ba3d02d4f6f7a277938cbea"},
+      "state": {"fatigue":0,"action_points":{"initial":12,"recovery":12},"frozen_turns":0,"casualties":{"count":0,"random_range":0,"type":1}},
+      "companies": [
+        {"id":"hq","name":"Штаб группы","name_token":"RDLNPTC004","hq":true,"platoons":[{"id":"hq","name":"Командный взвод","name_token":"RDLNPTP005","hq":true,"packs":[{"pack":"Descriptor_StrategicPack_UAZ_469_CMD_DDR_0","count":1}]}]},
+        {"id":"armor","name":"Рота прорыва","name_token":"RDLNPTC005","platoons":[{"id":"t72a","name":"1-й штурмовой взвод","name_token":"RDLNPTP006","packs":[{"pack":"Descriptor_StrategicPack_T72B1_SOV_1","count":3}]},{"id":"t72b","name":"2-й штурмовой взвод","name_token":"RDLNPTP007","packs":[{"pack":"Descriptor_StrategicPack_T72B1_SOV_1","count":3}]}]},
+        {"id":"aa","name":"Рота ПВО прорыва","name_token":"RDLNPTC006","platoons":[{"id":"tung","name":"Зенитный взвод","name_token":"RDLNPTP008","packs":[{"pack":"Descriptor_StrategicPack_Tunguska_2K22_SOV_1","count":3}]}]}
+      ]
+    }
+  ]
+}

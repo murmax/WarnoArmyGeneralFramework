@@ -1,0 +1,78 @@
+{
+  "source_sha256": "70f34d844ebf23eea92d535fad0fffb6e0bc60dd1f64cc80c2b903d06abab3a8",
+  "evidence": {
+    "date": "2026-09-09",
+    "dump_sha256": "06753a6161b0e4ea07b378318cfccf53f2d62eacc4a8b948fc793d0470d944c3",
+    "missing_token": "TdhYBlGZS0",
+    "key_hex": "4147463133b6a907",
+    "dictionary": "INGAME",
+    "descriptor_id": 1742,
+    "property": "TokenBoutonChoix0",
+    "runtime_fix_verified": false,
+    "scope": "The missing event-button lookup throws EException. This profile does not prove the exact unwind order that invalidated the save queue."
+  },
+  "checks": [
+    {
+      "id": "token_alphabet",
+      "kind": "ascii",
+      "rva": "0x21be1f0",
+      "expected": "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz"
+    },
+    {
+      "id": "missing_token_message",
+      "kind": "ascii",
+      "rva": "0x26bc8da",
+      "expected": "Dictionary error : No string found for token '%1' in dictionary list '%2'."
+    },
+    {
+      "id": "lookup_throw",
+      "kind": "call_rel32",
+      "rva": "0x1752112",
+      "target_rva": "0x21ba830"
+    },
+    {
+      "id": "lookup_alternative_throw",
+      "kind": "call_rel32",
+      "rva": "0x17524eb",
+      "target_rva": "0x21ba830"
+    },
+    {
+      "id": "exception_type",
+      "kind": "ascii",
+      "rva": "0x2e08010",
+      "expected": ".?AVEException@Eugen@@"
+    },
+    {
+      "id": "throw_import",
+      "kind": "ascii",
+      "rva": "0x2739e2c",
+      "expected": "_CxxThrowException"
+    },
+    {
+      "id": "throw_type_argument",
+      "kind": "bytes",
+      "rva": "0x1752107",
+      "expected": "488d15428dfe00"
+    },
+    {
+      "id": "throw_thunk",
+      "kind": "bytes",
+      "rva": "0x21ba830",
+      "expected": "ff2572b45700"
+    }
+  ],
+  "targets": [
+    {
+      "label": "Localisation token base64 formatting",
+      "rva": "0x28170"
+    },
+    {
+      "label": "Dictionary lookup and missing-token exception",
+      "rva": "0x1751f10"
+    },
+    {
+      "label": "Alternative dictionary lookup and missing-token exception",
+      "rva": "0x17522f0"
+    }
+  ]
+}

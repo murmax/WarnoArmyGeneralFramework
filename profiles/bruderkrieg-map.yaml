@@ -1,0 +1,91 @@
+schema: 1
+id: bruderkrieg_map
+template:
+  campaign_id: CampagneStrat_Bruderkrieg
+  definition_sha256: 5e872980e8a817346f8e66729624e6f80a6186b189b77b296515f937407c7999
+  details_sha256: 8deb7b08fcc9a58b35b2bff0f7ba52afaec1ee6dc64da13dee67837a4b218944
+bounds: [150000, 780000, 1320000, 1260000]
+battalion_catalog:
+  west_german_militia: {unit_export: Descriptor_Unit_RDLN_RFA_Ragtag_Hessen, authored: true, country: RFA, side: nato}
+  east_german_militia: {unit_export: Descriptor_Unit_RDLN_RDA_Ragtag_Erfurt, authored: true, country: RDA, side: pact}
+  nato_heavy_group: {unit_export: Descriptor_Unit_RDLN_NATO_TF_Iron, authored: true, country: RFA, side: nato}
+  nato_mobile_group: {unit_export: Descriptor_Unit_RDLN_NATO_TF_Jaguar, authored: true, country: RFA, side: nato}
+  pact_guards_group: {unit_export: Descriptor_Unit_RDLN_PACT_Guards_Spearhead, authored: true, country: SOV, side: pact}
+  pact_breakthrough_group: {unit_export: Descriptor_Unit_RDLN_PACT_Breakthrough_Group, authored: true, country: RDA, side: pact}
+  nato_air_defence: {unit_export: Descriptor_Unit_AGFW_NatoAirDefence, authored: true, country: RFA, side: nato}
+  nato_artillery: {unit_export: Descriptor_Unit_AGFW_NatoArtillery, authored: true, country: RFA, side: nato}
+  pact_air_defence: {unit_export: Descriptor_Unit_AGFW_PactAirDefence, authored: true, country: RDA, side: pact}
+  pact_artillery: {unit_export: Descriptor_Unit_AGFW_PactArtillery, authored: true, country: RDA, side: pact}
+  nato_aircraft: {unit_export: Descriptor_Unit_AGFW_NatoAircraft, authored: true, country: RFA, side: nato}
+  nato_sead_aircraft: {unit_export: Descriptor_Unit_AGFW_NatoSeadAircraft, authored: true, country: US, side: nato}
+  pact_aircraft: {unit_export: Descriptor_Unit_AGFW_PactAircraft, authored: true, country: SOV, side: pact}
+event_images:
+  nato_reserve: general_RFA
+  pact_reserve: general_DDR
+capacity:
+  initial_per_side: 5
+  flags: 6
+  influence_sources: 6
+  labels: 12
+  runtime_positions: 10
+slots:
+  spawns:
+    nato:
+      - {name: P0_C0_pion_RFA_5PzD_142PzG_1, supports_frozen: true}
+      - {name: P0_C0_pion_RFA_5PzD_141MxPz_1, supports_frozen: false}
+      - {name: P0_C0_pion_RFA_5PzD_143Pz_1, supports_frozen: false}
+      - {name: P0_C0_pion_RFA_3K_FlaK330_1, supports_frozen: false}
+      - {name: P0_C0_pion_US_11ACR_3_1, supports_frozen: false}
+    pact:
+      - {name: P0_C0_pion_RDA_4MSD_4PzR_1_1, supports_frozen: false}
+      - {name: P0_C0_pion_RDA_4MSD_4PzR_2_1, supports_frozen: false}
+      - {name: P0_C0_pion_RDA_4MSD_4PzR_3_1, supports_frozen: false}
+      - {name: P0_C0_pion_RDA_4MSD_4SAM_1, supports_frozen: false}
+      - {name: P0_C0_pion_RDA_4MSD_4Art_2_1, supports_frozen: false}
+  flags:
+    - {name: alsfeld}
+    - {name: bad_herseld}
+    - {name: attack_gauche_2}
+    - {name: defense_152}
+    - {name: place_defense1}
+    - {name: place_defense2}
+  influence_sources:
+    - {name: InfluencePoint_1}
+    - {name: InfluencePoint_2}
+    - {name: InfluencePoint_3}
+    - {name: InfluencePoint_6}
+    - {name: InfluencePoint_7}
+    - {name: InfluencePoint_8}
+  labels:
+    - {name: AutoName_100}
+    - {name: AutoName_101}
+    - {name: AutoName_102}
+    - {name: AutoName_103}
+    - {name: AutoName_104}
+    - {name: AutoName_105}
+    - {name: AutoName_106}
+    - {name: AutoName_107}
+    - {name: AutoName_108}
+    - {name: AutoName_109}
+    - {name: AutoName_110}
+    - {name: AutoName_111}
+  runtime_positions:
+    - {name: Tag_Homberg_Road}
+    - {name: fixe_142}
+    - {name: fixe_14brig}
+    - {name: otan_security_nord}
+    - {name: otan_security_sud}
+    - {name: place_AA}
+    - {name: renfort_13_pzGren_Bri}
+    - {name: spawn_avion_otan}
+    - {name: spawn_avion_pact}
+    - {name: spawn_security_centre}
+script:
+  root: 282
+  launch: 290
+  startup_groups: 291
+  strategic_kernel: 301
+  turn_loop: 318
+  campaign_content: 353
+  score_victory: [384, 385]
+  legacy_launch_presentations: [298, 299, 300]

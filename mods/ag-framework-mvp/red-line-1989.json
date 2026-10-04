@@ -1,0 +1,151 @@
+{
+  "campaign": {
+    "old_id": "CampagneStrat_Bruderkrieg",
+    "new_id": "CampagneStrat_RedLine1989",
+    "old_scenario_guid_hex": "5dfe3f4efe7e429588e525b2b6cf7263",
+    "spawn_keep": [
+      {
+        "name": "P0_C0_pion_RFA_5PzD_141MxPz_1",
+        "x": 492500.0,
+        "y": 1162500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_NATO_Tank_Alpha"
+      },
+      {
+        "name": "P0_C0_pion_RFA_5PzD_143Pz_1",
+        "x": 522500.0,
+        "y": 1102500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_NATO_Airmobile_Beta"
+      },
+      {
+        "name": "P0_C0_pion_RFA_3K_FlaK330_1",
+        "x": 542500.0,
+        "y": 1042500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_NATO_AirDefence_Gamma"
+      },
+      {
+        "name": "P0_C0_pion_RDA_4MSD_4PzR_1_1",
+        "x": 687500.0,
+        "y": 1182500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_PACT_Tank_RedOne"
+      },
+      {
+        "name": "P0_C0_pion_RDA_4MSD_4PzR_2_1",
+        "x": 727500.0,
+        "y": 1132500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_PACT_Tank_RedTwo"
+      },
+      {
+        "name": "P0_C0_pion_RDA_4MSD_4SAM_1",
+        "x": 697500.0,
+        "y": 1062500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_PACT_AirDefence_RedOne"
+      },
+      {
+        "name": "P0_C0_pion_RDA_4MSD_4Art_2_1",
+        "x": 747500.0,
+        "y": 1022500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_PACT_AirDefence_RedTwo"
+      },
+      {
+        "name": "P0_C0_pion_RFA_5PzD_142PzG_1",
+        "x": 467500.0,
+        "y": 1117500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_RFA_Ragtag_Hessen"
+      },
+      {
+        "name": "P0_C0_pion_RDA_4MSD_4PzR_3_1",
+        "x": 782500.0,
+        "y": 1087500.0,
+        "class_name": "$/GFX/Pawn/Descriptor_Unit_RDLN_RDA_Ragtag_Erfurt"
+      }
+    ],
+    "disabled_spawn_classes": {
+      "us": "$/GFX/Pawn/Descriptor_Unit_nk_US_Disabled",
+      "sov": "$/GFX/Pawn/Descriptor_Unit_nk_SOV_Disabled"
+    },
+    "disabled_position_base": {
+      "x": 205000.0,
+      "y": 825000.0
+    },
+    "disabled_position_step": 2500.0,
+    "blue_influence": {
+      "name": "InfluencePoint_1",
+      "alliance_index": 1,
+      "x": 604500.0,
+      "y": 1127500.0
+    },
+    "order_to_chain_mission": 125,
+    "trophy_id_remap": {
+      "50": 9350,
+      "51": 9351
+    },
+    "video_files": [
+      "Intro_Bad_Hersfeld_Effect_Sonorisee.webm",
+      "Badhersfeld_contexte.webm",
+      "DRAW_Generique.webm",
+      "Victoire_NATO.webm",
+      "Victoire_PACT.webm",
+      "Defaite_PACT.webm",
+      "Defaite_NATO.webm"
+    ],
+    "text_replacements": {
+      "Bruderkrieg": "Red Line 1989"
+    },
+    "localisation": {
+      "us": {
+        "title": "Red Line 1989",
+        "subtitle": "A new Army General test campaign",
+        "brief": "20 June 1989. NATO's forward group must break the Red Line before Soviet armor and air defence close the corridor. The original footage is retained, but the situation, forces and objectives are new.",
+        "objectives_text": "NATO: seize the central junction. Pact: hold the Red Line. NATO reinforcements become available on turn 2.",
+        "left_title": "NATO FORWARD GROUP",
+        "left_subtitle": "Mechanized, tank and air-defence battalions west of the line.",
+        "right_title": "RED LINE GROUP",
+        "right_subtitle": "Two tank and two air-defence battalions in a dispersed screen.",
+        "gamemode_extended": "Seven battalions start at new positions. The red force is split evenly between tanks and air defence; NATO can call six reinforcement formations from turn 2.",
+        "overview_1": "20 June 1989: contact is lost along the approaches to Alsfeld.",
+        "overview_2": "The Red Line group has deployed a mobile armoured and anti-aircraft screen.",
+        "overview_3": "NATO must open the central junction before the screen consolidates.",
+        "overview_4": "The initial order of battle contains seven relocated battalions.",
+        "overview_5": "Six NATO formations enter the reinforcement pool on turn 2.",
+        "force_1": "NATO: 141st mechanized battalion.",
+        "force_2": "NATO: 143rd tank battalion and 330th air-defence battalion.",
+        "force_3": "Pact: two tank battalions.",
+        "force_4": "Pact: two air-defence battalions.",
+        "desc_us_1": "Break through to the central junction.",
+        "desc_us_2": "Protect the western approach.",
+        "desc_us_3": "Commit reinforcements from turn 2.",
+        "desc_us_4": "Prevent the Red Line from closing.",
+        "desc_sov_1": "Hold the eastern approaches with tank battalions.",
+        "desc_sov_2": "Cover the formation with two air-defence battalions.",
+        "desc_sov_3": "Deny NATO the central junction."
+      },
+      "ru": {
+        "title": "Красный рубеж — 1989",
+        "subtitle": "Новая испытательная кампания «Генерала армий»",
+        "brief": "20 июня 1989 года. Передовая группа НАТО должна прорвать Красный рубеж до того, как советские танки и ПВО закроют коридор. Видеоряд сохранён, но обстановка, силы и задачи полностью изменены.",
+        "objectives_text": "НАТО: захватить центральный узел. ОВД: удержать Красный рубеж. Подкрепления НАТО доступны со 2-го хода.",
+        "left_title": "ПЕРЕДОВАЯ ГРУППА НАТО",
+        "left_subtitle": "Механизированный, танковый и зенитный батальоны к западу от рубежа.",
+        "right_title": "ГРУППА «КРАСНЫЙ РУБЕЖ»",
+        "right_subtitle": "Два танковых и два зенитных батальона в рассредоточенном заслоне.",
+        "gamemode_extended": "Семь батальонов начинают кампанию на новых позициях. Красная сторона поровну разделена между танками и ПВО; со 2-го хода НАТО может вызвать шесть соединений подкрепления.",
+        "overview_1": "20 июня 1989 года связь с передовыми постами у Альсфельда прервана.",
+        "overview_2": "Группа «Красный рубеж» развернула подвижный танково-зенитный заслон.",
+        "overview_3": "НАТО должно открыть центральный узел до закрепления противника.",
+        "overview_4": "На старте семь батальонов занимают полностью новые позиции.",
+        "overview_5": "Шесть соединений НАТО поступают в резерв со 2-го хода.",
+        "force_1": "НАТО: 141-й механизированный батальон.",
+        "force_2": "НАТО: 143-й танковый и 330-й зенитный батальоны.",
+        "force_3": "ОВД: два танковых батальона.",
+        "force_4": "ОВД: два зенитных батальона.",
+        "desc_us_1": "Прорвитесь к центральному узлу.",
+        "desc_us_2": "Прикройте западный подступ.",
+        "desc_us_3": "Введите подкрепления со 2-го хода.",
+        "desc_us_4": "Не дайте Красному рубежу сомкнуться.",
+        "desc_sov_1": "Удерживайте восточные подступы танковыми батальонами.",
+        "desc_sov_2": "Прикройте построение двумя зенитными батальонами.",
+        "desc_sov_3": "Не отдавайте НАТО центральный узел."
+      }
+    }
+  }
+}

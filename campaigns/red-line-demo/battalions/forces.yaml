@@ -1,0 +1,557 @@
+schema: 1
+battalions:
+- id: nato_militia
+  side: nato
+  definition:
+    catalog: west_german_militia
+    strategic: {type: mechanized, battle_role: auxiliary_support, visual: {unit: HeimatschutzJager_RFA}}
+    name: Ополчение «Гессен»
+    organization: Группа «Гессен»
+    companies:
+    - id: hq
+      name: Сводная штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Взвод управления и связи
+        hq: true
+        units:
+        - type: M577_RFA_1
+          count: 1
+        - type: Iltis_trans_RFA_Scout_RFA_1
+          count: 2
+    - id: rifles
+      name: Рота территориальных стрелков
+      hq: false
+      platoons:
+      - id: rifles_1
+        name: 1-й сводный взвод
+        hq: false
+        units:
+        - type: Unimog_trans_RFA_HeimatschutzJager_RFA_0
+          count: 3
+      - id: rifles_2
+        name: 2-й сводный взвод
+        hq: false
+        units:
+        - type: Unimog_trans_RFA_HeimatschutzJager_RFA_0
+          count: 3
+      - id: weapons
+        name: Взвод тяжёлого оружия
+        hq: false
+        units:
+        - type: Iltis_trans_RFA_HMGteam_MG3_RFA_1
+          count: 2
+        - type: Iltis_trans_RFA_ATteam_RCL_M40A1_RFA_0
+          count: 2
+    - id: armor
+      name: Смешанная бронерота
+      hq: false
+      platoons:
+      - id: old_tanks
+        name: Взвод старых танков
+        hq: false
+        units:
+        - type: M48A2C_RFA_1
+          count: 3
+      - id: leopards
+        name: Взвод сборных «Леопардов»
+        hq: false
+        units:
+        - type: Leopard_1A1_RFA_1
+          count: 3
+    - id: air_defence
+      name: Зенитная батарея ополчения
+      hq: false
+      platoons:
+      - id: guns
+        name: Взвод 20-мм установок
+        hq: false
+        units:
+        - type: Faun_kraka_RFA_DCA_FK20_2_20mm_RFA_0
+          count: 3
+      - id: manpads
+        name: Расчёты ПЗРК «Редай»
+        hq: false
+        units:
+        - type: Iltis_trans_RFA_MANPAD_Redeye_RFA_0
+          count: 3
+- id: pact_militia
+  side: pact
+  definition:
+    catalog: east_german_militia
+    strategic: {type: mechanized, battle_role: auxiliary_support, visual: {unit: Reserve_DDR}}
+    name: Дружина «Эрфурт»
+    organization: Группа «Эрфурт»
+    companies:
+    - id: hq
+      name: Штабная группа
+      hq: true
+      platoons:
+      - id: command
+        name: Группа управления
+        hq: true
+        units:
+        - type: UAZ_469_CMD_DDR_0
+          count: 1
+        - type: BRDM_1_DDR_Scout_Reserve_DDR_0
+          count: 2
+    - id: workers
+      name: Рабочая стрелковая рота
+      hq: false
+      platoons:
+      - id: workers_1
+        name: 1-й заводской взвод
+        hq: false
+        units:
+        - type: SPW_152K_DDR_Reserve_DDR_0
+          count: 3
+      - id: workers_2
+        name: 2-й заводской взвод
+        hq: false
+        units:
+        - type: SPW_152K_DDR_Reserve_DDR_0
+          count: 3
+      - id: workers_3
+        name: 3-й заводской взвод
+        hq: false
+        units:
+        - type: SPW_152K_DDR_Reserve_DDR_0
+          count: 3
+    - id: armor
+      name: Танковая рота резерва
+      hq: false
+      platoons:
+      - id: t34
+        name: Взвод Т-34 из хранения
+        hq: false
+        units:
+        - type: T34_85M_DDR_0
+          count: 2
+      - id: t54
+        name: Взвод Т-54Б
+        hq: false
+        units:
+        - type: T54B_DDR_0
+          count: 3
+    - id: support
+      name: Рота поддержки
+      hq: false
+      platoons:
+      - id: machine_guns
+        name: Пулемётный взвод
+        hq: false
+        units:
+        - type: UAZ_469_trans_DDR_HMGteam_PKM_DDR_0
+          count: 2
+      - id: mortars
+        name: Миномётный взвод
+        hq: false
+        units:
+        - type: UAZ_469_trans_DDR_Mortier_M43_82mm_DDR_0
+          count: 2
+      - id: air_defence
+        name: Зенитный взвод ЗПУ-4
+        hq: false
+        units:
+        - type: UAZ_469_trans_DDR_DCA_ZPU4_DDR_0
+          count: 2
+      - id: anti_tank
+        name: ПТ-взвод «Малютка»
+        hq: false
+        units:
+        - type: BRDM_Malyu_P_DDR_0
+          count: 2
+- id: nato_event_heavy
+  side: nato
+  definition:
+    catalog: nato_heavy_group
+    strategic: {type: mechanized, battle_role: fighter, visual: west_german_armor}
+    name: Группа «Айрон»
+    organization: Оперативная группа НАТО
+    companies:
+    - id: hq
+      name: Штаб группы
+      hq: true
+      platoons:
+      - id: hq
+        name: Командный взвод
+        hq: true
+        units:
+        - type: M577_RFA_1
+          count: 1
+    - id: armor
+      name: Танковая рота «Леопард»
+      hq: false
+      platoons:
+      - id: leo_a
+        name: 1-й танковый взвод
+        hq: false
+        units:
+        - type: Leopard_2A4_RFA_1
+          count: 3
+      - id: leo_b
+        name: 2-й танковый взвод
+        hq: false
+        units:
+        - type: Leopard_2A4_RFA_1
+          count: 3
+    - id: support
+      name: Рота огневой поддержки
+      hq: false
+      platoons:
+      - id: roland
+        name: Зенитный взвод «Роланд»
+        hq: false
+        units:
+        - type: Marder_Roland_2_RFA_2
+          count: 3
+- id: nato_event_mobile
+  side: nato
+  definition:
+    catalog: nato_mobile_group
+    strategic: {type: mechanized, battle_role: fighter, visual: west_german_armor}
+    name: Группа «Ягуар»
+    organization: Мобильная группа НАТО
+    companies:
+    - id: hq
+      name: Штаб группы
+      hq: true
+      platoons:
+      - id: hq
+        name: Командный взвод
+        hq: true
+        units:
+        - type: M577_RFA_1
+          count: 1
+    - id: armor
+      name: Манёвренная танковая рота
+      hq: false
+      platoons:
+      - id: tank_a
+        name: 1-й бронетанковый взвод
+        hq: false
+        units:
+        - type: Leopard_1A5_RFA_1
+          count: 3
+      - id: tank_b
+        name: 2-й бронетанковый взвод
+        hq: false
+        units:
+        - type: Leopard_1A5_RFA_1
+          count: 3
+    - id: air
+      name: Ударная вертолётная рота
+      hq: false
+      platoons:
+      - id: hog
+        name: Взвод «Хог»
+        hq: false
+        units:
+        - type: AH1F_HeavyHog_US_2
+          count: 3
+- id: pact_event_guards
+  side: pact
+  definition:
+    catalog: pact_guards_group
+    strategic: {type: mechanized, battle_role: fighter, visual: soviet_armor}
+    name: Гвардейский авангард
+    organization: Передовой отряд ОВД
+    companies:
+    - id: hq
+      name: Штаб авангарда
+      hq: true
+      platoons:
+      - id: hq
+        name: Командный взвод
+        hq: true
+        units:
+        - type: UAZ_469_CMD_DDR_0
+          count: 1
+    - id: armor
+      name: Гвардейская танковая рота
+      hq: false
+      platoons:
+      - id: t80a
+        name: 1-й взвод Т-80
+        hq: false
+        units:
+        - type: T80BV_SOV_1
+          count: 3
+      - id: t80b
+        name: 2-й взвод Т-80
+        hq: false
+        units:
+        - type: T80BV_SOV_1
+          count: 3
+    - id: aa
+      name: Зенитная батарея
+      hq: false
+      platoons:
+      - id: tung
+        name: Взвод «Тунгуска»
+        hq: false
+        units:
+        - type: Tunguska_2K22_SOV_1
+          count: 3
+- id: pact_event_breakthrough
+  side: pact
+  definition:
+    catalog: pact_breakthrough_group
+    strategic: {type: mechanized, battle_role: fighter, visual: {unit: T72B1_SOV}}
+    name: Группа прорыва «Эльба»
+    organization: Группа прорыва ОВД
+    companies:
+    - id: hq
+      name: Штаб группы
+      hq: true
+      platoons:
+      - id: hq
+        name: Командный взвод
+        hq: true
+        units:
+        - type: UAZ_469_CMD_DDR_0
+          count: 1
+    - id: armor
+      name: Рота прорыва
+      hq: false
+      platoons:
+      - id: t72a
+        name: 1-й штурмовой взвод
+        hq: false
+        units:
+        - type: T72B1_SOV_1
+          count: 3
+      - id: t72b
+        name: 2-й штурмовой взвод
+        hq: false
+        units:
+        - type: T72B1_SOV_1
+          count: 3
+    - id: aa
+      name: Рота ПВО прорыва
+      hq: false
+      platoons:
+      - id: tung
+        name: Зенитный взвод
+        hq: false
+        units:
+        - type: Tunguska_2K22_SOV_1
+          count: 3
+- id: nato_line_heavy
+  side: nato
+  definition:
+    catalog: nato_heavy_group
+    strategic: {type: mechanized, battle_role: fighter, visual: west_german_armor}
+    name: БТГ «Стальной щит»
+    organization: Передовая бронегруппа НАТО
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: M577_RFA_1, count: 1}
+    - id: armor
+      name: 1-я танковая рота
+      hq: false
+      platoons:
+      - id: tanks
+        name: Танковый взвод
+        hq: false
+        units:
+        - {type: Leopard_2A4_RFA_1, count: 3}
+- id: nato_line_mobile
+  side: nato
+  definition:
+    catalog: nato_mobile_group
+    strategic: {type: mechanized, battle_role: fighter, visual: west_german_armor}
+    name: БТГ «Быстрый клинок»
+    organization: Манёвренная группа НАТО
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: M577_RFA_1, count: 1}
+    - id: mobile
+      name: Манёвренная рота
+      hq: false
+      platoons:
+      - id: tanks
+        name: Взвод «Леопард»
+        hq: false
+        units:
+        - {type: Leopard_1A5_RFA_1, count: 3}
+      - id: helicopters
+        name: Вертолётный взвод
+        hq: false
+        units:
+        - {type: AH1F_HeavyHog_US_2, count: 3}
+- id: pact_line_guards
+  side: pact
+  definition:
+    catalog: pact_guards_group
+    strategic: {type: mechanized, battle_role: fighter, visual: soviet_armor}
+    name: 1-я гв. танковая БТГ
+    organization: Передовой эшелон ОВД
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: UAZ_469_CMD_DDR_0, count: 1}
+    - id: armor
+      name: Гвардейская танковая рота
+      hq: false
+      platoons:
+      - id: tanks
+        name: Взвод Т-80
+        hq: false
+        units:
+        - {type: T80BV_SOV_1, count: 3}
+- id: pact_line_breakthrough
+  side: pact
+  definition:
+    catalog: pact_breakthrough_group
+    strategic: {type: mechanized, battle_role: fighter, visual: {unit: T72B1_SOV}}
+    name: 2-я танковая БТГ
+    organization: Ударный эшелон ОВД
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: UAZ_469_CMD_DDR_0, count: 1}
+    - id: armor
+      name: Танковая рота прорыва
+      hq: false
+      platoons:
+      - id: tanks
+        name: Взвод Т-72Б1
+        hq: false
+        units:
+        - {type: T72B1_SOV_1, count: 3}
+- id: nato_reinforcement_armor
+  side: nato
+  definition:
+    catalog: nato_heavy_group
+    strategic: {type: mechanized, battle_role: fighter, visual: west_german_armor}
+    name: Резерв «Зигфрид»
+    organization: Оперативный резерв НАТО
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: M577_RFA_1, count: 1}
+    - id: armor
+      name: Резервная танковая рота
+      hq: false
+      platoons:
+      - id: tanks
+        name: Резервный танковый взвод
+        hq: false
+        units:
+        - {type: Leopard_2A4_RFA_1, count: 3}
+- id: pact_reinforcement_air_defence
+  side: pact
+  definition:
+    catalog: pact_breakthrough_group
+    strategic:
+      type: mechanized
+      battle_role: auxiliary_support
+      visual: {unit: Tunguska_2K22_SOV}
+      support: {kind: air_defence, radius_ap: 6.0}
+    name: Резерв «Одер»
+    organization: Оперативный резерв ОВД
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: UAZ_469_CMD_DDR_0, count: 1}
+    - id: air_defence
+      name: Резервная зенитная батарея
+      hq: false
+      platoons:
+      - id: tunguska
+        name: Зенитный взвод
+        hq: false
+        units:
+        - {type: Tunguska_2K22_SOV_1, count: 3}
+- id: nato_reinforcement_mechanized
+  side: nato
+  definition:
+    catalog: west_german_militia
+    strategic: {type: mechanized, battle_role: fighter, visual: west_german_infantry}
+    name: Мотопехота «Зигфрид»
+    organization: Полк «Зигфрид»
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: M577_RFA_1, count: 1}
+    - id: infantry
+      name: Резервная пехотная рота
+      hq: false
+      platoons:
+      - id: rifles
+        name: Стрелковый взвод
+        hq: false
+        units:
+        - {type: Unimog_trans_RFA_HeimatschutzJager_RFA_0, count: 6}
+- id: pact_reinforcement_armor
+  side: pact
+  definition:
+    catalog: pact_breakthrough_group
+    strategic: {type: mechanized, battle_role: fighter, visual: east_german_armor}
+    name: Танковый батальон «Одер»
+    organization: Полк «Одер»
+    companies:
+    - id: hq
+      name: Штабная рота
+      hq: true
+      platoons:
+      - id: command
+        name: Командный взвод
+        hq: true
+        units:
+        - {type: UAZ_469_CMD_DDR_0, count: 1}
+    - id: armor
+      name: Резервная танковая рота
+      hq: false
+      platoons:
+      - id: tanks
+        name: Танковый взвод
+        hq: false
+        units:
+        - {type: T55AM2_DDR_1, count: 6}

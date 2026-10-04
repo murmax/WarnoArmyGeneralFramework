@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "id": "bruderkrieg-turn-limit",
+  "source_pack": "C:/Program Files (x86)/Steam/steamapps/common/WARNO/Data/PC/201602/Scenarios/CampagneStrat_Bruderkrieg_Definition.dat",
+  "source_sha256": "5e872980e8a817346f8e66729624e6f80a6186b189b77b296515f937407c7999",
+  "resources": [
+    {
+      "path": "NDF/Scenarios/GDScript/CampagneStrat_Bruderkrieg.ndfbin",
+      "backend": "native",
+      "spec": {
+        "source_sha256": "3892070a2757f3e4b1457e32e3554374bd8e6bb2954e90c300b8624099d3d223",
+        "operations": [
+          {
+            "export": "$/GDScript/intro/script/Variables/TourMax",
+            "class": "TGDVariableInteger",
+            "property": "Value",
+            "expected": 12,
+            "value": 20
+          }
+        ]
+      }
+    }
+  ]
+}
