@@ -52,7 +52,7 @@ def _victory_text(compiled, language, side):
     return f'{name}: набрать {score} победных очков' if language == 'ru' else f'{name}: reach {score} victory points'
 
 
-def authored_text(compiled, language):
+def _authored_text_base(compiled, language):
     """Collect all runtime strings referenced by the authored script/map."""
     if language not in {"ru", "en"}:
         raise ValueError("Authored localisation supports ru and en")
@@ -109,11 +109,18 @@ def authored_text(compiled, language):
     return values
 
 
+def authored_text(compiled,language):
+    from .localisation import locale,translate
+    language=locale(language)
+    values=_authored_text_base(compiled,'ru' if language=='ru' else 'en')
+    return values if language=='ru' else {key:translate(compiled,text,language) for key,text in values.items()}
+
+
 def authored_choice_text(compiled):
     keys = {authored_text_key(compiled['campaign']['id'], 'event', event['id'], 'choice', str(index))
             for event in compiled['events'] for index, choice in enumerate(event['choices'])}
     return {language: {key: text for key, text in authored_text(
-                compiled, 'ru' if language == 'RU' else 'en').items() if key in keys}
+                compiled, language).items() if key in keys}
             for language in ('DEV', 'FR', 'GER', 'POL', 'RU', 'SC', 'SPA', 'US')}
 
 
@@ -126,7 +133,7 @@ def authored_ingame_text(compiled):
                 for division in production['divisions'] for field in ('name', 'short_name'))
     for language, values in translations.items():
         values.update({key: text for key, text in authored_text(
-            compiled, 'ru' if language == 'RU' else 'en').items() if key in keys})
+            compiled, language).items() if key in keys})
     return translations
 
 
@@ -198,7 +205,10 @@ def patch_authored_pawn_states(raw, compiled):
                 item["object_id"] = ap["id"]
             elif item.get("object_id") == source_fatigue["id"]:
                 item["object_id"] = fatigue_module["id"]
-        _property(ap, "InitialActionPoint")["value"] = 0.0 if frozen else float(action_points)
+        # InitialActionPoint is also the native AP capacity. A zero here
+        # creates a permanent 0/0 pawn; clear current AP in the launch instead.
+        legacy_zero = frozen and compiled['adapter'].get('frozen_lifecycle_version',1) < 4
+        _property(ap, "InitialActionPoint")["value"] = 0.0 if legacy_zero else float(action_points)
         _property(ap, "ActionPointRecoveryPerTurn")["value"] = int(action_points)
         produced = [p for p in ap["properties"]
                     if p["property_name"] == "NbInitialActionsPointsForProducedPawn"]
@@ -216,7 +226,7 @@ def patch_authored_pawn_states(raw, compiled):
                           "value": int(fatigue)},
             })
         report[unit_export] = {"fatigue": int(fatigue),
-                               "action_points": 0 if frozen else int(action_points)}
+                               "action_points": 0 if legacy_zero else int(action_points)}
     base = {"classes": graph["classes"], "properties": graph["properties"],
             "objects": objects[:original_count]}
     result = append_graph_objects(doc, base, objects[original_count:], (), new_properties)
@@ -974,7 +984,8 @@ def authored_script_contract(raw, compiled):
         expected_launch.append(initial_container['id'])
     frozen_rows = [row for row in compiled["deployments"] if row["frozen_turns"]]
     frozen_version = compiled['adapter'].get('frozen_lifecycle_version', 1)
-    if frozen_rows and frozen_version == 1:
+    launch_frozen_clear_ids = []
+    if frozen_rows and frozen_version in (1,4):
         if len(launch_ids) < len(expected_launch) + len(frozen_rows) + 1:
             raise ValueError("Native frozen-state startup actions are missing")
         clear_ids = launch_ids[len(expected_launch):len(expected_launch) + len(frozen_rows)]
@@ -982,8 +993,9 @@ def authored_script_contract(raw, compiled):
                or next((p["value"].get("value") for p in objects[item]["properties"]
                         if p["property_name"] == "ActionPointNumber"), 0) != 0
                for item in clear_ids):
-            raise ValueError("Native frozen-state AP clear is broken")
+            raise ValueError("Frozen native startup AP clear is broken")
         expected_launch.extend(clear_ids)
+        launch_frozen_clear_ids = list(clear_ids)
     loss_rows = [row for row in compiled["deployments"]
                  if row.get("initial_losses", {}).get("budget", 0)]
     loss_actions = [objects[item] for item in reachable
@@ -1108,6 +1120,8 @@ def authored_script_contract(raw, compiled):
                     if any(objects[item]['class']=='TGDDescriptorSetEffect' for item in subtree):
                         raise ValueError('Frozen AP gate must not leave a persistent no-regeneration effect')
         startup_refs = _property(objects[script['startup_groups']], 'SubActions')['items']
+        if frozen_version == 4 and launch_frozen_clear_ids != clear_ids:
+            raise ValueError('Frozen launch must clear the same collected groups as the turn lifecycle')
         frozen_collectors = startup_refs[len(_initial_operational_groups(compiled)):]
         if len(frozen_collectors) != len(frozen):
             raise ValueError('Frozen pawn group collector count mismatch')
@@ -1924,7 +1938,7 @@ def compile_authored_script(raw, compiled):
     frozen_deployments = [deployment for deployment in compiled["deployments"]
                           if deployment["frozen_turns"]]
     frozen_version = compiled['adapter'].get('frozen_lifecycle_version', 1)
-    if frozen_version not in (1, 2, 3):
+    if frozen_version not in (1, 2, 3, 4):
         raise ValueError('Unknown authored frozen lifecycle version')
 
     def owned_frozen_shell(deployment):
@@ -1987,7 +2001,7 @@ def compile_authored_script(raw, compiled):
             ref(clear, 'TGDDescriptorChangePawnActionPoint'),
             ref(cloned[528], 'TGDDescriptorCompetition'),
             ref(cloned[529], 'TGDDescriptorChangePawnActionPoint')], length=4)
-        if frozen_version == 3:
+        if frozen_version >= 3:
             suppress=[]
             for turn in range(2,deployment['frozen_turns']+1):
                 suppress.append(ref(wait_then(clear,'TGDDescriptorChangePawnActionPoint',
@@ -2061,6 +2075,9 @@ def compile_authored_script(raw, compiled):
         if frozen_version >= 2:
             collector_id, timeline_id = owned_frozen_shell(deployment)
             startup['items'].append(ref(collector_id, 'TGDDescriptorAddUnitGroupListToUnitGroup'))
+            if frozen_version >= 4:
+                clear_id=_property(objects[timeline_id],'SubActions')['items'][1]['object_id']
+                frozen_launch.append(ref(clear_id,'TGDDescriptorChangePawnActionPoint'))
             frozen_sequences.append((timeline_id, 'TGDDescriptorSequential'))
             continue
         # The current Bruderkrieg profile deliberately exposes only the one
@@ -3038,7 +3055,7 @@ def pawn_state_contract(raw, compiled):
         }
         if (actual["fatigue"] != row["fatigue"]
                 or actual["initial_action_points"] != (0 if row['frozen_turns'] and
-                    compiled['adapter'].get('frozen_lifecycle_version', 1) >= 2 else row["action_points"])
+                    2 <= compiled['adapter'].get('frozen_lifecycle_version', 1) < 4 else row["action_points"])
                 or actual["recovery_action_points"] != row["action_points"]):
             raise ValueError(f"Authored Pawn state mismatch: {row['id']}")
         result[row["id"]] = actual
@@ -3067,6 +3084,7 @@ def _unique_localized_names(names):
 def patch_authored_localisation(root, compiled):
     """Publish authored UI strings and remove reachable-content wording from Bruderkrieg."""
     root = Path(root).resolve()
+    from .localisation import field as localized_field
     languages = ("DEV", "FR", "GER", "POL", "RU", "SC", "SPA", "US")
     old_event_keys = {row[0] for row in EVENT_TEXT.values()}
     authored_keys = set(authored_text(compiled, "ru"))
@@ -3083,7 +3101,7 @@ def patch_authored_localisation(root, compiled):
         values = _trad_data(path.read_bytes())
         for key in old_event_keys:
             values.pop(key, None)
-        localized = authored_text(compiled, "ru" if language == "RU" else "en")
+        localized = authored_text(compiled, language)
         if set(values) & set(localized):
             raise ValueError(f"Authored runtime localisation collision: {path}")
         path.write_bytes(_pack_trad({**values, **localized}))
@@ -3099,19 +3117,19 @@ def patch_authored_localisation(root, compiled):
     if not title_keys:
         raise ValueError("Cannot identify isolated campaign-title keys")
     for path in runtime_targets:
-        language = 'ru' if _dictionary_language(path) == 'RU' else 'en'
+        language = _dictionary_language(path)
         values = _trad_data(path.read_bytes())
         for key in values:
             if key.startswith(b'RDLN'):
                 field = 'title' if key in title_keys else 'summary'
-                values[key] = compiled['campaign'][field][language]
+                values[key] = localized_field(compiled,compiled['campaign'][field],language)
         path.write_bytes(_pack_trad(values))
     for path in map_targets:
         language = _dictionary_language(path)
         values = _trad_data(path.read_bytes())
-        localized = authored_text(compiled, "ru" if language == "RU" else "en")
-        title = compiled["campaign"]["title"]["ru" if language == "RU" else "en"]
-        summary = compiled["campaign"]["summary"]["ru" if language == "RU" else "en"]
+        localized = authored_text(compiled, language)
+        title = localized_field(compiled,compiled['campaign']['title'],language)
+        summary = localized_field(compiled,compiled['campaign']['summary'],language)
         for key in list(values):
             if key in old_event_keys:
                 del values[key]
@@ -3138,7 +3156,7 @@ def patch_authored_localisation(root, compiled):
             if len(matches) != 1:
                 raise ValueError(f"ModGen did not compile campaign label token: {label['id']}")
             current[label["id"]] = matches[0]
-            values[matches[0]] = label["text"]["ru" if language == "RU" else "en"]
+            values[matches[0]] = localized_field(compiled,label['text'],language)
         if label_keys is None:
             label_keys = current
         elif current != label_keys:
@@ -3153,7 +3171,7 @@ def patch_authored_localisation(root, compiled):
                 key = current[label["id"]]
                 if key in maps_values:
                     raise ValueError("Campaign label collides with an existing MAPS entry")
-                maps_values[key] = label["text"]["ru" if language == "RU" else "en"]
+                maps_values[key] = localized_field(compiled,label['text'],language)
             maps_path.write_bytes(_pack_trad(maps_values))
     reports["authored_keys"] = len(authored_keys)
     reports["label_keys"] = {name: key.hex() for name, key in label_keys.items()}
@@ -3179,7 +3197,7 @@ def patch_authored_localisation(root, compiled):
             key = bytes.fromhex(label_token_key(token))
             if values.get(key) != original:
                 raise ValueError('Compiled battalion name token differs from its authored source')
-            values[key] = localized['ru' if language == 'RU' else 'en']
+            values[key] = localized_field(compiled,localized,language)
         if unique_names:
             path.write_bytes(_pack_trad(values))
     reports['localized_battalion_names'] = len(unique_names)
@@ -3189,7 +3207,7 @@ def patch_authored_localisation(root, compiled):
             path=label_folder/f'{kind}-{language}.dic';values=_trad_data(path.read_bytes())
             for item in items:
                 if 'localized_name' in item:
-                    values[bytes.fromhex(label_token_key(item['name_token']))]=item['localized_name']['ru' if language=='RU' else 'en']
+                    values[bytes.fromhex(label_token_key(item['name_token']))]=localized_field(compiled,item['localized_name'],language)
             path.write_bytes(_pack_trad(values))
     return reports
 
@@ -3317,7 +3335,7 @@ def validate_authored_candidate(root, compiled):
                 raise ValueError("Authored MAPS language projection mismatch")
         if language != "DEV" and f"ZZ:/Localisation/Localisation/Core/MAPS-{language}.dic" not in declared:
             raise ValueError("Authored MAPS dictionary is not mounted")
-        expected_text = authored_text(compiled, "ru" if language == "RU" else "en")
+        expected_text = authored_text(compiled, language)
         if any(values.get(key) != text for key, text in expected_text.items()):
             raise ValueError("Authored campaign text mismatch")
         map_values = values

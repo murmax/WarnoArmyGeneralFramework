@@ -1095,7 +1095,7 @@ def compile_campaign(source, profile_path, destination=None):
         "adapter": {
             "ai_mission_version": 5 if campaign.get('ai_policy',{}).get('continuous_route') else 4 if campaign.get('ai_policy',{}).get('refresh_each_turn') else 3 if 'ai_policy' in campaign else 2,
             **({'ai_startup_version':2} if 'ai_policy' in campaign else {}),
-            **({'frozen_lifecycle_version': 3}
+            **({'frozen_lifecycle_version': 4}
                if dynamic and any(row['frozen_turns'] for row in resolved_deployments) else {}),
             **({'production_ai_version': 2} if directed_production else {}),
             **({'registration': 'dynamic'} if dynamic else {}),
@@ -1105,6 +1105,10 @@ def compile_campaign(source, profile_path, destination=None):
             "script": copy.deepcopy(profile["script"]), "profile_sha256": sha256(Path(profile_path).read_bytes()),
         },
     }
+    localisation=root/'localization.yaml'
+    if localisation.is_file():
+        from .localisation import compile_localisation
+        result['localisation']=compile_localisation(_read_yaml(localisation),result)
     encoded = json.dumps(result, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     report = {
         "campaign": campaign_id, "template": profile["id"], "compiled_sha256": sha256(encoded),

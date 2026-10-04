@@ -2,7 +2,7 @@
 
 Create original **Army General campaigns for WARNO**: choose the battlefield, build battalions, place forces, schedule reinforcements, write events and define victory conditions. The framework compiles campaign source into a complete native WARNO mod for Steam Workshop.
 
-**Release 1.0.0 · Windows · Python 3.11+ · MIT**
+**Release 1.0.1 · Windows · Python 3.11+ · MIT**
 
 [Русская инструкция](docs/GETTING_STARTED_RU.md) · [Authoring guide](docs/GETTING_STARTED.md) · [Kacha example campaign](https://steamcommunity.com/sharedfiles/filedetails/?id=3811284575)
 
@@ -19,6 +19,11 @@ Activate one framework-built campaign at a time unless that exact combination ha
 The example is **Kacha: Defense of Sevastopol**, an alternative-1989 campaign: US Marines try to seize Sevastopol, while Soviet naval infantry and arriving reserves defend the city. It demonstrates original terrain, combined forces, timed reinforcements, illustrated choices, aviation and conditional endings. The Workshop item may remain private until its author enables public visibility.
 
 ## I want to create a campaign
+
+Version 1.0.1 corrects frozen battalion action-point capacity and adds optional
+complete campaign translation catalogs. Kacha V11 includes Russian, English,
+French, German, Spanish, Simplified Chinese and Polish. Start a fresh campaign
+after updating: the framework does not rewrite action-point modules in saves.
 
 This repository is an **authoring toolchain**. Campaigns are editable YAML documents; the included small example is a useful starting point. A playable build requires a compatible WARNO installation and its official mod tools.
 

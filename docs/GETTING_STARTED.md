@@ -77,9 +77,12 @@ Ground-attack (`bomber`) wings may include native `Avion_AT` aircraft as well
 as bombers. V10 uses MiG-27s for its strike option. Air group formations can
 use a separate parent and the native `Texture_Division_Emblem_SOV_AirForce`.
 
-New dynamic frozen deployments use lifecycle version 3: initial AP are zero,
-AP are cleared only on the locked owner turns, and ordinary recovery is
-retained after release. No persistent supply-malus effect is used.
+New dynamic frozen deployments use lifecycle version 4: the native descriptor
+retains its normal AP capacity and recovery. Only current AP are cleared before
+the campaign kernel starts and on subsequent locked owner turns. The release
+action restores current AP once; normal turn recovery continues afterward.
+Older 0/0 descriptors in existing saves require a fresh campaign. No persistent
+supply-malus effect is used.
 `ai_policy.continuous_route: true` requires per-turn refresh and retains the
 remaining attack waypoints in one native mission. `cooperate: true` allows
 nearby formations to participate in attacks.
@@ -96,6 +99,36 @@ the division must have authored AI production. Events can use
 `trigger: {capture_deadline: blocked}` or a dated `not_blocked` result at/after
 the cutoff. The companion Kacha campaign demonstrates this policy. These fields round-trip through
 the editor, but dedicated editing controls are not part of this revision.
+
+### Additional languages
+
+RU/EN fields remain the primary source. To translate every campaign screen,
+add optional `localization.yaml` next to `campaign.yaml`:
+
+```yaml
+schema: 1
+source_language: en
+translations:
+  fr:
+    "Locked for %1 turns": "Bloqué pendant %1 tours"
+```
+
+This fragment shows the format; a declared language needs a complete table.
+Keys are exact English source strings. Supported additional table codes are
+`fr`, `de`, `es`, `pl` and `zh` (Simplified Chinese); optional `en` entries
+correct English display names without changing stable source identifiers.
+Translate menu descriptions, objectives, events, choices, introduction/ending
+slides, map labels and formation/company/platoon names. The compiler rejects
+missing strings, changed `%1` placeholders and changed coalition tags.
+Translations are written into native bootstrap and runtime dictionaries.
+Voice scripts are separate and do not create recordings. Campaigns without
+a catalog retain the earlier English fallback.
+
+For an existing Workshop item, `scripts/workshop_content_update.py` updates
+only content and preview through an already logged-in Steam client. It checks
+the owner and records title, description, visibility and tags before and after.
+It does not change those fields or accept credentials. Pass the installed
+game's `steam_api64.dll`; do not redistribute that DLL with framework source.
 
 `editor-public-package` prepares a fresh official compiler workspace and
 verifies a complete, isolated bundle. It does not install or activate the
