@@ -1310,8 +1310,10 @@ def authored_script_contract(raw, compiled):
         raise ValueError('Unknown authored AI mission version')
     expected_counts = {}
     group_members = {}
+    group_sides={}
     for operational, group in zip(operational_groups, initial_groups):
         group_members[group] = [d['battalion'] for d in operational['deployments']]
+        group_sides[group]=operational['side']
         order = operational['order']
         defensive = order['type'] in {'defend', 'hold', 'reserve', 'support', 'air_support'}
         expected_counts[group] = (1 if defensive or ai_mission_version == 1 else
@@ -1327,6 +1329,7 @@ def authored_script_contract(raw, compiled):
         spec, = [row for row in runtime_specs if list(_int32_words(row['position_guid'])) == words]
         order = spec['ai']
         group_members[_property(create,'Group')['object_id']] = [spec.get('spawn',spec.get('battalion'))]
+        group_sides[_property(create,'Group')['object_id']]='nato' if _property(create,'Camp')['object_id']==284 else 'pact'
         defensive = order['type'] in {'defend', 'hold', 'reserve', 'support', 'air_support'}
         expected_counts[_property(create, 'Group')['object_id']] = (
             1 if defensive or ai_mission_version == 1 else
@@ -1337,15 +1340,21 @@ def authored_script_contract(raw, compiled):
             order = production_group.get('member_ai', {}).get(member, production_group['ai'])
             group_members[group_id] = ([member] if production_group.get('member_ai')
                                        else production_group['battalions'])
+            group_sides[group_id]=production_group['side']
             defensive = order['type'] in {'defend', 'hold', 'reserve', 'support', 'air_support'}
             expected_counts[group_id] = (
                 1 if defensive or ai_mission_version == 1 else
                 len(order.get('route', [order['target']])) + 1)
-    if set(mission_groups) != all_groups or (ai_mission_version<4 and Counter(mission_groups) != Counter(expected_counts)):
+    from .ai_control import native_controlled
+    scripted_groups={group for group in all_groups if not native_controlled(compiled,group_sides[group],group_members[group])}
+    if set(mission_groups) != scripted_groups or (ai_mission_version<4 and Counter(mission_groups) != Counter(expected_counts)):
         raise ValueError('Authored formations lack the expected staged AI missions')
     def check_order(group, order, side):
         group_missions = [item for item in missions
                           if _property(item, "Group")["object_id"] == group]
+        if native_controlled(compiled,side,group_members[group]):
+            if group_missions:raise ValueError('Stock-controlled army has an unwanted private mission')
+            return
         if ai_mission_version>=4:
             plans = [order] + [phase for member in group_members[group]
                               for phase in compiled['campaign']['ai_policy'].get('phase_orders',{}).get(member,[])]
@@ -1464,6 +1473,11 @@ def authored_script_contract(raw, compiled):
             check_order(production_groups[production_group['id']][export], order, production_group['side'])
     if reachable_classes.count("TGDDescriptorIAStrategicScripted") != 2:
         raise ValueError("Both generic strategic AI controllers must remain reachable")
+    controllers=[objects[i] for i in reachable if objects[i]['class']=='TGDDescriptorIAStrategicScripted']
+    roles={'pact':'attacker','nato':'defender',**compiled['campaign'].get('ai_policy',{}).get('native_strategies',{})}
+    expected={(283 if side=='pact' else 284,1 if mode=='attacker' else 2) for side,mode in roles.items()}
+    if {(_property(o,'Camp')['object_id'],_property(o,'Strategy')['value']) for o in controllers}!=expected:
+        raise ValueError('Native controller roles differ from the authored attack/defense plan')
     if ai_mission_version>=6:
         from .refresh_ai import validate_refresh_profiles
         validate_refresh_profiles(graph,compiled)
@@ -1496,7 +1510,8 @@ def authored_script_contract(raw, compiled):
            if air_losses or any('withdraw_turn' in wing for wing in air_wings) else {}),
         **({'capture_deadline': copy.deepcopy(compiled['campaign']['capture_deadline'])}
            if compiled['campaign'].get('capture_deadline') else {}),
-        "ai_missions": len(all_groups),
+        "ai_missions": len(scripted_groups),
+        "native_ai_groups": len(all_groups-scripted_groups),
         **({'ai_mission_phases': len(missions)} if ai_mission_version >= 2 else {}),
         "generic_ai_controllers": 2,
         "flags": len(compiled["map"]["flags"]),
@@ -1529,6 +1544,11 @@ def compile_authored_script(raw, compiled):
     if production_ai_version not in (1, 2):
         raise ValueError('Unknown authored production AI version')
     objects = copy.deepcopy(graph["objects"])
+    strategies=compiled['campaign'].get('ai_policy',{}).get('native_strategies',{})
+    for obj in objects:
+        if obj['class']=='TGDDescriptorIAStrategicScripted':
+            side='nato' if _property(obj,'Camp')['object_id']==284 else 'pact'
+            if side in strategies:_property(obj,'Strategy')['value']=1 if strategies[side]=='attacker' else 2
     original_count = len(objects)
     databases = [obj for obj in objects if obj["class"] == "TCutsceneDescriptorDatabase"]
     if len(databases) != 1 or not databases[0]["is_top_object"]:
@@ -1735,6 +1755,12 @@ def compile_authored_script(raw, compiled):
         ]))
 
     def strategic_mission(group, order, side=None, members=()):
+        from .ai_control import native_controlled
+        if native_controlled(compiled,side,members):
+            # Keep the content slot for stable kernel/deadline layouts, but
+            # let the stock attacker/defender controller own this formation.
+            idle=add('TGDDescriptorWaitDuration',[prop('TGDDescriptorWaitDuration','Duree',floating(0))])
+            return idle,'TGDDescriptorWaitDuration'
         mission_tags = {**flag_tags, **{row['id']:runtime_tags[row['id']] for row in compiled['map'].get('waypoints', [])}}
         position = mission_tags[order["target"]]
         cooperate = compiled['campaign'].get('ai_policy', {}).get('cooperate', False)

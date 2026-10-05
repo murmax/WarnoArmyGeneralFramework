@@ -111,6 +111,16 @@ Example: attack 1.5 cells, transit/support 0.5 cells, waypoint tolerance 0.8.
 On Kacha's 13,000-GU native AP grid, stock values 2120/707 GRU were approximately
 12/4 cells. They allowed inland routes to divert toward Sevastopol prematurely.
 
+`native_strategies: {nato: attacker, pact: defender}` explicitly assigns the
+stock strategic controllers' roles. Source templates may have the opposite
+roles: Bruderkrieg's East German side is the attacker. Do not assume that
+changing scripted routes also changes the inherited strategic controller.
+`native_controller_sides: [nato]` leaves NATO formations to the stock controller;
+`scripted_exceptions: [usmc_3_8]` retains a private route only for that battalion.
+Other authored NATO orders remain editable source intent but are not executed.
+The generic controller uses the game's own planning rules; scripted aggression
+windows and explicit mission radii apply only to retained private orders.
+
 `victory.time_limit` accepts `draw`, `nato` or `pact`. The latter two are
 scripted deadline outcomes when the configured final turn begins. V10 closes
 at the start of turn 20: turns 15–19 provide its five-turn carrier-withdrawal

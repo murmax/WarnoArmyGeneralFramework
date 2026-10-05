@@ -2,7 +2,7 @@
 
 Create original **Army General campaigns for WARNO**: choose the battlefield, build battalions, place forces, schedule reinforcements, write events and define victory conditions. The framework compiles campaign source into a complete native WARNO mod for Steam Workshop.
 
-**Release 1.0.3 · Windows · Python 3.11+ · MIT**
+**Release 1.0.4 · Windows · Python 3.11+ · MIT**
 
 [Русская инструкция](docs/GETTING_STARTED_RU.md) · [Authoring guide](docs/GETTING_STARTED.md) · [Kacha example campaign](https://steamcommunity.com/sharedfiles/filedetails/?id=3811284575)
 

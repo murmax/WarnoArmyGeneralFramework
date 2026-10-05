@@ -1027,7 +1027,7 @@ def compile_campaign(source, profile_path, destination=None):
     if 'ai_policy' in campaign:
         policy = campaign['ai_policy']
         from .ai_distances import FIELDS as distance_fields
-        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until','transit_waypoints'}|distance_fields)
+        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until','transit_waypoints','native_controller_sides','scripted_exceptions','native_strategies'}|distance_fields)
         if type(policy['attack_radius']) is not int or not 530 <= policy['attack_radius'] <= 2120 or type(policy['cooperate']) is not bool:
             raise ValueError('Invalid campaign AI attack policy')
         if set(policy)&distance_fields:
@@ -1041,6 +1041,18 @@ def compile_campaign(source, profile_path, destination=None):
                 or any(key not in target_ids or key in flag_ids for key in transit)
                 or transit and not set(policy)&distance_fields):
             raise ValueError('AI transit_waypoints require unique non-flag targets and cell radii')
+        native=policy.get('native_controller_sides',[])
+        exceptions=policy.get('scripted_exceptions',[])
+        if (not isinstance(native,list) or any(not isinstance(side,str) or side not in SIDES for side in native)
+                or len(set(native))!=len(native) or not isinstance(exceptions,list)
+                or any(not isinstance(member,str) or member not in battalion_by_id for member in exceptions)
+                or len(set(exceptions))!=len(exceptions)
+                or any(battalion_by_id[member]['side'] not in native for member in exceptions)):
+            raise ValueError('Invalid native AI sides or scripted exceptions')
+        strategies=policy.get('native_strategies',{})
+        if (not isinstance(strategies,dict) or any(side not in SIDES or mode not in ('attacker','defender')
+                for side,mode in strategies.items())):
+            raise ValueError('Native strategic roles must use known sides and attacker/defender')
         if 'refresh_each_turn' in policy and type(policy['refresh_each_turn']) is not bool:
             raise ValueError('AI refresh_each_turn must be boolean')
         if 'continuous_route' in policy and (type(policy['continuous_route']) is not bool
