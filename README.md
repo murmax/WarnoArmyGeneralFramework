@@ -121,6 +121,13 @@ Static checks verify structure, references and packaged data. They do not prove 
 
 Some integration checks require local game fixtures and report a skip when those fixtures are absent. A skip is not a passed integration test. The internal development checkout has a larger acceptance suite and runtime evidence.
 
+## Support development
+
+If you would like to support the framework and future campaigns:
+
+- [Boosty](https://boosty.to/murmax98)
+- [Donate.Stream](https://donate.stream/murmax)
+
 ## License and attribution
 
 Original framework code is licensed under [MIT](LICENSE). WARNO resources are not included and retain their owners' rights. Geographic data and artwork have their own licenses and attribution requirements. A campaign may contain game-derived resources produced locally by the official mod tools; this source repository does not redistribute those files.
