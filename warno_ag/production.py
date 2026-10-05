@@ -64,7 +64,10 @@ def compile_production(document, campaign, battalions, bounds):
     used_battalions = set()
     used_divisions = set()
     for row in rows('groups', {'id', 'division', 'name', 'turn', 'battalions'},
-                    {'ai', 'member_ai'}):
+                    {'ai', 'member_ai', 'when'}):
+        if 'when' in row:
+            from .choice_conditions import validate_requirements
+            row['when'] = validate_requirements(row['when'], 'production.' + row['id'] + '.when')
         if not isinstance(row['division'], str) or row['division'] not in divisions:
             raise ValueError('Unknown reserve division')
         division = divisions[row['division']]
@@ -191,6 +194,9 @@ def production_script_contract(graph, compiled, reachable):
                         (284 if group['side'] == 'nato' else 283), 'AI spawn coalition mismatch')
 
         def verify_ai_schedule(value, group, points):
+            if group.get('when'):
+                from .choice_conditions import unwrap_action
+                value = unwrap_action(graph, value, group['when'])
             sequence = target(value, 'TGDDescriptorSequential')
             scheduled = actions(sequence)
             require(len(scheduled) == 2, 'AI production turn sequence differs')
@@ -255,6 +261,9 @@ def production_script_contract(graph, compiled, reachable):
                     'human production side inventory mismatch')
             registrations.append(human_actions[0])
             for action, group in zip(human_actions[1:], expected_groups):
+                if group.get('when'):
+                    from .choice_conditions import unwrap_action
+                    action = unwrap_action(graph, action, group['when'])
                 rule=compiled['campaign'].get('capture_deadline')
                 if rule and group['division']==rule['division']:
                     delayed=target(action,'TGDDescriptorSequential')

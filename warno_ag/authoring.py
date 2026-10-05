@@ -823,18 +823,23 @@ def compile_campaign(source, profile_path, destination=None):
     for number, row in enumerate(events):
         where = f"event[{number}]"
         _exact(row, {"id", "side", "trigger", "title", "text", "image", "choices", "effects"}, where,
-               optional={"layout"})
+               optional={"layout", "ai_choice"})
         item_id = _identifier(row["id"], f"{where}.id")
         if item_id in event_ids:
             raise ValueError(f"Duplicate event id: {item_id}")
         event_ids.add(item_id)
         side = _side(row["side"], f"{where}.side")
+        if 'ai_choice' in row and (type(row['ai_choice']) is not int or row['ai_choice'] not in (0, 1)):
+            raise ValueError(f'{where}.ai_choice must be 0 or 1')
         layout = row.get('layout', 'text')
         if layout not in ('text', 'graphic_cards'):
             raise ValueError(f"{where}.layout must be text or graphic_cards")
         trigger = row["trigger"]
-        if not isinstance(trigger, dict) or set(trigger) not in ({"turn"}, {"flag", "owner"}, {"capture"}, {'first_enemy_destroyed'},{'capture_deadline'},{'turn','capture_deadline'}):
+        if not isinstance(trigger, dict) or set(trigger) not in ({"turn"}, {"turn", "when"}, {"flag", "owner"}, {"capture"}, {'first_enemy_destroyed'},{'capture_deadline'},{'turn','capture_deadline'}):
             raise ValueError(f"{where}.trigger must use turn, flag+owner, capture or first_enemy_destroyed")
+        if 'when' in trigger:
+            from .choice_conditions import validate_requirements
+            validate_requirements(trigger['when'], f'{where}.trigger.when')
         if 'capture_deadline' in trigger and (trigger['capture_deadline'] not in ('blocked','not_blocked') or 'capture_deadline' not in campaign):
             raise ValueError('Deadline event needs a declared capture_deadline and blocked/not_blocked result')
         if (trigger.get('capture_deadline') == 'not_blocked'
@@ -972,6 +977,8 @@ def compile_campaign(source, profile_path, destination=None):
                                   for effect in effects if 'spawn' in effect)
     from .aviation import compile_aviation
     aviation = compile_aviation(aviation_doc, campaign, battalion_by_id, resolved_events, bounds)
+    from .choice_conditions import bind_requirements
+    choice_consumers = bind_requirements(production, resolved_events)
     if 'playable_bounds' in profile.get('strategic_map', {}):
         from .strategic_map_package import NATIVE_ACTION_POINT_STEP
         left, bottom, right, top = bounds
@@ -985,7 +992,7 @@ def compile_campaign(source, profile_path, destination=None):
         for index, choice in enumerate(event['choices']):
             if not choice['effects'] and not any(
                     wing['available'] == {'event': event['id'], 'choice': index}
-                    for wing in aviation['wings']):
+                    for wing in aviation['wings']) and index not in choice_consumers.get(event['id'], set()):
                 raise ValueError(f"event[{event['id']}].choices[{index}].effects must not be empty without aviation")
     airfield_sides = set()
     for field in aviation['airfields']:
@@ -1101,6 +1108,8 @@ def compile_campaign(source, profile_path, destination=None):
             raise ValueError('Capture deadlines require production AI version 2')
     if cinematics is not None and 'encirclement_flags' in cinematics and any(item not in flag_ids for item in cinematics['encirclement_flags']):
         raise ValueError('Encirclement references an unknown flag')
+    if cinematics is not None and 'ending_flags' in cinematics and any(item not in flag_ids for item in cinematics['ending_flags'].values()):
+        raise ValueError('Ending status references an unknown flag')
     if cinematics is not None and cinematics.get('start_camera', {}).get('focus') not in flag_ids and 'start_camera' in cinematics:
         raise ValueError('Cinematic start camera references an unknown objective')
     from .campaign_menu import compile_menu
@@ -1144,6 +1153,9 @@ def compile_campaign(source, profile_path, destination=None):
     if localisation.is_file():
         from .localisation import compile_localisation
         result['localisation']=compile_localisation(_read_yaml(localisation),result)
+    else:
+        from .localisation import validate_ui_names
+        validate_ui_names(result)
     encoded = json.dumps(result, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     report = {
         "campaign": campaign_id, "template": profile["id"], "compiled_sha256": sha256(encoded),

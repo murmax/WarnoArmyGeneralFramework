@@ -1,0 +1,44 @@
+{
+  "source": "runtime public geodata import",
+  "bounds_wgs84": [
+    32.45,
+    44.28,
+    34.15,
+    45.55
+  ],
+  "copernicus_dem_source_sha256": "9ef1fc96d2e74671ff85f4e222c9df707012511890d36e530075b3ff59531733",
+  "copernicus_tiles": [
+    {
+      "url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N44_00_E033_00_DEM/Copernicus_DSM_COG_10_N44_00_E033_00_DEM.tif",
+      "sha256": "d274c16fd825516110b46eff520046f6ac7a5ffea770be43f4eabc90dda8f1a4"
+    },
+    {
+      "url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N44_00_E034_00_DEM/Copernicus_DSM_COG_10_N44_00_E034_00_DEM.tif",
+      "sha256": "da090cfc303f90c0c414ac4ec1b1c28d26d3e822785306cff13bdb2b17c34637"
+    },
+    {
+      "url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N45_00_E032_00_DEM/Copernicus_DSM_COG_10_N45_00_E032_00_DEM.tif",
+      "sha256": "2041ffb4bab9dc35d363190da2e3b1762db53e34778205b63a1b83f3174f01b7"
+    },
+    {
+      "url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N45_00_E033_00_DEM/Copernicus_DSM_COG_10_N45_00_E033_00_DEM.tif",
+      "sha256": "ff9b27d7ae22016225ad61dba5480f9de4fdeaa7fed3d409691bc94bd6890568"
+    },
+    {
+      "url": "https://copernicus-dem-30m.s3.eu-central-1.amazonaws.com/Copernicus_DSM_COG_10_N45_00_E034_00_DEM/Copernicus_DSM_COG_10_N45_00_E034_00_DEM.tif",
+      "sha256": "a05830ca90c2bdfda2dbb99f02d1a3dfe390e003488f5c73f01da1d84c353197"
+    }
+  ],
+  "osm_geofabrik_url": "https://download.geofabrik.de/russia/crimean-fed-district-latest-free.gpkg.zip",
+  "osm_geopackage_sha256": "f589c88d8bb49ce10221021c8c545483a4dcb1654a2ed99630fe46c85b370fd3",
+  "tile_server_bulk_downloaded": false,
+  "attribution": [
+    "Produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA; all rights reserved.",
+    "Map data © OpenStreetMap contributors (ODbL): https://www.openstreetmap.org/copyright"
+  ],
+  "source_rasters": {
+    "heightmap.png": "ea880fe2125b1aab7cfc8e75f755911d61f66104fc4ba819787fa466bbbdca61",
+    "surface.png": "74c7a1058feceeef0cbcbb9f6f1a34554d530c75f56a2bbd8b9c50699717d6ec"
+  },
+  "world_source": "world.yaml"
+}

@@ -1,0 +1,639 @@
+schema: 1
+deployment_points:
+- id: landing_pier
+  side: nato
+  position:
+  - 851500
+  - 565500
+  name:
+    ru: Плацдарм Качи
+    en: Kacha Landing Pier
+- id: belbek_forward
+  side: nato
+  position:
+  - 929500
+  - 448500
+  name:
+    ru: Бельбекский узел
+    en: Belbek Forward Depot
+- id: sevastopol_base
+  side: pact
+  position:
+  - 812500
+  - 305500
+  name:
+    ru: Военно-морская база
+    en: Sevastopol Naval Base
+- id: simferopol_depot
+  side: pact
+  position:
+  - 1267500
+  - 695500
+  name:
+    ru: Симферопольский вокзал
+    en: Simferopol Railhead
+- id: eastern_pass
+  side: pact
+  position:
+  - 1254500
+  - 474500
+  name:
+    ru: Восточный резерв
+    en: Eastern Reserve
+- id: odessa_saki
+  side: pact
+  position:
+  - 888000
+  - 861000
+  name:
+    ru: Десант у Сак
+    en: Saky Air Landing
+divisions:
+- id: us_2md
+  side: nato
+  name:
+    ru: 2-я дивизия КМП
+    en: 2nd Marine Division
+  short_name:
+    ru: 2-я див. КМП
+    en: 2nd Marines
+  deployment_points:
+  - belbek_forward
+  - landing_pier
+- id: sov_810
+  side: pact
+  name:
+    ru: 810-я обрмп
+    en: 810th Naval Brigade
+  short_name:
+    ru: 810-я обрмп
+    en: 810th Naval
+  deployment_points:
+  - sevastopol_base
+  - eastern_pass
+- id: sov_157
+  side: pact
+  name:
+    ru: 157-я мсд
+    en: 157th Motor Rifle Div.
+  short_name:
+    ru: 157-я мсд
+    en: 157th MRD
+  deployment_points:
+  - simferopol_depot
+  required_flag: simferopol
+- id: sov_odessa_airmobile
+  side: pact
+  name:
+    ru: Вертолётный десант ОдВО
+    en: Odessa Airmobile Force
+  short_name:
+    ru: Десант ОдВО
+    en: Odessa Airmobile
+  deployment_points:
+  - odessa_saki
+groups:
+- id: us_turn2
+  division: us_2md
+  name:
+    ru: '6-й полк: второй эшелон'
+    en: 6th Marines Second Wave
+  turn: 2
+  battalions:
+  - usmc_reserve
+  - us_6_hq
+  - usmc_artillery
+  - usmc_engineers
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - orlovka
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    usmc_reserve:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+    us_6_hq:
+      type: support
+      target: kacha_screen
+    usmc_artillery:
+      type: support
+      target: landing_support
+      route:
+      - landing_support
+    usmc_engineers:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+- id: us_turn3
+  division: us_2md
+  name:
+    ru: '8-й полк: первый эшелон'
+    en: 8th Marines First Wave
+  turn: 3
+  battalions:
+  - usmc_1_8
+  - usmc_artillery_2
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - orlovka
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    usmc_1_8:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - balaklava
+      - sevastopol
+    usmc_artillery_2:
+      type: support
+      target: landing_support
+      route:
+      - landing_support
+- id: us_turn4
+  division: us_2md
+  name:
+    ru: '8-й полк: второй эшелон'
+    en: 8th Marines Second Wave
+  turn: 4
+  battalions:
+  - usmc_2_8
+  - usmc_3_8
+  - us_8_hq
+  - usmc_engineers_2
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - orlovka
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    usmc_2_8:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+    usmc_3_8:
+      type: attack
+      target: bakhchysarai
+      route:
+      - belbek
+      - bakhchysarai
+    us_8_hq:
+      type: support
+      target: kacha_screen
+    usmc_engineers_2:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+- id: us_turn5
+  division: us_2md
+  name:
+    ru: 2-й танковый и ПВО
+    en: Marine Tanks and Air Defense
+  turn: 5
+  battalions:
+  - usmc_armor
+  - usmc_tank_reserve
+  - usmc_aa
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    usmc_armor:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+    usmc_tank_reserve:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+    usmc_aa:
+      type: move_to
+      target: kacha_crossroads
+      route:
+      - kacha_crossroads
+  when:
+  - event: nato_difficulty
+    choice: 0
+  - event: pact_difficulty
+    choice: 0
+- id: us_turn5_hard_pact
+  division: us_2md
+  name:
+    ru: '2-й танковый: M1 и ПВО'
+    en: Marine M1s and Air Defense
+  turn: 5
+  battalions:
+  - usmc_armor_hard_pact
+  - usmc_tank_reserve_hard_pact
+  - usmc_aa_hard_pact
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    usmc_armor_hard_pact:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+    usmc_tank_reserve_hard_pact:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+    usmc_aa_hard_pact:
+      type: move_to
+      target: kacha_crossroads
+      route:
+      - kacha_crossroads
+  when:
+  - event: nato_difficulty
+    choice: 0
+  - event: pact_difficulty
+    choice: 1
+- id: us_turn5_hard_nato
+  division: us_2md
+  name:
+    ru: ПВО плацдарма
+    en: Beachhead Air Defense
+  turn: 5
+  battalions:
+  - usmc_aa_hard_nato
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    usmc_aa_hard_nato:
+      type: move_to
+      target: kacha_crossroads
+      route:
+      - kacha_crossroads
+  when:
+  - event: nato_difficulty
+    choice: 1
+  - event: pact_difficulty
+    choice: 0
+- id: us_turn7
+  division: us_2md
+  name:
+    ru: Штаб дивизии и M1A1
+    en: Division HQ and M1A1
+  turn: 7
+  battalions:
+  - us_2md_hq
+  - usmc_supply
+  - us_m1a1
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    us_2md_hq:
+      type: support
+      target: kacha_screen
+    usmc_supply:
+      type: support
+      target: kacha_screen
+    us_m1a1:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+  when:
+  - event: nato_difficulty
+    choice: 0
+  - event: pact_difficulty
+    choice: 0
+- id: us_turn7_hard_pact
+  division: us_2md
+  name:
+    ru: Штаб и тяжёлая бронегруппа
+    en: HQ and Heavy Armor
+  turn: 7
+  battalions:
+  - us_2md_hq_hard_pact
+  - usmc_supply_hard_pact
+  - us_m1a1_hard_pact
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    us_2md_hq_hard_pact:
+      type: support
+      target: kacha_screen
+    usmc_supply_hard_pact:
+      type: support
+      target: kacha_screen
+    us_m1a1_hard_pact:
+      type: attack
+      target: sevastopol
+      route:
+      - belbek
+      - sevastopol_north
+      - sevastopol
+  when:
+  - event: nato_difficulty
+    choice: 0
+  - event: pact_difficulty
+    choice: 1
+- id: us_turn7_hard_nato
+  division: us_2md
+  name:
+    ru: Штаб и службы обеспечения
+    en: HQ and Logistics
+  turn: 7
+  battalions:
+  - us_2md_hq_hard_nato
+  - usmc_supply_hard_nato
+  ai:
+    type: attack
+    target: sevastopol
+    route:
+    - belbek
+    - inkerman
+    - sevastopol
+  member_ai:
+    us_2md_hq_hard_nato:
+      type: support
+      target: kacha_screen
+    usmc_supply_hard_nato:
+      type: support
+      target: kacha_screen
+  when:
+  - event: nato_difficulty
+    choice: 1
+  - event: pact_difficulty
+    choice: 0
+- id: sov_turn4_885
+  division: sov_810
+  name:
+    ru: 885-й батальон кадра
+    en: 885th Cadre Battalion
+  turn: 4
+  battalions:
+  - sov_885
+  ai:
+    type: hold
+    target: sevastopol
+    route:
+    - sevastopol
+  member_ai:
+    sov_885:
+      type: hold
+      target: sevastopol
+      route:
+      - sevastopol
+- id: sov_turn7
+  division: sov_810
+  name:
+    ru: Сев. сводный резервный полк
+    en: Sevastopol Reserve Regiment
+  turn: 7
+  battalions:
+  - sov_7_naval
+  - sov_7_fleet
+  - sov_7_territorial
+  ai:
+    type: hold
+    target: sevastopol
+    route:
+    - sevastopol
+  member_ai:
+    sov_7_naval:
+      type: hold
+      target: sevastopol
+      route:
+      - sevastopol
+    sov_7_fleet:
+      type: defend
+      target: balaklava
+      route:
+      - balaklava
+    sov_7_territorial:
+      type: defend
+      target: balaklava
+      route:
+      - balaklava
+- id: sov_turn9
+  division: sov_157
+  name:
+    ru: '91-й мсп: первый эшелон'
+    en: 91st MRR First Echelon
+  turn: 9
+  battalions:
+  - sov_91_1
+  - sov_91_2
+  - sov_91_tank
+  - sov_157_art1
+  ai:
+    type: counterattack
+    target: belbek
+    route:
+    - simferopol
+    - bakhchysarai
+    - belbek
+  member_ai:
+    sov_91_1:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_91_2:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_91_tank:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_157_art1:
+      type: support
+      target: simferopol
+- id: sov_turn11
+  division: sov_157
+  name:
+    ru: '520-й мсп: второй эшелон'
+    en: 520th MRR Second Echelon
+  turn: 10
+  battalions:
+  - sov_520_1
+  - sov_520_2
+  - sov_520_tank
+  - sov_157_art2
+  ai:
+    type: counterattack
+    target: inkerman
+    route:
+    - simferopol
+    - bakhchysarai
+    - inkerman
+  member_ai:
+    sov_520_1:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_520_2:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_520_tank:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_157_art2:
+      type: support
+      target: bakhchysarai
+- id: sov_turn12
+  division: sov_157
+  name:
+    ru: Штаб и части 157-й мсд
+    en: 157th Divisional Troops
+  turn: 11
+  battalions:
+  - sov_157_hq
+  - sov_157_rockets
+  - sov_157_aa
+  ai:
+    type: support
+    target: simferopol
+    route:
+    - simferopol
+  member_ai:
+    sov_157_hq:
+      type: support
+      target: bakh_screen
+    sov_157_rockets:
+      type: support
+      target: simferopol
+      route:
+      - simferopol
+    sov_157_aa:
+      type: support
+      target: bakh_screen
+- id: sov_turn14
+  division: sov_157
+  name:
+    ru: '524-й мсп: сводный бат.'
+    en: 524th Composite Battalion
+  turn: 13
+  battalions:
+  - sov_524
+  ai:
+    type: counterattack
+    target: inkerman
+    route:
+    - simferopol
+    - bakhchysarai
+    - inkerman
+  member_ai:
+    sov_524:
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+- id: sov_turn5_airassault
+  division: sov_odessa_airmobile
+  name:
+    ru: Два батальона десанта
+    en: Two Air Assault Battalions
+  turn: 5
+  battalions:
+  - sov_odessa_airassault_1
+  - sov_odessa_airassault_2
+  when:
+  - event: nato_difficulty
+    choice: 1
+  - event: pact_difficulty
+    choice: 0
+  ai:
+    type: attack
+    target: kacha_beach
+    route:
+    - kacha_crossroads
+    - kacha_beach
+  member_ai:
+    sov_odessa_airassault_1:
+      type: attack
+      target: kacha_beach
+      route:
+      - kacha_crossroads
+      - kacha_beach
+    sov_odessa_airassault_2:
+      type: attack
+      target: kacha_beach
+      route:
+      - kacha_crossroads
+      - kacha_beach

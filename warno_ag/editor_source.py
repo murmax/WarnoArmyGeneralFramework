@@ -104,6 +104,10 @@ def read_editor_source(source, profile=None):
             if not isinstance(item, dict) or not isinstance(item.get('image'), str):
                 raise ValueError('Emblem asset declaration is invalid')
             asset(item['image'], 'division-emblem')
+    if (root / 'ASSET_CREDITS.md').is_file():
+        asset('ASSET_CREDITS.md', 'artwork-credits')
+    if (root / 'artwork/emblems/SOURCES.json').is_file():
+        asset('artwork/emblems/SOURCES.json', 'artwork-provenance')
     if documents.get('campaign.yaml', {}).get('schema') == 'agf-native-campaign/v1':
         from .native_campaign_source import verify_native_snapshot
         if profile_document.get('schema') != 'agf-native-profile/v1':

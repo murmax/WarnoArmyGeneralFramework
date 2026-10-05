@@ -4,10 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "warno-army-general-framework"
-version = "1.0.4"
+version = "1.1.0"
 requires-python = ">=3.11"
 dependencies = ["xdis==6.1.7", "uncompyle6==3.9.3", "lz4==4.4.5", "zstandard==0.25.0", "PyYAML==6.0.3", "Pillow==11.3.0", "numpy==2.3.3", "rasterio==1.5.1", "requests[socks]==2.32.5", "shapely==2.1.2"]
 
 [tool.setuptools.packages.find]
 include = ["warno_ag*"]
 exclude = ["warno_ag.vendor*"]
+
+[tool.setuptools.package-data]
+warno_ag = ["data/*.json"]

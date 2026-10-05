@@ -24,7 +24,7 @@ from .modgen_registry import authored_build_name
 
 DEFAULT_DETAILS = GAME_DATA / "197351/201602/Scenarios/CampagneStrat_Bruderkrieg_Details.dat"
 DEFAULT_DEFINITION = GAME_DATA / "201602/Scenarios/CampagneStrat_Bruderkrieg_Definition.dat"
-DEFAULT_CONFIG = Path(__file__).resolve().parents[1] / "mods/ag-framework-mvp/red-line-1989.json"
+DEFAULT_CONFIG = Path(__file__).resolve().parent / "data/native-adapter.json"
 
 
 def authored_text_key(campaign_id, *parts):
@@ -725,12 +725,21 @@ def _authored_event_contract(graph, compiled):
     require(len(rows) == start + len(compiled["events"]) + len(compiled["reinforcements"]) + len(timed_wings) + production_count + lifecycle_count,
             "schedule count mismatch")
     require(len({row["object_id"] for row in rows}) == len(rows), "duplicate scheduling")
+    from .choice_conditions import bind_requirements, choice_export, unwrap_action
+    choice_consumers = bind_requirements(compiled.get('production', {'groups': []}), compiled['events'])
     for value, event in zip(rows[start:], compiled["events"]):
-        action_ref, camp = scheduled(value, event["trigger"], event["side"])
-        gate = target(action_ref, "TGDDescriptorIfThenElse")
+        if event['trigger'].get('when'):
+            value = unwrap_action(graph, value, event['trigger']['when'])
+        if event['id'] in choice_consumers:
+            gate = target(value, 'TGDDescriptorIfThenElse')
+            action_ref, camp = scheduled(field(gate, 'EffetIfTrue'), event['trigger'], event['side'])
+            local = target(action_ref, 'TGDDescriptorSequential')
+        else:
+            action_ref, camp = scheduled(value, event["trigger"], event["side"])
+            gate = target(action_ref, "TGDDescriptorIfThenElse")
+            local = target(field(gate, "EffetIfTrue"), "TGDDescriptorSequential")
         condition = target(field(gate, "Condition"), "TGDConditionCutSceneIsCampControllableByLocalPlayer")
         require(field(condition, "Camp").get("object_id") == camp, "local UI gate mismatch")
-        local = target(field(gate, "EffetIfTrue"), "TGDDescriptorSequential")
         presentation, dispatch = actions(local, 2)
         presentation_objects = _reachable_objects(graph, presentation["object_id"])
         dialog_class = ("TGDDescriptorCutsceneDialogWithMultipleChoice" if event["choices"]
@@ -774,13 +783,27 @@ def _authored_event_contract(graph, compiled):
                     == field(dialog, "SelectedButton").get("object_id")
                     and field(compare, "Value", {"value": 0}).get("value") == 0
                     and field(compare, "OperatorType").get("value") == 3
-                    and field(dialog, "DefaultButtonChoice").get("value") == 0,
+                    and field(dialog, "DefaultButtonChoice").get("value") == event.get('ai_choice', 0),
                     "choice variable or default mismatch")
             for index, (branch, choice) in enumerate(zip(("EffetIfTrue", "EffetIfFalse"), event["choices"])):
                 wings = [wing for wing in compiled.get('aviation', {}).get('wings', [])
                          if wing['available'] == {'event': event['id'], 'choice': index}]
                 effects(field(selection, branch), choice["effects"] + wings, camp)
-            fallback = field(selection, "EffetIfTrue")
+            fallback = field(selection, "EffetIfTrue" if event.get('ai_choice', 0) == 0 else "EffetIfFalse")
+            if event['id'] in choice_consumers:
+                selected = field(dialog, 'SelectedButton')['object_id']
+                require(graph['exports'].get(selected) == choice_export(event['id'])
+                        and objects[selected]['is_top_object']
+                        and field(objects[selected], 'Value').get('value') == 99,
+                        'persistent choice variable or initial state differs')
+                ai = target(field(gate, 'EffetIfFalse'), 'TGDDescriptorSequential')
+                assign_ref, effect_ref = actions(ai, 2)
+                assignment = target(assign_ref, 'TGDDescriptorModifieVariableInteger')
+                require(field(assignment, 'Variable1')['object_id'] == selected
+                        and field(assignment, 'Value')['value'] == event.get('ai_choice', 0)
+                        and field(assignment, 'ModificationType')['value'] == 0
+                        and effect_ref == fallback, 'AI must record its authored choice before effects')
+                fallback = field(gate, 'EffetIfFalse')
         else:
             effects(dispatch, event["effects"], camp)
             if not event['effects']:
@@ -1847,6 +1870,41 @@ def compile_authored_script(raw, compiled):
             prop('TGDVariableInteger', 'Value', integer(1))])
             for side in ('nato', 'pact')}
 
+    from .choice_conditions import (bind_requirements, choice_export, COMPARE_EQUAL,
+                                    COMPARE_INPUT_LESS, CHOICE_COUNT, CHOICE_PENDING)
+    choice_consumers = bind_requirements(compiled.get('production', {'groups': []}), compiled['events'])
+    choice_variables = {}
+    for event_id in sorted(choice_consumers):
+        variable = add('TGDVariableInteger', [prop('TGDVariableInteger', 'Value', integer(CHOICE_PENDING))])
+        # Cross-action state must be a global CNDF object, like native turn and
+        # score variables. Exporting a nested object does not add it to TOPO.
+        objects[variable]['is_top_object'] = True
+        choice_variables[event_id] = variable
+        graph['exports'][variable] = choice_export(event_id)
+
+    def choice_condition(requirements, ready=False):
+        conditions = []
+        for requirement in requirements:
+            compare = add('TGDOperatorIntegerCompare', [
+                prop('TGDOperatorIntegerCompare', 'OperatorType', integer(COMPARE_INPUT_LESS if ready else COMPARE_EQUAL)),
+                prop('TGDOperatorIntegerCompare', 'Value', integer(CHOICE_COUNT if ready else requirement['choice']))])
+            conditions.append(add('TGDConditionVariable', [
+                prop('TGDConditionVariable', 'Operator', ref(compare, 'TGDOperatorIntegerCompare')),
+                prop('TGDConditionVariable', 'Variable', ref(choice_variables[requirement['event']], 'TGDVariableInteger'))]))
+        return add('TGDConditionAnd', [prop('TGDConditionAnd', 'SousConditions',
+            listref([ref(item, 'TGDConditionVariable') for item in conditions]))])
+
+    def gate_choices(action, kind, requirements):
+        if not requirements:
+            return action, kind
+        skipped = add('TGDDescriptorWaitDuration', [prop('TGDDescriptorWaitDuration', 'Duree', floating(0))])
+        selected = add('TGDDescriptorIfThenElse', [
+            prop('TGDDescriptorIfThenElse', 'Condition', ref(choice_condition(requirements), 'TGDConditionAnd')),
+            prop('TGDDescriptorIfThenElse', 'EffetIfTrue', ref(action, kind)),
+            prop('TGDDescriptorIfThenElse', 'EffetIfFalse', ref(skipped, 'TGDDescriptorWaitDuration'))])
+        return (wait_then(selected, 'TGDDescriptorIfThenElse', choice_condition(requirements, ready=True)),
+                'TGDDescriptorSequential')
+
     def side_turn_condition(side):
         camp = 284 if side == "nato" else 283
         return add("TGDConditionStrategicIsPlayerTurn", [
@@ -1910,7 +1968,7 @@ def compile_authored_script(raw, compiled):
             prop("TGDDescriptorSequential", "NbExecutions", uint(1)),
         ])
 
-    def schedule_event(action, event):
+    def schedule_event(action, event, action_class='TGDDescriptorIfThenElse'):
         if 'first_enemy_destroyed' in event['trigger']:
             variable = add('TGDVariableInteger', [prop('TGDVariableInteger', 'Value', integer(0))])
             read = add('TGDDescriptorGetAllianceActualScore', [
@@ -1943,12 +2001,12 @@ def compile_authored_script(raw, compiled):
             ])
             return simultaneous, 'TGDDescriptorSimultaneous'
         condition = event_trigger_condition(event['trigger'], event['side'])
-        scheduled = wait_then(action, 'TGDDescriptorIfThenElse', condition)
+        scheduled = wait_then(action, action_class, condition)
         if 'capture' in event['trigger']:
             enemy = 'pact' if event['side'] == 'nato' else 'nato'
             condition = flag_owner_condition(event['trigger']['capture'], enemy)
             scheduled = wait_then(scheduled, 'TGDDescriptorSequential', condition)
-        return scheduled, 'TGDDescriptorSequential'
+        return gate_choices(scheduled, 'TGDDescriptorSequential', event['trigger'].get('when', []))
 
     # One private unit group per distinct authored operation.  Battalions with
     # the same side/type/target/start turn move and fight as one native-style
@@ -2481,9 +2539,8 @@ def compile_authored_script(raw, compiled):
             prop('TGDDescriptorCutsceneTextureComponent', 'TextureFile', string(event['adapter_image'])),
         ])
         camp = 284 if event['side'] == 'nato' else 283
-        selected = add('TGDVariableInteger', [
-            prop('TGDVariableInteger', 'Value', integer(99)),
-        ])
+        selected = choice_variables[event['id']] if event['id'] in choice_variables else add(
+            'TGDVariableInteger', [prop('TGDVariableInteger', 'Value', integer(99))])
         dialog_class = 'TGDDescriptorCutsceneDialogWithMultipleChoice'
         dialog = add(dialog_class, [
             prop(dialog_class, 'AfficherBoutonPause', boolean(True)),
@@ -2502,7 +2559,7 @@ def compile_authored_script(raw, compiled):
             prop(dialog_class, 'VisibleByAlliedOfSpecifiedCamp', boolean(True)),
             prop(dialog_class, 'VisibleByCamp', ref(camp, 'TGDVariableCamp')),
             prop(dialog_class, 'SelectedButton', ref(selected, 'TGDVariableInteger')),
-            prop(dialog_class, 'DefaultButtonChoice', integer(0)),
+            prop(dialog_class, 'DefaultButtonChoice', integer(event.get('ai_choice', 0))),
         ])
         modal_class = 'TGDDescriptorEncapsuleCutsceneDialogListWithMultipleChoice'
         modal = add(modal_class, [
@@ -2522,6 +2579,9 @@ def compile_authored_script(raw, compiled):
             effects.extend((runtime_spawn(wing, wing['side'], aircraft=True), 'TGDDescriptorSequential')
                            for wing in compiled.get('aviation', {}).get('wings', [])
                            if wing['available'] == {'event': event['id'], 'choice': index})
+            if not effects:
+                idle = add('TGDDescriptorWaitDuration', [prop('TGDDescriptorWaitDuration', 'Duree', floating(0))])
+                effects = [(idle, 'TGDDescriptorWaitDuration')]
             effect_action = add("TGDDescriptorSimultaneous", [
                 prop("TGDDescriptorSimultaneous", "SubActions",
                      listref([ref(item, kind) for item, kind in effects])),
@@ -2542,13 +2602,30 @@ def compile_authored_script(raw, compiled):
             prop('TGDConditionCutSceneIsCampControllableByLocalPlayer', 'Camp',
                  ref(camp, 'TGDVariableCamp')),
         ])
+        ai_action = branch_actions[event.get('ai_choice', 0)]
+        ai_class = 'TGDDescriptorSimultaneous'
+        if event['id'] in choice_variables:
+            assignment = add('TGDDescriptorModifieVariableInteger', [
+                prop('TGDDescriptorModifieVariableInteger', 'Variable1', ref(selected, 'TGDVariableInteger')),
+                prop('TGDDescriptorModifieVariableInteger', 'Value', integer(event.get('ai_choice', 0))),
+                prop('TGDDescriptorModifieVariableInteger', 'ModificationType', integer(0))])
+            ai_class = 'TGDDescriptorSequential'
+            ai_action = add(ai_class, [prop(ai_class, 'SubActions', listref([
+                ref(assignment, 'TGDDescriptorModifieVariableInteger'),
+                ref(ai_action, 'TGDDescriptorSimultaneous')])), prop(ai_class, 'NbExecutions', uint(1))])
+        human_action = (local_sequence, 'TGDDescriptorSequential')
+        if event['id'] in choice_variables:
+            # AI defaults must resolve even when its first phase is not turn 1.
+            # Only the human modal waits for its authored turn/introduction.
+            human_action = schedule_event(local_sequence, event, 'TGDDescriptorSequential')
         root = add('TGDDescriptorIfThenElse', [
             prop('TGDDescriptorIfThenElse', 'Condition', ref(
                 local, 'TGDConditionCutSceneIsCampControllableByLocalPlayer')),
-            prop('TGDDescriptorIfThenElse', 'EffetIfTrue', ref(local_sequence, 'TGDDescriptorSequential')),
-            prop('TGDDescriptorIfThenElse', 'EffetIfFalse', ref(branch_actions[0], 'TGDDescriptorSimultaneous')),
+            prop('TGDDescriptorIfThenElse', 'EffetIfTrue', ref(*human_action)),
+            prop('TGDDescriptorIfThenElse', 'EffetIfFalse', ref(ai_action, ai_class)),
         ])
-        scheduled_events.append(schedule_event(root, event))
+        scheduled_events.append((root, 'TGDDescriptorIfThenElse') if event['id'] in choice_variables
+                                else schedule_event(root, event))
 
     # Scripted, automatic reinforcements use the same native create+mission
     # descriptors as event choices, but have no presentation.
@@ -2705,6 +2782,7 @@ def compile_authored_script(raw, compiled):
                     prop('TGDDescriptorIfThenElse','EffetIfFalse',ref(idle,'TGDDescriptorWaitDuration'))])
                 delayed=wait_then(gate,'TGDDescriptorIfThenElse',turn_condition(deadline_rule['before_turn'],group['side']))
                 human_action=(delayed,'TGDDescriptorSequential')
+            human_action = gate_choices(*human_action, group.get('when', []))
             actions_by_side[group["side"]].append(human_action)
         if production_ai_version == 1:
             production_root = add("TGDDescriptorSequential", [
@@ -2791,8 +2869,9 @@ def compile_authored_script(raw, compiled):
                     wait=add('TGDDescriptorWaitCondition',[prop('TGDDescriptorWaitCondition','Condition',ref(deadline_status(False),'TGDConditionVariable'))])
                     steps=_property(objects[sequence],'SubActions')
                     steps['items'].insert(0,ref(wait,'TGDDescriptorWaitCondition'));steps['length']=len(steps['items'])
-                return wait_then(sequence, "TGDDescriptorSequential",
-                                 turn_condition(group["turn"], group["side"]))
+                timed = wait_then(sequence, "TGDDescriptorSequential",
+                                  turn_condition(group["turn"], group["side"]))
+                return gate_choices(timed, 'TGDDescriptorSequential', group.get('when', []))[0]
 
             side_branches = []
             for side, camp in (("nato", 284), ("pact", 283)):
@@ -2829,6 +2908,8 @@ def compile_authored_script(raw, compiled):
 
     if compiled.get('cinematics') is not None:
         ending = compiled['cinematics']['endings']
+        ending_flags = compiled['cinematics'].get('ending_flags', {
+            'city': 'sevastopol', 'landing': 'kacha_beach', 'inland': 'simferopol'})
 
         def ending_slide(side, axis, variant):
             slide = ending[side][axis][variant]
@@ -2862,7 +2943,7 @@ def compile_authored_script(raw, compiled):
             circle = choose(corridor, corridor_class, surrounded,
                             'TGDDescriptorEncapsuleCutscene', held,
                             'TGDDescriptorEncapsuleCutscene')
-            city, city_class = owner_chain(('sevastopol',), 'nato')
+            city, city_class = owner_chain((ending_flags['city'],), 'nato')
             city_status = choose(city, city_class, taken,
                                  'TGDDescriptorEncapsuleCutscene', circle,
                                  'TGDDescriptorIfThenElse')
@@ -2870,11 +2951,11 @@ def compile_authored_script(raw, compiled):
             lost = ending_slide(side, 'invasion', 'lost')
             beachhead = ending_slide(side, 'invasion', 'beachhead')
             breakthrough = ending_slide(side, 'invasion', 'breakthrough')
-            both, both_class = owner_chain(('kacha_beach', 'simferopol'), 'nato')
+            both, both_class = owner_chain((ending_flags['landing'], ending_flags['inland']), 'nato')
             landing_held = choose(both, both_class, breakthrough,
                                   'TGDDescriptorEncapsuleCutscene', beachhead,
                                   'TGDDescriptorEncapsuleCutscene')
-            lost_condition, lost_class = owner_chain(('kacha_beach',), 'pact')
+            lost_condition, lost_class = owner_chain((ending_flags['landing'],), 'pact')
             landing_status = choose(lost_condition, lost_class, lost,
                                     'TGDDescriptorEncapsuleCutscene', landing_held,
                                     'TGDDescriptorIfThenElse')
@@ -2985,11 +3066,12 @@ def compile_authored_script(raw, compiled):
     string_doc, _ = decode(rebuild_sections(doc, {"STRG": encode_strings(graph["strings"])}))
     import_doc, _ = decode(_rebuild_imports(string_doc, graph, imports))
     result = append_graph_objects(import_doc, base, objects[original_count:], (), ())
-    if dynamic_tags:
+    if dynamic_tags or choice_variables:
         tag_document, tag_graph = decode(result)
         result = _rebuild_imports(tag_document, tag_graph, graph['exports'], 'EXPR')
         tag_document, tag_graph = decode(result)
-        top = [obj['id'] for obj in tag_graph['objects'] if obj['is_top_object']] + dynamic_tags
+        top = sorted({obj['id'] for obj in tag_graph['objects'] if obj['is_top_object']}
+                     | set(dynamic_tags) | set(choice_variables.values()))
         result = rebuild_sections(tag_document, {'TOPO': struct.pack('<' + 'I' * len(top), *top)})
     _, check = decode(result)
     reachable = set()
@@ -3124,6 +3206,8 @@ def _unique_localized_names(names):
 
 def patch_authored_localisation(root, compiled):
     """Publish authored UI strings and remove reachable-content wording from Bruderkrieg."""
+    from .localisation import validate_ui_names
+    validate_ui_names(compiled)
     root = Path(root).resolve()
     from .localisation import field as localized_field
     languages = ("DEV", "FR", "GER", "POL", "RU", "SC", "SPA", "US")
@@ -3560,12 +3644,21 @@ def package_authored_campaign(source, profile, modgen_output, destination, *,
         compile_report['compiled_sha256'] = sha256(encoded)
         (destination / 'compiled/compile-report.json').write_text(
             json.dumps(compile_report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    corpus = Path(__file__).resolve().parents[1] / "artifacts/full-campaign-work/RedLine1989-v12"
+    from .game_paths import compatibility_root
+    corpus = compatibility_root()
     base = destination / "base"
     assemble_current_candidate(modgen_output, corpus, base, DEFAULT_CONFIG, validate=False)
     candidate = destination / "candidate"
     build_report = assemble_authored_candidate(base, candidate, compiled,
                                                event_images=event_images, map_runtime=map_runtime)
+    # Keep third-party artwork attribution with every complete distributed mod.
+    credits = Path(source).resolve() / 'ASSET_CREDITS.md'
+    if credits.is_file():
+        raw = credits.read_bytes()
+        if len(raw) > 256_000:
+            raise ValueError('Campaign artwork credits exceed the 256 KB limit')
+        raw.decode('utf-8')
+        (candidate / 'AGF_ASSET_CREDITS.txt').write_bytes(raw)
     config = destination / "compiled/campaign.compiled.json"
     bundle = write_full_bundle(candidate, config)
     report = {"candidate": str(candidate), "config": str(config), "bundle": str(bundle),

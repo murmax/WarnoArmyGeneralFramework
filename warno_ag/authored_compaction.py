@@ -45,8 +45,8 @@ def verify_release_script(raw, compiled):
     if set(target['imports']) != set(range(len(target['imports']))):
         raise ValueError('Compaction changed reference tables or non-dense import indices')
     release_roots(target)
-    localisation = (Path(__file__).resolve().parents[1]
-                    / 'artifacts/full-campaign-work/RedLine1989-v12/Gen/Localisation/Localisation')
+    from .game_paths import compatibility_root
+    localisation = compatibility_root() / 'Gen/Localisation/Localisation'
     reference_definition, _ = build_authored_definition(compiled, localisation)
     reference = next(value for name, value in _payloads(reference_definition).items()
                      if '/GDScript/' in name and name.endswith('.ndfbin'))

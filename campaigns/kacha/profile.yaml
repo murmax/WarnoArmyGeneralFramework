@@ -1,0 +1,83 @@
+schema: 1
+id: crimean_littoral_1989_v4
+registration: dynamic
+template:
+  campaign_id: CampagneStrat_Bruderkrieg
+  definition_sha256: 5e872980e8a817346f8e66729624e6f80a6186b189b77b296515f937407c7999
+  details_sha256: 8deb7b08fcc9a58b35b2bff0f7ba52afaec1ee6dc64da13dee67837a4b218944
+bounds:
+- 0
+- 0
+- 1310720
+- 1310720
+battalion_catalog: {}
+event_images:
+  nato_armor: AGF_EVT_crimean_littoral_1989_v4_nato_armor
+  nato_air_assault: AGF_EVT_crimean_littoral_1989_v4_nato_air_assault
+  pact_naval_infantry: AGF_EVT_crimean_littoral_1989_v4_pact_naval_infantry
+  pact_artillery: AGF_EVT_crimean_littoral_1989_v4_pact_artillery
+  nato_second_wave_cards: AGF_EVT_crimean_littoral_1989_v4_nato_second_wave_cards
+  pact_counterstroke_cards: AGF_EVT_crimean_littoral_1989_v4_pact_counterstroke_cards
+  seal_kacha: AGF_EVT_crimean_littoral_1989_v4_seal_kacha
+  seal_balaklava: AGF_EVT_crimean_littoral_1989_v4_seal_balaklava
+  intro_airfield: AGF_EVT_crimean_littoral_1989_v4_intro_airfield
+  intro_beach: AGF_EVT_crimean_littoral_1989_v4_intro_beach
+  ending_sevastopol: AGF_EVT_crimean_littoral_1989_v4_ending_sevastopol
+  nato_seal_cards: AGF_EVT_crimean_littoral_1989_v4_nato_seal_cards
+  intro_soviet_coast: AGF_EVT_crimean_littoral_1989_v4_intro_soviet_coast
+  reserve_plan_nato: AGF_EVT_crimean_littoral_1989_v4_reserve_plan_nato
+  reserve_plan_pact: AGF_EVT_crimean_littoral_1989_v4_reserve_plan_pact
+  fighter_option: AGF_EVT_crimean_littoral_1989_v4_fighter_option
+  strike_option: AGF_EVT_crimean_littoral_1989_v4_strike_option
+  sov_air_cards: AGF_EVT_crimean_littoral_1989_v4_sov_air_cards
+  carrier_withdrawal: AGF_EVT_crimean_littoral_1989_v4_carrier_withdrawal
+  front_aircraft: AGF_EVT_crimean_littoral_1989_v4_front_aircraft
+capacity:
+  initial_per_side: 0
+  flags: 0
+  influence_sources: 0
+  labels: 0
+  runtime_positions: 0
+slots:
+  spawns:
+    nato: []
+    pact: []
+  flags: []
+  influence_sources: []
+  labels: []
+  runtime_positions: []
+script:
+  root: 282
+  launch: 290
+  startup_groups: 291
+  strategic_kernel: 301
+  turn_loop: 318
+  campaign_content: 353
+  score_victory:
+  - 384
+  - 385
+  legacy_launch_presentations:
+  - 298
+  - 299
+  - 300
+strategic_map:
+  id: crimean_littoral_1989_v4_grid
+  map_name: AGFCrimeanLittoralV4S
+  dimensions:
+    width: 48
+    height: 55
+  playable_bounds:
+  - 676000
+  - 208000
+  - 1300000
+  - 923000
+  render_cases:
+    width: 2
+    height: 2
+  bounds:
+  - 0
+  - 0
+  - 1310720
+  - 1310720
+  default_terrain: StrategicPlain
+  tactical_policy: terrain_pool

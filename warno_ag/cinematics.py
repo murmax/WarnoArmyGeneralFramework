@@ -16,7 +16,7 @@ def compile_cinematics(document, event_images):
     if document is None:
         return None
     if (not isinstance(document, dict) or not {'schema', 'intro', 'endings'} <= set(document)
-            or set(document) - {'schema', 'intro', 'endings', 'start_camera', 'layout', 'layout_version', 'encirclement_flags'}
+            or set(document) - {'schema', 'intro', 'endings', 'start_camera', 'layout', 'layout_version', 'encirclement_flags', 'ending_flags'}
             or document['schema'] != 1):
         raise ValueError('cinematics.yaml must define schema, intro and endings')
 
@@ -63,6 +63,13 @@ def compile_cinematics(document, event_images):
                 variant: slide(choices[variant], f'endings.{side}.{axis}.{variant}')
                 for variant in variants}
     result = {'intro': intro, 'endings': endings}
+    if 'ending_flags' in document:
+        flags = document['ending_flags']
+        if (not isinstance(flags, dict) or set(flags) != {'city', 'landing', 'inland'}
+                or any(not isinstance(value, str) or not value for value in flags.values())
+                or len(set(flags.values())) != 3 or 'encirclement_flags' not in document):
+            raise ValueError('ending_flags needs distinct city, landing, inland objectives and explicit encirclement_flags')
+        result['ending_flags'] = dict(flags)
     if 'layout' in document:
         if document['layout'] != 'briefing':
             raise ValueError('Unknown cinematic layout')

@@ -1,4 +1,4 @@
-"""Build local RedLine compatibility dictionaries from non-textual key recipe.
+"""Build local adapter compatibility dictionaries from a non-textual key recipe.
 
 The recipe contains hash IDs and font character inventories only. Generated
 TRAD files stay in ignored artifacts and are not a release input themselves;
@@ -19,7 +19,7 @@ from warno_ag.full_campaign import _pack_trad
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RECIPE = ROOT / 'profiles/redline-localisation-bootstrap.json'
+RECIPE = ROOT / 'warno_ag/data/localisation-compatibility.json'
 LANGUAGES = ('DEV', 'FR', 'GER', 'POL', 'RU', 'SC', 'SPA', 'US')
 CATEGORIES = ('TROPHIES', 'Scripting/Dialog', 'Scripting/Localization')
 PLACEHOLDER = 'AGF bootstrap placeholder'

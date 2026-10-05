@@ -1,0 +1,61 @@
+schema: 1
+airfields:
+- id: carrier_group
+  side: nato
+  country: US
+  position:
+  - 778721.88
+  - 629558.43
+  name:
+    ru: Авиагруппа десанта
+    en: Landing Carrier Group
+- id: pact_rear_airbase
+  side: pact
+  country: SOV
+  position:
+  - 1280500
+  - 890500
+  name:
+    ru: Аэродром ВВС ОдВО
+    en: Odessa MD Airbase
+wings:
+- battalion: us_f14
+  airfield: carrier_group
+  available:
+    turn: 1
+  withdraw_turn: 15
+- battalion: us_av8b
+  airfield: carrier_group
+  available:
+    turn: 3
+- battalion: sov_mig29
+  airfield: pact_rear_airbase
+  available:
+    turn: 3
+- battalion: sov_su25
+  airfield: pact_rear_airbase
+  available:
+    event: sov_air_choice
+    choice: 1
+- battalion: us_sead
+  airfield: carrier_group
+  available:
+    turn: 3
+  withdraw_turn: 15
+- battalion: sov_mig27
+  airfield: pact_rear_airbase
+  available:
+    event: sov_air_choice
+    choice: 0
+- battalion: sov_su24_front
+  airfield: pact_rear_airbase
+  available:
+    turn: 12
+  initial_losses:
+    max_percent: 50
+- battalion: sov_mig23_front
+  airfield: pact_rear_airbase
+  available:
+    turn: 12
+  initial_losses:
+    max_percent: 50

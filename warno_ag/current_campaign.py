@@ -1,4 +1,4 @@
-"""Build the Red Line MVP solely from current WARNO campaign formats."""
+"""Assemble the inspected native base used by authored campaign adapters."""
 import copy
 import functools
 import hashlib
@@ -39,7 +39,8 @@ DETAILS_RESOURCES = {
     'out/DeploymentZone.ndfbin', 'out/IAStratZone.ndfbin',
     'out/LevelDesign.ndfbin', 'out/MapStrategies.ndfbin',
     'out/PlayableZone.ndfbin'}
-GAME_DATA = Path(r'C:\Program Files (x86)\Steam\steamapps\common\WARNO\Data\PC')
+from .game_paths import game_root
+GAME_DATA = game_root() / 'Data/PC'
 VANILLA_MAPS = {
     'DEV': ('183326/184174/ZZ_1.dat', 'dc14726c943184dd4594190d69a3d0a52d15ebaa769d6a4b55de90f0948e04fa'),
     'FR':  ('183326/184174/ZZ_1.dat', '3a8bba6aaeb8b86126a9829b4660dfc6cbb10e1aa058ef8201fd312858ae3e26'),
@@ -1323,8 +1324,8 @@ def assemble_current_candidate(modgen_output, localisation_source, destination, 
     generated=localisation_source/'Gen/Localisation/Localisation'
     if not generated.is_dir(): raise ValueError('Compiled localisation source is missing')
     mapping=_hash_mapping(_dictionary_keys(generated))
-    definition,_=build_current_definition(Path(r'C:\Program Files (x86)\Steam\steamapps\common\WARNO\Data\PC\201602\Scenarios\CampagneStrat_Bruderkrieg_Definition.dat'),config_path,mapping.keys())
-    details,_=build_current_details(Path(r'C:\Program Files (x86)\Steam\steamapps\common\WARNO\Data\PC\197351\201602\Scenarios\CampagneStrat_Bruderkrieg_Details.dat'),config_path)
+    definition,_=build_current_definition(GAME_DATA/'201602/Scenarios/CampagneStrat_Bruderkrieg_Definition.dat',config_path,mapping.keys())
+    details,_=build_current_details(GAME_DATA/'197351/201602/Scenarios/CampagneStrat_Bruderkrieg_Details.dat',config_path)
     scenarios=destination/'Scenarios';scenarios.mkdir(exist_ok=True)
     (scenarios/f'{SCENARIO}_Definition.dat').write_bytes(definition)
     (scenarios/f'{SCENARIO}_Details.dat').write_bytes(details)
@@ -1408,7 +1409,7 @@ def validate_current_candidate(root, config_path):
     actual_maps={line for line in declared if '/Core/MAPS-' in line}
     if actual_maps!=expected_maps:
         raise ValueError('Runtime Core/MAPS dictionaries are not exactly declared')
-    details_source=Path(r'C:\Program Files (x86)\Steam\steamapps\common\WARNO\Data\PC\197351\201602\Scenarios\CampagneStrat_Bruderkrieg_Details.dat')
+    details_source=GAME_DATA/'197351/201602/Scenarios/CampagneStrat_Bruderkrieg_Details.dat'
     _,details=build_current_details(details_source,config_path)
     actual=archives['Details'].read_bytes(); expected=build_current_details(details_source,config_path)[0]
     if actual != expected: raise ValueError('Candidate Details differs from deterministic build')

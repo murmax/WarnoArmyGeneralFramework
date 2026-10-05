@@ -192,9 +192,9 @@ def publish_strategic_map_runtime(root, contract, *, datas_map=None, texture_roo
         Path.home() / 'Saved Games/EugenSystems/WARNO/Datapacks/Maps')
     datas_map = Path(datas_map).resolve() if datas_map is not None else (
         Path.home() / 'Saved Games/EugenSystems/WARNO/DatasMap')
+    from .game_paths import game_root
     texture_root = Path(texture_root).resolve() if texture_root is not None else (
-        Path(r'C:/Program Files (x86)/Steam/steamapps/common/WARNO/Gen/PC/Texture')
-        / contract['map_name'])
+        game_root() / 'Gen/PC/Texture' / contract['map_name'])
     names = strategic_map_runtime_names(contract)
     registration_names = strategic_map_registration_names(contract)
     if any(not (maps / name).is_file() for name in registration_names):

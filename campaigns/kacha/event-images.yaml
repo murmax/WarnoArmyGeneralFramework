@@ -1,0 +1,41 @@
+schema: agf-event-images/v2
+namespace: crimean_littoral_1989_v4
+images:
+  nato_armor: artwork/events/nato_armor.png
+  nato_air_assault: artwork/events/nato_air_assault.png
+  pact_naval_infantry: artwork/events/pact_naval_infantry-v2.png
+  pact_artillery: artwork/events/pact_artillery.png
+  seal_kacha: artwork/events/seal_kacha.png
+  seal_balaklava: artwork/events/seal_balaklava.png
+  intro_airfield: artwork/events/intro_airfield.png
+  intro_beach: artwork/events/intro_beach.png
+  ending_sevastopol: artwork/events/ending_sevastopol.png
+  intro_soviet_coast: artwork/events/intro_soviet_coast.png
+  reserve_plan_nato: artwork/events/reserve_plan_nato.png
+  reserve_plan_pact: artwork/events/reserve_plan_pact.png
+  fighter_option: artwork/events/mig27-option.png
+  strike_option: artwork/events/su25-option.png
+  carrier_withdrawal: artwork/events/carrier-withdrawal.png
+  front_aircraft: artwork/events/front-aircraft.png
+composites:
+  nato_second_wave_cards:
+    kind: two_cards
+    cards:
+    - nato_armor
+    - nato_air_assault
+  pact_counterstroke_cards:
+    kind: two_cards
+    cards:
+    - pact_naval_infantry
+    - pact_artillery
+  nato_seal_cards:
+    kind: two_cards
+    cards:
+    - seal_kacha
+    - seal_balaklava
+  sov_air_cards:
+    kind: two_cards
+    cards:
+    - fighter_option
+    - strike_option
+plain: {}

@@ -1,0 +1,14 @@
+schema: 1
+emblems:
+- token: Texture_Division_Emblem_AGF_SOV_810
+  image: artwork/emblems/SOV_810.png
+- token: Texture_Division_Emblem_AGF_Fleet_Defence
+  image: artwork/emblems/Fleet_Defence.png
+- token: Texture_Division_Emblem_AGF_Militsiya
+  image: artwork/emblems/Militsiya.png
+- token: Texture_Division_Emblem_AGF_KGB_Border
+  image: artwork/emblems/KGB_Border.png
+- token: Texture_Division_Emblem_AGF_Crimea_Army
+  image: artwork/emblems/Crimea_Army.png
+- token: Texture_Division_Emblem_AGF_Air_Defence_60
+  image: artwork/emblems/Air_Defence_60.png

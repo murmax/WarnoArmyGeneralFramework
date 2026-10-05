@@ -1,0 +1,124 @@
+schema: 1
+orders:
+- unit: dep_us_seal_belbek
+  type: attack
+  target: sevastopol
+  start_turn: 1
+  route:
+  - belbek
+  - inkerman
+  - sevastopol
+- unit: dep_usmc_1st_landing
+  type: attack
+  target: sevastopol
+  start_turn: 1
+  route:
+  - kacha_crossroads
+  - orlovka
+  - belbek
+  - inkerman
+  - sevastopol
+- unit: dep_usmc_2nd_landing
+  type: attack
+  target: sevastopol
+  start_turn: 1
+  route:
+  - orlovka
+  - belbek
+  - inkerman
+  - sevastopol
+- unit: dep_usmc_recon
+  type: attack
+  target: simferopol
+  start_turn: 1
+  route:
+  - kacha_crossroads
+  - bakhchysarai
+  - simferopol
+- unit: dep_sov_kacha_territorial
+  type: hold
+  target: kacha_crossroads
+  start_turn: 1
+  route:
+  - kacha_crossroads
+- unit: dep_sov_belbek_guard
+  type: hold
+  target: belbek
+  start_turn: 1
+  route:
+  - belbek
+- unit: dep_sov_880
+  type: hold
+  target: kacha_crossroads
+  start_turn: 1
+  route:
+  - kacha_crossroads
+- unit: dep_sov_882
+  type: hold
+  target: bakhchysarai
+  start_turn: 1
+  route:
+  - bakhchysarai
+- unit: dep_sov_881
+  type: counterattack
+  target: kacha_crossroads
+  start_turn: 1
+  route:
+  - orlovka
+  - kacha_crossroads
+- unit: dep_sov_888
+  type: hold
+  target: belbek
+  start_turn: 1
+  route:
+  - belbek
+- unit: dep_sov_113
+  type: defend
+  target: sevastopol_north
+  start_turn: 1
+- unit: dep_sov_1613
+  type: support
+  target: sevastopol
+  start_turn: 1
+  route:
+  - sevastopol
+- unit: dep_sov_1616
+  type: support
+  target: bakhchysarai
+  start_turn: 1
+  route:
+  - bakhchysarai
+- unit: dep_sov_saki_guard_v5
+  type: hold
+  target: saki
+  start_turn: 3
+  route:
+  - saki
+- unit: dep_sov_simf_guard
+  type: hold
+  target: simferopol
+  start_turn: 3
+  route:
+  - simferopol
+- unit: dep_sov_sev_guard_1
+  type: defend
+  target: sevastopol_north
+  start_turn: 3
+- unit: dep_sov_sev_guard_2
+  type: defend
+  target: sevastopol_east
+  start_turn: 4
+- unit: dep_sov_810_hq
+  type: support
+  target: sevastopol
+  route:
+  - sevastopol
+  start_turn: 1
+- unit: dep_sov_60_pvo
+  type: support
+  target: sevastopol_rear
+  start_turn: 1
+- unit: dep_sov_simf_at
+  type: defend
+  target: simferopol
+  start_turn: 1

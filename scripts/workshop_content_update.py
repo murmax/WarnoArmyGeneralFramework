@@ -194,7 +194,7 @@ def main():
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--content', type=Path)
     parser.add_argument('--preview', type=Path)
-    parser.add_argument('--note', default='Campaign V11: action point recovery and complete localization')
+    parser.add_argument('--note', default='Campaign content update')
     args = parser.parse_args()
     if bool(args.content) != bool(args.preview) or args.output.exists():
         parser.error('Use a new receipt path and supply both content and preview for an update')

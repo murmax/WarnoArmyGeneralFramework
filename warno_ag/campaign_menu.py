@@ -14,7 +14,7 @@ def compile_menu(source, campaign):
     menu = campaign.get('menu')
     if menu is None:
         return None
-    if not isinstance(menu,dict) or set(menu) != {'header','subtitle','description','side_forces','image','attacker'}:
+    if not isinstance(menu,dict) or not {'header','subtitle','description','side_forces','image','attacker'} <= set(menu) or set(menu)-{'header','subtitle','description','side_forces','image','attacker','side_titles'}:
         raise ValueError('campaign.menu needs header, subtitle, description, side_forces, image and attacker')
     for key in ('header','subtitle','description'):
         value=menu[key]
@@ -25,6 +25,13 @@ def compile_menu(source, campaign):
     for side,value in menu['side_forces'].items():
         if not isinstance(value,dict) or set(value)!={'ru','en'} or any(not isinstance(x,str) or not x.strip() for x in value.values()):
             raise ValueError('campaign.menu.side_forces.'+side+' needs RU/EN text')
+    if 'side_titles' in menu:
+        titles = menu['side_titles']
+        if (not isinstance(titles, dict) or set(titles) != {'nato', 'pact'}
+                or any(not isinstance(value, dict) or set(value) != {'ru', 'en'}
+                       or any(not isinstance(text, str) or not text.strip() for text in value.values())
+                       for value in titles.values())):
+            raise ValueError('campaign.menu.side_titles needs NATO and PACT RU/EN text')
     path=safe_child(Path(source).resolve(), menu['image'])
     with Image.open(path) as im:
         if im.format!='PNG' or not 400<=im.width<=4096 or not 1.5<=im.width/im.height<=2.5:
@@ -69,7 +76,8 @@ def menu_text(compiled,language):
     # Preserve the native lobby convention: left = NATO (alliance 1).
     for prefix,side in [('Left','nato'),('Right','pact')]:
         attack=side==menu['attacker']
-        title=('США' if side=='nato' else 'СССР') if language=='ru' else ('UNITED STATES' if side=='nato' else 'SOVIET UNION')
+        title=(menu['side_titles'][side][language] if 'side_titles' in menu else
+               ('США' if side=='nato' else 'СССР') if language=='ru' else ('UNITED STATES' if side=='nato' else 'SOVIET UNION'))
         role=('Атака' if attack else 'Защита') if language=='ru' else ('Attack' if attack else 'Defense')
         put(prefix+'BriefTitle',title+' — '+role)
         put(prefix+'BriefSubtitle',menu['side_forces'][side][language]);put(prefix+'Division','')

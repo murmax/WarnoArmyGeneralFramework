@@ -19,7 +19,7 @@ from pathlib import Path
 from .ndfsource import export_block
 from .storage import sha256
 
-DEFAULT_BATTALIONS_CONFIG = Path(__file__).resolve().parents[1] / 'mods/ag-framework-mvp/battalions.json'
+DEFAULT_BATTALIONS_CONFIG = Path(__file__).resolve().parent / 'data/catalog-compatibility.json'
 _GUID_NAMESPACE = uuid.UUID('03e3ea9b-6d02-57c3-a76a-d23b839763a6')
 MAX_UI_TEXT_UNITS = 30
 

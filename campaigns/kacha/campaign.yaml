@@ -1,0 +1,167 @@
+schema: 1
+id: crimean_littoral_1989_v4
+template: crimean_littoral_1989_v4
+title:
+  ru: 'Кача: оборона Севастополя'
+  en: 'Kacha: Defense of Sevastopol'
+summary:
+  ru: 'НАТО: взять Севастополь. СССР: отбить Качу.'
+  en: 'NATO: take Sevastopol. USSR: retake Kacha.'
+turns: 20
+date:
+- 1989
+- 9
+- 7
+- 2
+score_to_win: 170
+sides:
+  nato:
+    countries:
+    - US
+    playable: true
+  pact:
+    countries:
+    - SOV
+    playable: true
+ai_policy:
+  attack_radius: 2120
+  cooperate: true
+  refresh_each_turn: true
+  phase_orders:
+    sov_882:
+    - from_turn: 11
+      type: counterattack
+      target: sevastopol_north
+      route:
+      - bakhchysarai
+      - inkerman
+      - sevastopol_north
+    sov_1616:
+    - from_turn: 11
+      type: move_to
+      target: sevastopol_north
+      route:
+      - inkerman
+      - sevastopol_north
+  continuous_route: true
+victory:
+  nato_capture: sevastopol
+  pact_capture: kacha_beach
+  time_limit: pact
+menu:
+  header:
+    ru: '#US #SOV #medium{ЧЁРНОЕ МОРЕ — СЕНТЯБРЬ 1989} Кача: оборона Севастополя'
+    en: '#US #SOV #medium{BLACK SEA — SEPTEMBER 1989} Kacha: Defense of Sevastopol'
+  subtitle:
+    ru: Морская высадка и оборона главной базы Черноморского флота
+    en: Amphibious landing against the Black Sea Fleet base
+  description:
+    ru: 'Дата: 7 сентября 1989 года
+
+      Продолжительность: 20 ходов
+
+      Район: Кача — Бельбек — Севастополь, Крым
+
+
+      Пока основные силы противников связаны боями в Центральной Европе, американское командование открывает
+      новый фронт на Чёрном море. Передовые батальоны 2-й дивизии морской пехоты высаживаются у Качи.
+      Их задача — расширить плацдарм, прорваться через Бельбек и овладеть Севастополем.
+
+
+      Черноморский флот застигнут в разгар мобилизации. 810-я отдельная бригада морской пехоты принимает
+      первый удар, а гарнизоны и местные силы обороны пытаются выиграть время. Из Симферополя постепенно
+      подходят недоукомплектованные полковые группы 157-й мотострелковой дивизии.
+
+
+      НАТО должно взять Севастополь; СССР — отбить Качу и сорвать высадку. Захват Симферополя блокирует
+      советские дивизионные подкрепления. Если к исходу 20-го хода решающая цель не достигнута, операция
+      считается провалом американского вторжения.'
+    en: 'Date: 7 September 1989
+
+      Duration: 20 turns
+
+      Area: Kacha — Belbek — Sevastopol, Crimea
+
+
+      With both alliances committed in Central Europe, US command opens a new front on the Black Sea.
+      The 2nd Marine Division lands at Kacha to secure its beachhead, break through Belbek and seize Sevastopol.
+
+
+      The Black Sea Fleet is caught during mobilization. The 810th Naval Infantry Brigade faces the first
+      assault while local garrisons buy time. Incomplete regimental groups of the 157th Motor Rifle Division
+      assemble at Simferopol and enter the battle in successive waves.
+
+
+      NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
+      blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
+      operation ends in failure for the American invasion.'
+  side_forces:
+    nato:
+      ru: 'Основные силы:
+
+
+        #US 2-я дивизия морской пехоты
+
+        #US 6-й и 8-й полки КМП
+
+        #US 2-й танковый батальон и усиление M1A1
+
+        #US 10-й артиллерийский полк
+
+        #US Navy SEAL и вертолётные группы
+
+
+        #US Палубная авиация и I-HAWK'
+      en: 'Principal forces:
+
+
+        #US 2nd Marine Division
+
+        #US 6th and 8th Marines
+
+        #US 2nd Tank Battalion and attached M1A1s
+
+        #US 10th Marines artillery
+
+        #US Navy SEAL and helicopter groups
+
+
+        #US Carrier aviation and I-HAWK'
+    pact:
+      ru: 'Основные силы:
+
+
+        #SOV 810-я отдельная бригада морской пехоты
+
+        #SOV 157-я мотострелковая дивизия
+
+        #SOV 60-й корпус ПВО
+
+        #SOV Гарнизоны и резерв Черноморского флота
+
+        #SOV Территориальная оборона Качи
+
+
+        #SOV Советская авиация'
+      en: 'Principal forces:
+
+
+        #SOV 810th Naval Infantry Brigade
+
+        #SOV 157th Motor Rifle Division
+
+        #SOV 60th Air Defence Corps
+
+        #SOV Black Sea Fleet garrisons and reserves
+
+        #SOV Kacha territorial defence
+
+
+        #SOV Soviet aviation'
+  image: artwork/menu/kacha-menu-original.png
+  attacker: nato
+capture_deadline:
+  flag: simferopol
+  owner: nato
+  before_turn: 9
+  division: sov_157

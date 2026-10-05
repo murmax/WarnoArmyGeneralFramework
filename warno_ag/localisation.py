@@ -48,6 +48,43 @@ def bilingual_strings(value):
         for child in value:yield from bilingual_strings(child)
 
 
+def ui_name_fields(compiled):
+    """Names displayed by WARNO's 30 UTF-16-unit editable OOB widgets."""
+    for battalion in compiled.get('battalions', []):
+        oob = battalion.get('oob', {})
+        prefix = 'battalion ' + battalion['id']
+        for kind, item in (('name', oob),
+                           ('organization', oob.get('organization', {})),
+                           ('division', oob.get('division_definition', {})),
+                           ('command', oob.get('command', {}))):
+            if 'localized_name' in item:
+                yield prefix + '.' + kind, item['localized_name']
+        for index, company in enumerate(oob.get('companies', [])):
+            path = f'{prefix}.company[{index}]'
+            if 'localized_name' in company:
+                yield path, company['localized_name']
+            for number, platoon in enumerate(company.get('platoons', [])):
+                if 'localized_name' in platoon:
+                    yield f'{path}.platoon[{number}]', platoon['localized_name']
+
+
+def validate_ui_names(compiled):
+    """Validate resolved names, including translations and legacy EN fallbacks.
+
+    Narrative/event/map text uses different UI controls and is not truncated.
+    Report the exact field and locale so authors can supply a real abbreviation.
+    """
+    from .modgen import MAX_UI_TEXT_UNITS, _ui_text
+    for path, value in ui_name_fields(compiled):
+        for language in sorted(SUPPORTED_LOCALES):
+            text = field(compiled, value, language)
+            if not _ui_text(text):
+                units = len(text.encode('utf-16-le')) // 2
+                raise ValueError(
+                    f'{path} [{language}] UI name requires 1..{MAX_UI_TEXT_UNITS} '
+                    f'UTF-16 units; got {units}: {text!r}')
+
+
 def compile_localisation(document, compiled):
     if (not isinstance(document,dict) or set(document)!={'schema','source_language','translations'}
             or document['schema']!=1 or document['source_language']!='en'
@@ -72,4 +109,5 @@ def compile_localisation(document, compiled):
         if language=='en':continue
         for text in required:
             translate(temporary,text,language)
+    validate_ui_names(temporary)
     return result

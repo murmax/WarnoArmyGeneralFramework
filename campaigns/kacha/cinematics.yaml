@@ -1,0 +1,563 @@
+schema: 1
+intro:
+  pact:
+  - title:
+      ru: ОБОРОНА СЕВАСТОПОЛЯ
+      en: DEFENSE OF SEVASTOPOL
+    text:
+      ru: 'Командир, вам поручено возглавить оборону Севастополя.
+
+
+        Всего двенадцать часов назад Ставка получила подтверждение: американцы готовят крупную десантную
+        операцию в Крыму.
+
+
+        Мы опоздали.
+
+
+        Передовые части Корпуса морской пехоты США уже высадились у Качи и закрепились на побережье. Бои
+        за расширение плацдарма продолжаются.'
+      en: 'Commander, you have been assigned to lead the defense of Sevastopol.
+
+
+        Only twelve hours ago, High Command confirmed that the Americans were preparing a major landing
+        operation in Crimea.
+
+
+        We were too late.
+
+
+        Forward US Marine Corps units have already landed at Kacha and secured a foothold. Fighting to
+        expand the beachhead continues.'
+    image: intro_soviet_coast
+    voice_script:
+      ru: 'Товарищ командир, с этого момента оборона Севастопольского района находится под вашим командованием.
+
+
+        Еще двенадцать часов назад мы не знали, где именно противник нанесет удар. Теперь сомнений нет.
+        Американская морская пехота высадилась севернее Севастополя, в районе Качи, и уже создала плацдарм.
+
+
+        Наши передовые подразделения понесли потери, но продолжают сопротивление. Главные силы противника
+        еще сходят на берег.
+
+
+        У нас остается немного времени, чтобы остановить их до того, как они прорвутся к Бельбеку, Инкерману
+        и Бахчисараю.'
+      en: Commander, you now lead the defense of Sevastopol. The Kacha landing has begun, but the main
+        American force is still coming ashore.
+  - title:
+      ru: 810-я БРИГАДА
+      en: THE 810TH BRIGADE
+    text:
+      ru: 'Основой обороны остается 810-я отдельная бригада морской пехоты Черноморского флота.
+
+
+        Ее подразделения рассредоточены между Качей, Бельбеком, Севастополем и Бахчисараем.
+
+
+        В ваше распоряжение также поступают сводные гарнизонные группы флота, пограничников и военнослужащих
+        тыловых частей.
+
+
+        Советская авиация будет переброшена в Крым, но сейчас воздушной поддержки почти нет.'
+      en: 'The backbone of the defense remains the Black Sea Fleet’s 810th Independent Naval Infantry
+        Brigade.
+
+
+        Its units are dispersed between Kacha, Belbek, Sevastopol and Bakhchysarai.
+
+
+        Composite fleet garrisons, border guards and rear-area personnel also come under your command.
+
+
+        Soviet aircraft will be redeployed to Crimea, but air support is scarce for now.'
+    image: pact_naval_infantry
+    voice_script:
+      ru: 'Основу ваших сил составляет 810-я отдельная бригада морской пехоты.
+
+
+        Один из ее батальонов уже ведет бой у Качи. Другие прикрывают Бельбек, Севастополь и дорогу через
+        Бахчисарай. Танковый батальон оставлен в глубине как подвижный резерв.
+
+
+        Кроме морской пехоты, вам подчиняются части охраны военно-морской базы, пограничники, аэродромные
+        гарнизоны и сводные подразделения, сформированные из личного состава Черноморского флота.
+
+
+        Их подготовка различна. Не расходуйте регулярную морскую пехоту там, где оборону способны удерживать
+        гарнизонные части.
+
+
+        Авиационное командование обещает перебросить подкрепления. Но в ближайшие часы рассчитывать придется
+        прежде всего на собственные силы.'
+      en: Naval infantry protects Belbek, Bakhchysarai and Sevastopol. Facility guards are weaker; use
+        them to preserve regular battalions for the decisive fight.
+  - title:
+      ru: АЭРОДРОМЫ ПОД УДАРОМ
+      en: AIRFIELDS HIT
+    text:
+      ru: 'Первый американский удар пришелся по авиации Черноморского флота.
+
+
+        Аэродром Кача практически уничтожен. Большинство самолетов и вертолетов потеряно на земле.
+
+
+        Уцелевшие Ми-8 и Ка-29 переданы 881-му отдельному десантно-штурмовому батальону.
+
+
+        Охрана аэродрома и оставшийся технический персонал сведены в отдельную группу обороны.'
+      en: 'The first American strike targeted Black Sea Fleet aviation.
+
+
+        Kacha airfield has been devastated. Most aircraft and helicopters were destroyed on the ground.
+
+
+        Surviving Mi-8s and Ka-29s have been assigned to the 881st Independent Assault Battalion.
+
+
+        Airfield guards and surviving technical personnel form a separate defensive group.'
+    image: intro_airfield
+    voice_script:
+      ru: 'Американцы начали операцию с массированного удара крылатыми ракетами и палубной авиацией.
+
+
+        Кача выведена из строя. Самолеты морской авиации и большая часть вертолетов уничтожены на земле.
+
+
+        Несколько уцелевших машин удалось вывести из-под второго удара. Транспортные Ми-8 и вооруженные
+        Ка-29 переданы 881-му десантно-штурмовому батальону в районе Бельбека.
+
+
+        Личный состав аэродрома остается на месте. Охрана, техники и военнослужащие частей обеспечения
+        получили стрелковое оружие и сведены в батальон обороны.
+
+
+        Они не морская пехота. Но отступать им некуда.'
+      en: The first strike crippled Kacha airfield and destroyed most aircraft on the ground. Surviving
+        helicopters joined the 881st Assault Battalion while the airfield guard still fights.
+  - title:
+      ru: 157-я МОТОСТРЕЛКОВАЯ ДИВИЗИЯ
+      en: 157TH MOTOR RIFLE DIVISION
+    text:
+      ru: 'Удержите Севастополь до конца операции. Возврат Качи немедленно сорвёт высадку.
+
+
+        Бахчисарай прикрывает дорогу из Симферополя. Если американцы захватят Симферополь до начала девятого
+        хода, 157-я дивизия не сможет развернуться.
+
+
+        Сохраните регулярные части для контрудара. Авиация округа окажет поддержку, когда прибудет в сектор.'
+      en: 'Hold Sevastopol until the operation ends. Retaking Kacha immediately defeats the landing.
+
+
+        Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
+        begins, the 157th cannot deploy.
+
+
+        Preserve the regular battalions for a counterattack. District aviation will support you when it
+        arrives.'
+    image: reserve_plan_pact
+    voice_script:
+      ru: 'Нам повезло в одном.
+
+
+        157-я мотострелковая дивизия попала в одну из последних волн мобилизации. Процесс ее развертывания
+        уже начался, но приказа на отправку на фронт она получить не успела.
+
+
+        Сейчас в Феодосии и Керчи снимают с хранения танки, боевые машины и артиллерию. Первые подразделения
+        должны достигнуть Симферополя примерно через тридцать шесть часов.
+
+
+        Не переоценивайте их. Это не дивизия первого эшелона. Большинство солдат — резервисты, многие
+        экипажи собраны всего несколько дней назад, часть техники неисправна или не полностью укомплектована.
+
+
+        Но если мы удержим дорогу через Бахчисарай, эта дивизия может изменить ход сражения.
+
+
+        Ваша задача проста: удержать Севастополь и не позволить противнику отрезать его от Симферополя.
+
+
+        Родина рассчитывает на вас.'
+      en: The 157th is bringing stored armor and artillery out of Feodosiya and Kerch. Its reservists
+        are incomplete, but an open road can let them change the battle.
+  nato:
+  - title:
+      ru: КРЫМСКИЙ ПЛАЦДАРМ
+      en: CRIMEAN BEACHHEAD
+    text:
+      ru: 'Полковник, первая фаза операции завершена.
+
+
+        Морская пехота высадилась у Качи и удерживает плацдарм.
+
+
+        Советская авиация на ближайших аэродромах практически уничтожена, а основные силы Черноморского
+        флота отвлечены к побережью Румынии.
+
+
+        Теперь начинается главный этап операции — наступление на Севастополь.'
+      en: 'Colonel, the first phase of the operation is complete.
+
+
+        Marines have landed at Kacha and secured a beachhead.
+
+
+        Soviet aviation at nearby airfields has been largely destroyed, while the main Black Sea Fleet
+        force has been diverted toward Romania.
+
+
+        The principal phase now begins: the advance on Sevastopol.'
+    image: intro_beach
+    voice_script:
+      ru: 'Полковник, высадка прошла успешно.
+
+
+        Наши передовые части закрепились на побережье у Качи. Советские подразделения, оказавшиеся в зоне
+        высадки, понесли тяжелые потери, но продолжают сопротивление.
+
+
+        Предварительные удары достигли цели. Ближайшие советские аэродромы подавлены, большая часть авиации
+        Черноморского флота уничтожена на земле.
+
+
+        Сам Черноморский флот находится далеко отсюда. Демонстрация у берегов Румынии заставила советское
+        командование сосредоточить там основные корабельные силы.
+
+
+        На несколько ближайших часов море принадлежит нам.
+
+
+        Используйте их.'
+      en: Colonel, the first landing wave has secured a foothold. Soviet outposts still resist, but the
+        sea route for follow-on echelons is open.
+  - title:
+      ru: СИЛЫ ВТОРЖЕНИЯ
+      en: INVASION FORCE
+    text:
+      ru: 'Основу десантной группировки составляют подразделения II экспедиционного корпуса морской пехоты.
+
+
+        В первой линии действуют 6-й и 8-й полки морской пехоты.
+
+
+        Их поддерживают бронетехника, артиллерия и подразделения 2-го танкового батальона.
+
+
+        Дополнительная танковая группа на M1A1 передана десанту для прорыва советской обороны.'
+      en: 'The landing force is built around units of II Marine Expeditionary Force.
+
+
+        The 6th and 8th Marine Regiments form the first line.
+
+
+        Armor, artillery and units of the 2nd Tank Battalion support them.
+
+
+        An additional M1A1 tank group has been attached to break the Soviet defense.'
+    image: nato_armor
+    voice_script:
+      ru: 'Ваши главные силы — морские пехотинцы 6-го и 8-го полков.
+
+
+        Они получили амфибийные транспортеры, артиллерию, инженерные подразделения и бронетехнику II экспедиционного
+        корпуса.
+
+
+        2-й танковый батальон обеспечивает тяжелую поддержку десанта. Кроме того, командование выделило
+        нам дополнительное подразделение, вооруженное новыми M1A1.
+
+
+        Эти машины предназначены не для охраны пляжа.
+
+
+        Как только выходы с плацдарма будут открыты, бронетехника должна развить наступление в глубину
+        полуострова.
+
+
+        Не позволяйте советским войскам создать сплошную линию обороны.'
+      en: Infantry has amphibious vehicles, engineers and air defense. Heavy tanks follow later; open
+        the exits from the beach before the Soviet line closes.
+  - title:
+      ru: ФЛОТ ПОДДЕРЖИВАЕТ НАСТУПЛЕНИЕ
+      en: THE FLEET SUPPORTS THE ADVANCE
+    text:
+      ru: 'Палубная авиация продолжает операции над западным Крымом.
+
+
+        Вертолеты морской пехоты обеспечивают переброску десанта, снабжение и непосредственную поддержку.
+
+
+        Советская авиация сейчас практически отсутствует.
+
+
+        Однако это преимущество временное — противник уже перебрасывает самолеты с других направлений.'
+      en: 'Carrier aircraft continue operations over western Crimea.
+
+
+        Marine helicopters provide troop transport, supply and close support.
+
+
+        Soviet air activity is currently negligible.
+
+
+        This advantage is temporary: the enemy is already redeploying aircraft from other sectors.'
+    image: nato_air_assault
+    voice_script:
+      ru: 'Авианосная группа продолжает прикрывать операцию.
+
+
+        Палубные истребители удерживают небо над районом высадки, ударные самолеты подавляют советские
+        позиции и коммуникации, а вертолеты морской пехоты позволяют перебрасывать подразделения через
+        дорожные заторы и очаги сопротивления.
+
+
+        Сейчас у русских практически нет авиации в этом районе.
+
+
+        Но это окно будет закрываться.
+
+
+        Разведка уже фиксирует подготовку советских аэродромов за пределами Крыма к приему дополнительных
+        частей.
+
+
+        Чем дольше продолжается операция, тем меньше будет наше преимущество.'
+      en: Carrier aircraft control western Crimea for now. Helicopters move reconnaissance and support
+        the Marines; Soviet aircraft may return from other airfields.
+  - title:
+      ru: ВРЕМЯ ПРОТИВ НАС
+      en: TIME IS AGAINST US
+    text:
+      ru: 'Захватите Севастополь до конца двадцатого хода. Удержите Качу: потеря плацдарма немедленно
+        сорвёт операцию.
+
+
+        Бельбек открывает северный подступ к городу, Балаклава — южный. Захват Симферополя до начала девятого
+        хода не позволит 157-й советской дивизии развернуться.
+
+
+        Действуйте быстро, пока преимущество на вашей стороне.'
+      en: 'Capture Sevastopol before the twenty-turn operation ends. Hold Kacha: losing the beachhead
+        immediately defeats the landing.
+
+
+        Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
+        turn nine begins prevents the Soviet 157th Division from deploying.
+
+
+        Move quickly while you hold the advantage.'
+    image: reserve_plan_nato
+    voice_script:
+      ru: 'Есть плохие новости.
+
+
+        Наши довоенные оценки по советским резервам в Крыму оказались неверны.
+
+
+        Мы считали, что местные мобилизационные формирования либо уже отправлены на европейский фронт,
+        либо неспособны развернуться в ходе операции.
+
+
+        Это не так.
+
+
+        157-я мотострелковая дивизия находится на полуострове. Она еще не закончила мобилизацию, но ее
+        склады открыты, резервисты прибывают, а техника снимается с хранения.
+
+
+        Первые полковые группы могут достигнуть Симферополя примерно через тридцать шесть часов.
+
+
+        Они плохо подготовлены. Их техника устарела. Это не меняет главного.
+
+
+        Если русские успеют соединить их с гарнизоном Севастополя, наша ограниченная десантная операция
+        превратится в затяжное сухопутное сражение.
+
+
+        Ваш резерв пока остается на кораблях. Командование не введет его в бой, пока мы не докажем, что
+        операция развивается по плану.
+
+
+        Возьмите Бельбек. Перережьте дорогу у Бахчисарая. Изолируйте Севастополь.
+
+
+        И дайте Вашингтону основание закончить начатое.'
+      en: Intelligence missed a Soviet division mobilizing in Crimea. Take Belbek, cut the road at Bakhchysarai
+        and decide the campaign before the 157th arrives.
+start_camera:
+  focus: kacha_beach
+  altitude: 800000
+  north_up: true
+endings:
+  nato:
+    result:
+      victory:
+        title:
+          ru: ПОБЕДА
+          en: VICTORY
+        text:
+          ru: Севастополь взят. Десант выполнил главную задачу; командование одобрило развитие операции.
+          en: Sevastopol has fallen. The landing force achieved its main objective; command approves the
+            next phase.
+        image: intro_beach
+      stagnation:
+        title:
+          ru: ОПЕРАЦИЯ ОСТАНОВЛЕНА
+          en: OPERATION STALLED
+        text:
+          ru: Севастополь не взят в отведённый срок. Новых американских подкреплений не будет; подход
+            советских резервов вынуждает готовить оборону плацдарма.
+          en: Sevastopol was not taken in time. No further American reinforcements will come; approaching
+            Soviet reserves force the landing to prepare its defense.
+        image: reserve_plan_nato
+      defeat:
+        title:
+          ru: ОПЕРАЦИЯ ПРОВАЛЕНА
+          en: OPERATION FAILED
+        text:
+          ru: Севастополь не взят. Главная задача высадки не выполнена, и командование прекращает операцию.
+            Удержание плацдарма уже не может изменить её исход.
+          en: Sevastopol has not fallen. The landing failed to achieve its main objective, and command
+            is terminating the operation. Holding the beachhead cannot change the outcome.
+        image: ending_sevastopol
+    sevastopol:
+      taken:
+        title:
+          ru: СЕВАСТОПОЛЬ ВЗЯТ
+          en: SEVASTOPOL TAKEN
+        text:
+          ru: Морская пехота заняла главную базу ЧФ. Основная цель выполнена.
+          en: Marines occupy the Black Sea Fleet base. The main objective is complete.
+        image: ending_sevastopol
+      surrounded:
+        title:
+          ru: СЕВАСТОПОЛЬ ИЗОЛИРОВАН
+          en: SEVASTOPOL ISOLATED
+        text:
+          ru: Наши силы держат полосу Кача — Балаклава. Сухопутные пути к городу перерезаны.
+          en: We hold the Kacha–Balaklava corridor. The city's land routes are cut.
+        image: ending_sevastopol
+      held:
+        title:
+          ru: СЕВАСТОПОЛЬ УСТОЯЛ
+          en: SEVASTOPOL HOLDS
+        text:
+          ru: Севастополь не взят и не изолирован полностью. Штурм потребует продолжения операции.
+          en: Sevastopol has not been taken or completely isolated. An assault would require extending
+            the operation.
+        image: ending_sevastopol
+    invasion:
+      lost:
+        title:
+          ru: ПЛАЦДАРМ ПОТЕРЯН
+          en: BEACHHEAD LOST
+        text:
+          ru: Кача отбита советскими войсками. Снабжение крупной наземной группировки невозможно.
+          en: Soviet forces retook Kacha. The ground force can no longer be supplied at scale.
+        image: pact_naval_infantry
+      beachhead:
+        title:
+          ru: ПЛАЦДАРМ УДЕРЖАН
+          en: BEACHHEAD HELD
+        text:
+          ru: Кача остаётся за США. Морское снабжение продолжается, но темп утрачен.
+          en: Kacha remains ours. Sea supply continues, but the offensive has lost momentum.
+        image: intro_beach
+      breakthrough:
+        title:
+          ru: КРЫМСКИЙ ПРОРЫВ
+          en: CRIMEAN BREAKTHROUGH
+        text:
+          ru: Кача и Симферополь взяты. Советская система переброски резервов нарушена.
+          en: Kacha and Simferopol are ours. Soviet reserve movement is disrupted.
+        image: reserve_plan_nato
+  pact:
+    result:
+      victory:
+        title:
+          ru: ПОБЕДА
+          en: VICTORY
+        text:
+          ru: Севастополь выстоял. Советские войска сорвали главную задачу американского вторжения. Противник
+            больше не располагает временем для решающего штурма.
+          en: Sevastopol has held. Soviet forces have denied the American invasion its main objective.
+            The enemy no longer has time for a decisive assault.
+        image: pact_naval_infantry
+      stagnation:
+        title:
+          ru: ОБОРОНА ПРОДОЛЖАЕТСЯ
+          en: DEFENSE CONTINUES
+        text:
+          ru: Севастополь удержан, но десант остаётся в Крыму. Для ликвидации плацдарма придётся отвлечь
+            новые резервы с других фронтов.
+          en: Sevastopol holds, but the landing remains in Crimea. Clearing the beachhead will require
+            diverting additional reserves from other fronts.
+        image: reserve_plan_pact
+      defeat:
+        title:
+          ru: ОБОРОНА ПРОРВАНА
+          en: DEFENSE BROKEN
+        text:
+          ru: Севастополь потерян. Оставшиеся части отходят к Симферополю и готовятся к контрудару.
+          en: Sevastopol is lost. Surviving units withdraw toward Simferopol and prepare a counterattack.
+        image: ending_sevastopol
+    sevastopol:
+      taken:
+        title:
+          ru: СЕВАСТОПОЛЬ ПОТЕРЯН
+          en: SEVASTOPOL LOST
+        text:
+          ru: Главная база ЧФ занята американцами. Уцелевшие части отходят к востоку.
+          en: US forces occupy the Black Sea Fleet base. Survivors withdraw east.
+        image: ending_sevastopol
+      surrounded:
+        title:
+          ru: СЕВАСТОПОЛЬ В ОКРУЖЕНИИ
+          en: SEVASTOPOL ENCIRCLED
+        text:
+          ru: США контролируют полосу от Качи до Балаклавы. Гарнизон отрезан от Симферополя.
+          en: US forces hold the corridor from Kacha to Balaklava. The garrison is cut off.
+        image: ending_sevastopol
+      held:
+        title:
+          ru: СЕВАСТОПОЛЬ УДЕРЖАН
+          en: SEVASTOPOL HELD
+        text:
+          ru: Севастополь удержан. Полное окружение не замкнуто; сухопутные пути требуют охраны.
+          en: Sevastopol remains Soviet. Encirclement is incomplete; the land routes still need protection.
+        image: ending_sevastopol
+    invasion:
+      lost:
+        title:
+          ru: ПЛАЦДАРМ ЛИКВИДИРОВАН
+          en: BEACHHEAD DESTROYED
+        text:
+          ru: Кача отбита. Морское снабжение американской группировки сорвано.
+          en: Kacha has been retaken. The US sea supply route is broken.
+        image: pact_naval_infantry
+      beachhead:
+        title:
+          ru: ПЛАЦДАРМ СОХРАНЁН
+          en: BEACHHEAD REMAINS
+        text:
+          ru: Американцы держат Качу, но их продвижение остановлено. Резервы идут на запад.
+          en: US forces still hold Kacha, but their advance has stalled. Reserves move west.
+        image: intro_beach
+      breakthrough:
+        title:
+          ru: ПРОРЫВ В ГЛУБИНУ КРЫМА
+          en: BREAKTHROUGH IN CRIMEA
+        text:
+          ru: Кача и Симферополь под контролем США. Переброска 157-й дивизии нарушена.
+          en: US forces hold Kacha and Simferopol. The 157th Division's route is severed.
+        image: reserve_plan_pact
+layout: briefing
+encirclement_flags:
+- kacha_beach
+- belbek
+- balaklava
+layout_version: 2
