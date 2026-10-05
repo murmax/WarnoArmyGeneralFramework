@@ -18,6 +18,10 @@ Activate one framework-built campaign at a time unless that exact combination ha
 
 The example is **Kacha: Defense of Sevastopol**, an alternative-1989 campaign: US Marines try to seize Sevastopol, while Soviet naval infantry and arriving reserves defend the city. It demonstrates original terrain, combined forces, timed reinforcements, illustrated choices, aviation and conditional endings. The Workshop item may remain private until its author enables public visibility.
 
+The current Kacha update restores its V11 AI baseline after player reports
+rejected the later routing/native-control experiments. Those framework options
+remain authoring capabilities; they are not evidence of validated gameplay.
+
 ## I want to create a campaign
 
 Version 1.0.1 corrects frozen battalion action-point capacity and adds optional
