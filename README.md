@@ -21,11 +21,9 @@ The guides explain fields, identifiers, units, supported values, relationships b
 - `campaigns/kacha/`: the current **V17.2** example, with battalion rosters, map, world, all seven campaign languages, events, aviation, Normal/Harsh decisions and the source artwork used by the campaign.
 - `scripts/campaign.py`: prepare, clone, inspect catalogs, check and build commands.
 - `warno_ag/`: the compiler, native adapters, asset tools and complete-bundle installer.
-- `warno_ag/data/`: internal compatibility recipes. They are not additional playable campaigns; authors do not edit them.
-- `docs/`: authoring manuals, practical changes and maintenance boundaries.
-- `tests/`: a small collection of development checks; they are not needed to author a campaign.
-
-Historical campaign versions, old demo campaigns, research reports, saves, compiler output and game binaries are absent from the public source tree. The separate graphical editor is not required for this workflow and is not bundled here.
+- `warno_ag/data/`: compatibility data used by the native adapters.
+- `docs/`: setup guides, YAML field references and practical recipes.
+- `tests/`: development checks for contributors.
 
 ## Short version
 
@@ -52,11 +50,11 @@ A check validates and prepares inputs. A build runs the supplied official compil
 
 Authors need Windows, Python 3.11+, this repository and a compatible WARNO installation containing `WARNO.exe`, `Mods/ModData/base.zip` and the game's supplied tools. The preparation command obtains catalogs and compatibility inputs locally. You can select a game in another library with `--game`; game-path resolution follows that selection.
 
-The native compatibility adapter remains pinned to the **201602** layout and verified archive hashes. A game update can require an adapter update. A successful source check is separate from a complete official build and from gameplay acceptance.
+The native compatibility adapter remains pinned to the **201602** layout and verified archive hashes. A game update can require an adapter update. Use the source checks to validate your inputs, then build and test your campaign in WARNO.
 
 The public format covers the strategic map and scenery, ground and aviation rosters, initial deployment and locks, grouped reinforcements, two-option events, conditional availability, AI orders, presentation, translation and victory conditions. It does not expose arbitrary game scripting, tactical unit-stat changes or unimplemented engine behavior. The reference states these limits explicitly.
 
-Kacha V17.2's four difficulty decisions were confirmed by its author. Cooperative event synchronization is still under investigation; no multiplayer fix is claimed by this source release. The authoring update does not modify installed games or saved campaigns.
+Cooperative campaign support is experimental. Event synchronization needs multiplayer testing before a campaign is released for cooperative play.
 
 ## Support development
 
