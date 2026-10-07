@@ -131,7 +131,7 @@ To remove your owned campaign:
 ./.venv/Scripts/python.exe -B -m warno_ag full-uninstall $result.package.config
 ```
 
-Install complete bundles, never selected files over old output. Normally activate one framework campaign at a time, and do not activate local Kacha together with its Workshop version. Begin a **fresh campaign**: saves retain old rosters/events/state. Play both sides, alternatives, reinforcement windows and endings. Kacha's author confirmed four difficulty decisions; cooperative events remain unvalidated.
+Install complete bundles, never selected files over old output. Normally activate one framework campaign at a time, and do not activate local Kacha together with its Workshop version. Begin a **fresh campaign**: saves retain old rosters/events/state. Play both sides, alternatives, reinforcement windows and endings. Cooperative event support is experimental and needs a separate multiplayer check.
 
 ## 9. Stage Workshop content
 

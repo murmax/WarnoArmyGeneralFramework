@@ -22,6 +22,9 @@ Supply the installed `steam_api64.dll`, your item number, complete staged conten
 
 For a first private item, inspect the bundled helper's explicit phases:
 
+The [Workshop guide](recipes/14-workshop.md) provides the complete preparation,
+private upload, subscriber-verification and metadata-preserving update steps.
+
 ```powershell
 ./.venv/Scripts/python.exe -B scripts/private_workshop_release.py --help
 ```

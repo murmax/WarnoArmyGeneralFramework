@@ -136,7 +136,7 @@ Older `definition: {catalog: ...}` needs an authored profile.battalion_catalog e
 | `type` | mechanized, helicopter, airplane |
 | `battle_role` | fighter, ground_support, auxiliary_support, air_support |
 | `visual` | `{unit: tactical_ID}` from units.csv; appearance does not inherit roster/gameplay |
-| `icon` | Optional except aircraft: Infantry, apc, ifv, Armor, Armor_heavy, HQ, reco, AA, AT, hel, howitzer, mlrs, assault |
+| `icon` | Optional for ground/helicopter: Infantry, apc, ifv, Armor, Armor_heavy, HQ, reco, AA, AT, hel, howitzer, mlrs, assault. Omit for airplanes; aircraft_role selects the icon |
 | `aircraft_role` | Required for airplane only: fighter, bomber, sead |
 | `support` | Optional `{kind: air_defence/artillery, radius_ap: number}` |
 
@@ -262,7 +262,7 @@ Route has 1–11 distinct known targets, ends with target; a multi-point route i
 
 ## 7. campaign.ai_policy
 
-Required inside the optional block: attack_radius and cooperate. Kacha retains its player-accepted earlier policy; the availability of other authoring options is not evidence that every combination is gameplay-accepted.
+Required inside the optional block: attack_radius and cooperate. Retain a working policy while changing one coordinated option set at a time. Inspect actual missions in play; valid settings do not guarantee desired AI maneuvers.
 
 | Field | Constraint / meaning |
 | --- | --- |
@@ -328,7 +328,7 @@ when:
 - {event: pact_difficulty, choice: 1}
 ```
 
-1–8 requirements, each exactly event and choice 0/1 (first/second option). All are **AND**. The event must have two choices and a dated trigger no later than this consumer. Duplicate requirements and cyclic dependencies are rejected. For OR, use separate groups/events and unique battalion definitions, even for exclusive alternatives. A decision used by production can have empty immediate effects because its availability is the consequence.
+A nonempty list of requirements, each exactly event and choice 0/1 (first/second option), with distinct event IDs. All are **AND**. The event must have two choices and a dated trigger no later than this consumer. The validator does not specify a separate numeric maximum list length. Repeated event IDs and cyclic dependencies are rejected. For OR, use separate groups/events and unique battalion definitions, even for exclusive alternatives. A decision used by production can have empty immediate effects because its availability is the consequence.
 
 ## 9. reinforcements.yaml
 
