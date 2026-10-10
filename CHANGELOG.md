@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.1 — north-up geographic generation
+
+- Removed the erroneous north/south reflection from OSM surfaces, GeoTIFF heightmaps and generated terrain-cell rows. New imports retain northwest origin; no author-side transposition is required.
+- Kacha V20 migrates the V19 geography, movement cells/bounds, every spatial placement and scenery heading together. Its campaign identity, rosters, events and AI rules remain unchanged.
+- Python and editor import/export retain explicit raster orientation. Legacy southwest records remain readable and are never silently converted.
+- Geographic-coordinate examples now use `y = min_y + (north - latitude)/(north - south)*(max_y - min_y)`.
+- Source example now uses V20 and the approved historical photographs; unfinished nuclear modules are excluded from the public source stage.
+
+Old saved campaigns are not migrated. Official map/campaign compilation and offline checks are separate from fresh-game visual and gameplay acceptance.
+
 ## 1.1.0 — authoring reference and Kacha example
 
 - Complete current Kacha V17.2 YAML/world/artwork source as the main example.

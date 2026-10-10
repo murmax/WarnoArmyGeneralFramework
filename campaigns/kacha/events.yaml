@@ -59,7 +59,7 @@ events:
       en: Normal
     effects: []
     card:
-      image: nato_armor
+      image: nato_difficulty_normal
       title:
         ru: Обычный
         en: Normal
@@ -86,10 +86,10 @@ events:
     ru: Второй отряд SEAL
     en: Second SEAL Detachment
   text:
-    ru: Выберите район высадки второго отряда. Кача укрепит плацдарм; Балаклава откроет глубокий рейд
-      без снабжения.
-    en: Choose the second SEAL landing zone. Kacha reinforces the beachhead; Balaklava enables an unsupplied
-      deep raid.
+    ru: Выберите район высадки второго отряда. Кача укрепит плацдарм; Балаклава откроет
+      глубокий рейд без снабжения.
+    en: Choose the second SEAL landing zone. Kacha reinforces the beachhead; Balaklava
+      enables an unsupplied deep raid.
   image: nato_seal_cards
   layout: graphic_cards
   choices:
@@ -108,7 +108,7 @@ events:
     - spawn: us_seal_kacha
       position:
       - 851500
-      - 513500
+      - 797220
       ai:
         type: attack
         target: sevastopol
@@ -131,7 +131,7 @@ events:
     - spawn: us_seal_balaklava
       position:
       - 903500
-      - 253500
+      - 1057220
       ai:
         type: attack
         target: sevastopol
@@ -148,7 +148,8 @@ events:
     en: Reserve Regiment Ready
   text:
     ru: Три батальона резерва ЧФ доступны одной карточкой подкреплений в Севастополе.
-    en: Three Black Sea Fleet reserve battalions are available in one Sevastopol reinforcement card.
+    en: Three Black Sea Fleet reserve battalions are available in one Sevastopol reinforcement
+      card.
   image: null
   layout: text
   choices: []
@@ -163,7 +164,8 @@ events:
     en: '157th: 91st Regiment'
   text:
     ru: 91-й мсп прибывает через Симферополь. Держите дорогу через Бахчисарай открытой.
-    en: The 91st Motor Rifle Regiment reaches Simferopol. Keep the Bakhchysarai road open.
+    en: The 91st Motor Rifle Regiment reaches Simferopol. Keep the Bakhchysarai road
+      open.
   image: null
   layout: text
   choices: []
@@ -176,10 +178,10 @@ events:
     ru: Дивизионный резерв
     en: Division Reserve
   text:
-    ru: Штаб 2-й дивизии и службы обеспечения доступны у плацдарма. Проверьте прибывшую карточку дивизионного
-      резерва.
-    en: The 2nd Marine Division HQ and logistics services are available at the beachhead. Review the arriving
-      division reserve card.
+    ru: Штаб 2-й дивизии и службы обеспечения доступны у плацдарма. Проверьте прибывшую
+      карточку дивизионного резерва.
+    en: The 2nd Marine Division HQ and logistics services are available at the beachhead.
+      Review the arriving division reserve card.
   image: null
   layout: text
   choices: []
@@ -192,10 +194,10 @@ events:
     ru: Авиационное усиление
     en: Air Reinforcements
   text:
-    ru: ВВС Одесского округа направляют в Крым ещё одну авиагруппу. Выберите МиГ-27 для ударов по технике
-      или Су-25 для поддержки войск.
-    en: Odessa Military District is sending another air group to Crimea. Request MiG-27s to strike armor
-      or Su-25s to support the troops.
+    ru: ВВС Одесского округа направляют в Крым ещё одну авиагруппу. Выберите МиГ-27
+      для ударов по технике или Су-25 для поддержки войск.
+    en: Odessa Military District is sending another air group to Crimea. Request MiG-27s
+      to strike armor or Su-25s to support the troops.
   layout: graphic_cards
   image: sov_air_cards
   effects: []
@@ -232,13 +234,15 @@ events:
     ru: Авианосец выходит из операции
     en: Carrier Withdraws
   text:
-    ru: Советские подводные лодки повредили авианосец. Он отходит на ремонт; F-14 и группа ППВО прекращают
-      боевую работу. Десантные корабли остаются, Харриеры продолжат поддержку. Вся операция под угрозой.
-      У вас двадцать часов — пять ходов, — чтобы взять Севастополь. Иначе высадка будет признана провалом.
-    en: Soviet submarines have damaged the carrier. It is withdrawing for repairs; F-14 and SEAD operations
-      are suspended. The amphibious ships remain, and Harriers will continue supporting you. The entire
-      operation is at risk. You have twenty hours — five turns — to take Sevastopol. Otherwise the landing
-      will be declared a failure.
+    ru: Советские подводные лодки повредили авианосец. Он отходит на ремонт; F-14
+      и группа ППВО прекращают боевую работу. Десантные корабли остаются, Харриеры
+      продолжат поддержку. Вся операция под угрозой. У вас двадцать часов — пять ходов,
+      — чтобы взять Севастополь. Иначе высадка будет признана провалом.
+    en: Soviet submarines have damaged the carrier. It is withdrawing for repairs;
+      F-14 and SEAD operations are suspended. The amphibious ships remain, and Harriers
+      will continue supporting you. The entire operation is at risk. You have twenty
+      hours — five turns — to take Sevastopol. Otherwise the landing will be declared
+      a failure.
   image: carrier_withdrawal
   layout: text
   choices: []
@@ -251,12 +255,14 @@ events:
     ru: Удар по авианосцу
     en: Carrier Damaged
   text:
-    ru: 'Подводные лодки повредили американский авианосец и вынудили его отойти. F-14 и группа ППВО покидают
-      сектор; Харриеры остаются на десантных кораблях. Операция противника под угрозой: у него двадцать
-      часов — пять ходов — на захват Севастополя. Удержите город и сорвите вторжение.'
-    en: 'Our submarines have damaged the American carrier and forced it to withdraw. F-14s and the SEAD
-      group leave the sector; Harriers remain aboard the amphibious ships. The enemy operation is in jeopardy:
-      they have twenty hours — five turns — to capture Sevastopol. Hold the city and defeat the invasion.'
+    ru: 'Подводные лодки повредили американский авианосец и вынудили его отойти. F-14
+      и группа ППВО покидают сектор; Харриеры остаются на десантных кораблях. Операция
+      противника под угрозой: у него двадцать часов — пять ходов — на захват Севастополя.
+      Удержите город и сорвите вторжение.'
+    en: 'Our submarines have damaged the American carrier and forced it to withdraw.
+      F-14s and the SEAD group leave the sector; Harriers remain aboard the amphibious
+      ships. The enemy operation is in jeopardy: they have twenty hours — five turns
+      — to capture Sevastopol. Hold the city and defeat the invasion.'
   image: carrier_withdrawal
   layout: text
   choices: []
@@ -269,13 +275,14 @@ events:
     ru: Авиация прибывает с фронта
     en: Frontline Wings Redeployed
   text:
-    ru: Для защиты Севастополя прибыли Су-24 и МиГ-23 прямо с фронта. Обе авиагруппы потеряли половину
-      состава. Порядок нарушен, топливо и боеприпасы только начинают поступать, пилоты смертельно устали.
-      Дайте им хотя бы несколько часов передышки.
-    en: Su-24 and MiG-23 wings have arrived directly from the front to defend Sevastopol. Both are at
-      half strength and badly disorganized. Fuel and ammunition deliveries are only beginning, and the
-      pilots are exhausted. Allow them at least a few hours of rest.
-  image: front_aircraft
+    ru: Для защиты Севастополя прибыли Су-24 и МиГ-23 прямо с фронта. Обе авиагруппы
+      потеряли половину состава. Порядок нарушен, топливо и боеприпасы только начинают
+      поступать, пилоты смертельно устали. Дайте им хотя бы несколько часов передышки.
+    en: Su-24 and MiG-23 wings have arrived directly from the front to defend Sevastopol.
+      Both are at half strength and badly disorganized. Fuel and ammunition deliveries
+      are only beginning, and the pilots are exhausted. Allow them at least a few
+      hours of rest.
+  image: front_air_pact_photo
   layout: text
   choices: []
   effects: []
@@ -287,10 +294,10 @@ events:
     ru: Советская авиация усиливается
     en: Soviet Air Reinforcements
   text:
-    ru: СССР продолжает развёртывание авиации в секторе. Разведка отмечает прибытие новых групп Су-24
-      и МиГ-23 на тыловой аэродром.
-    en: The USSR continues deploying aviation in the sector. Intelligence reports new Su-24 and MiG-23
-      groups at the rear airbase.
+    ru: СССР продолжает развёртывание авиации в секторе. Разведка отмечает прибытие
+      новых групп Су-24 и МиГ-23 на тыловой аэродром.
+    en: The USSR continues deploying aviation in the sector. Intelligence reports
+      new Su-24 and MiG-23 groups at the rear airbase.
   image: front_aircraft
   layout: text
   choices: []
@@ -303,10 +310,10 @@ events:
     ru: Развёртывание сорвано
     en: Deployment Prevented
   text:
-    ru: Симферополь взят до развёртывания 157-й мсд. Вы вовремя перехватили её узел снабжения и выгрузки;
-      дивизия не успеет на помощь Севастополю.
-    en: Simferopol was seized before the 157th could deploy. You intercepted its unloading and supply
-      hub in time; the division will not reach Sevastopol.
+    ru: Симферополь взят до развёртывания 157-й мсд. Вы вовремя перехватили её узел
+      снабжения и выгрузки; дивизия не успеет на помощь Севастополю.
+    en: Simferopol was seized before the 157th could deploy. You intercepted its unloading
+      and supply hub in time; the division will not reach Sevastopol.
   image: front_aircraft
   layout: text
   choices: []
@@ -320,10 +327,10 @@ events:
     ru: 157-я дивизия развёртывается
     en: 157th Division Deploys
   text:
-    ru: Симферополь не удалось захватить вовремя. Советские полковые группы начали развёртывание; ожидайте
-      усиления обороны и контрударов на дороге через Бахчисарай.
-    en: Simferopol was not captured in time. Soviet regimental groups have begun deploying; expect stronger
-      defenses and counterattacks along the Bakhchysarai road.
+    ru: Симферополь не удалось захватить вовремя. Советские полковые группы начали
+      развёртывание; ожидайте усиления обороны и контрударов на дороге через Бахчисарай.
+    en: Simferopol was not captured in time. Soviet regimental groups have begun deploying;
+      expect stronger defenses and counterattacks along the Bakhchysarai road.
   image: front_aircraft
   layout: text
   choices: []
@@ -341,16 +348,18 @@ events:
     ru: Танковый десант сорван
     en: Tank Landing Disrupted
   text:
-    ru: 'Советские береговые батареи ПКР потопили танкодесантный корабль с тяжёлой бронетехникой. Развёртывание
-      2-го танкового полка и отдельного батальона M1A1 отменено: наступать придётся силами морской пехоты
-      при поддержке авиации и артиллерии. Из Одесского округа уже вылетел срочно собранный вертолётный
-      десант. Два батальона прибудут со стороны Сак на пятом ходу и попытаются перерезать плацдарм у Качи.
+    ru: 'Советские береговые батареи ПКР потопили танкодесантный корабль с тяжёлой
+      бронетехникой. Развёртывание 2-го танкового полка и отдельного батальона M1A1
+      отменено: наступать придётся силами морской пехоты при поддержке авиации и артиллерии.
+      Из Одесского округа уже вылетел срочно собранный вертолётный десант. Два батальона
+      прибудут со стороны Сак на пятом ходу и попытаются перерезать плацдарм у Качи.
       Прикройте северный фланг и морское снабжение.'
-    en: 'Soviet coastal anti-ship missiles have sunk the tank landing ship carrying the heavy armor. The
-      2nd Tank Regiment and detached M1A1 battalion will not land: the Marines must advance with air and
-      artillery support. An emergency Soviet helicopter force has already departed Odessa Military District.
-      Two battalions will arrive from Saky on turn five and try to cut the Kacha beachhead. Protect your
-      northern flank and sea supply line.'
+    en: 'Soviet coastal anti-ship missiles have sunk the tank landing ship carrying
+      the heavy armor. The 2nd Tank Regiment and detached M1A1 battalion will not
+      land: the Marines must advance with air and artillery support. An emergency
+      Soviet helicopter force has already departed Odessa Military District. Two battalions
+      will arrive from Saky on turn five and try to cut the Kacha beachhead. Protect
+      your northern flank and sea supply line.'
   image: intro_beach
   layout: text
   choices: []
@@ -368,14 +377,13 @@ events:
     ru: Американское бронеусиление
     en: American Armor Reinforced
   text:
-    ru: >-
-      Разведка докладывает: в течение ближайших суток американцы высадят три танковых батальона,
-      оснащённых современными танками. Усильте противотанковые рубежи и подготовьте резервы — противник
-      намерен прорваться к Севастополю.
-    en: Intelligence reports that the Americans will land three tank battalions equipped with modern
-      tanks within the next twenty-four hours. Strengthen the anti-tank lines and prepare your reserves —
-      the enemy intends to break through to Sevastopol.
-  image: nato_armor
+    ru: 'Разведка докладывает: в течение ближайших суток американцы высадят три танковых
+      батальона, оснащённых современными танками. Усильте противотанковые рубежи и
+      подготовьте резервы — противник намерен прорваться к Севастополю.'
+    en: Intelligence reports that the Americans will land three tank battalions equipped
+      with modern tanks within the next twenty-four hours. Strengthen the anti-tank
+      lines and prepare your reserves — the enemy intends to break through to Sevastopol.
+  image: nato_armor_notice
   layout: text
   choices: []
   effects: []
@@ -392,12 +400,13 @@ events:
     ru: Советский десант у Сак
     en: Soviet Air Landing at Saky
   text:
-    ru: Два советских десантных батальона вышли к району Сак. Ми-8 доставили пехоту и снабжение, Ми-24
-      прикрывают наступление на Качу. Противник намерен отсечь передовые части от берега. Немедленно прикройте
-      подходы к плацдарму.
-    en: Two Soviet air assault battalions have reached the Saky sector. Mi-8s have brought infantry and
-      supplies, while Mi-24s cover their advance toward Kacha. The enemy intends to cut your forward units
-      off from the coast. Secure the approaches to the beachhead immediately.
+    ru: Два советских десантных батальона вышли к району Сак. Ми-8 доставили пехоту
+      и снабжение, Ми-24 прикрывают наступление на Качу. Противник намерен отсечь
+      передовые части от берега. Немедленно прикройте подходы к плацдарму.
+    en: Two Soviet air assault battalions have reached the Saky sector. Mi-8s have
+      brought infantry and supplies, while Mi-24s cover their advance toward Kacha.
+      The enemy intends to cut your forward units off from the coast. Secure the approaches
+      to the beachhead immediately.
   image: intro_airfield
   layout: text
   choices: []

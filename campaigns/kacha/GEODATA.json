@@ -37,8 +37,9 @@
     "Map data © OpenStreetMap contributors (ODbL): https://www.openstreetmap.org/copyright"
   ],
   "source_rasters": {
-    "heightmap.png": "ea880fe2125b1aab7cfc8e75f755911d61f66104fc4ba819787fa466bbbdca61",
-    "surface.png": "74c7a1058feceeef0cbcbb9f6f1a34554d530c75f56a2bbd8b9c50699717d6ec"
+    "heightmap.png": "9530e1390f2492cea2eff7589deb1ec22798aec2f6bb33f404c8274c773200dd",
+    "surface.png": "f0352d82079b130e37b150d3f6982ca2ced5f89860305bd64f0909f849fbdc51"
   },
-  "world_source": "world.yaml"
+  "world_source": "world.yaml",
+  "raster_origin": "northwest"
 }

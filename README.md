@@ -1,8 +1,8 @@
-# WARNO Army General Framework
+﻿# WARNO Army General Framework
 
 Create and modify native **Army General campaigns for WARNO** using readable YAML. The framework builds a complete, standalone campaign mod; Workshop players do not need Python or a separate framework installation.
 
-**1.1.0 · Windows · Python 3.11+ · MIT code license**
+**1.1.1 · Windows · Python 3.11+ · MIT code license**
 
 ## Start here
 
@@ -18,7 +18,7 @@ The guides explain fields, identifiers, units, supported values, relationships b
 
 ## What is included
 
-- `campaigns/kacha/`: the current **V17.2** example, with battalion rosters, map, world, all seven campaign languages, events, aviation, Normal/Harsh decisions and the source artwork used by the campaign.
+- `campaigns/kacha/`: the **V20** example with corrected north-up geography, with battalion rosters, map, world, all seven campaign languages, events, aviation, Normal/Harsh decisions and the source artwork used by the campaign.
 - `scripts/campaign.py`: prepare, clone, inspect catalogs, check and build commands.
 - `warno_ag/`: the compiler, native adapters, asset tools and complete-bundle installer.
 - `warno_ag/data/`: compatibility data used by the native adapters.

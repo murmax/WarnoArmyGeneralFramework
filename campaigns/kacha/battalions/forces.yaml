@@ -27,7 +27,7 @@ battalions:
         name: 1-й стрелковый взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_SOV_465cec9510
+        - type: v19_4f8bac0ab52c68
           count: 3
         name_text:
           ru: 1-й стрелковый взвод
@@ -36,7 +36,7 @@ battalions:
         name: 2-й стрелковый взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_SOV_465cec9510
+        - type: v19_4f8bac0ab52c68
           count: 3
         name_text:
           ru: 2-й стрелковый взвод
@@ -45,7 +45,7 @@ battalions:
         name: 3-й ПТ-взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_RPG22_SOV_b989c633f3
+        - type: v19_f546e1fb723cb0
           count: 3
         name_text:
           ru: 3-й ПТ-взвод
@@ -54,9 +54,9 @@ battalions:
         name: Управление роты
         hq: true
         units:
-        - type: cr_Naval_Rifle_CMD_SOV_495c363189
+        - type: v19_5a3be045b63317
           count: 1
-        - type: cr_BTR_60_CHAIKA_CMD_Naval_SOV_21ba92b2b6
+        - type: v19_f31ac9c3806ae6
           count: 1
         name_text:
           ru: Управление роты
@@ -72,7 +72,7 @@ battalions:
         name: 1-й стрелковый взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_SOV_465cec9510
+        - type: v19_4f8bac0ab52c68
           count: 3
         name_text:
           ru: 1-й стрелковый взвод
@@ -81,7 +81,7 @@ battalions:
         name: 2-й стрелковый взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_SOV_465cec9510
+        - type: v19_4f8bac0ab52c68
           count: 3
         name_text:
           ru: 2-й стрелковый взвод
@@ -90,7 +90,7 @@ battalions:
         name: 3-й ПТ-взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_RPG22_SOV_b989c633f3
+        - type: v19_f546e1fb723cb0
           count: 3
         name_text:
           ru: 3-й ПТ-взвод
@@ -99,9 +99,9 @@ battalions:
         name: Управление роты
         hq: true
         units:
-        - type: cr_Naval_Rifle_CMD_SOV_495c363189
+        - type: v19_5a3be045b63317
           count: 1
-        - type: cr_BTR_60_CHAIKA_CMD_Naval_SOV_21ba92b2b6
+        - type: v19_f31ac9c3806ae6
           count: 1
         name_text:
           ru: Управление роты
@@ -117,7 +117,7 @@ battalions:
         name: 1-й стрелковый взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_SOV_465cec9510
+        - type: v19_4f8bac0ab52c68
           count: 3
         name_text:
           ru: 1-й стрелковый взвод
@@ -126,7 +126,7 @@ battalions:
         name: 2-й стрелковый взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_SOV_465cec9510
+        - type: v19_4f8bac0ab52c68
           count: 3
         name_text:
           ru: 2-й стрелковый взвод
@@ -135,7 +135,7 @@ battalions:
         name: 3-й ПТ-взвод
         hq: false
         units:
-        - type: cr_Naval_Rifle_RPG22_SOV_b989c633f3
+        - type: v19_f546e1fb723cb0
           count: 3
         name_text:
           ru: 3-й ПТ-взвод
@@ -144,9 +144,9 @@ battalions:
         name: Управление роты
         hq: true
         units:
-        - type: cr_Naval_Rifle_CMD_SOV_495c363189
+        - type: v19_5a3be045b63317
           count: 1
-        - type: cr_BTR_60_CHAIKA_CMD_Naval_SOV_21ba92b2b6
+        - type: v19_f31ac9c3806ae6
           count: 1
         name_text:
           ru: Управление роты
@@ -198,7 +198,7 @@ battalions:
         name: Управление бронероты
         hq: true
         units:
-        - type: cr_BTR_60_CHAIKA_CMD_Naval_SOV_21ba92b2b6
+        - type: v19_f31ac9c3806ae6
           count: 1
         name_text:
           ru: Управление бронероты
@@ -214,7 +214,7 @@ battalions:
         name: Штаб батальона
         hq: true
         units:
-        - type: cr_BTR_60_CHAIKA_CMD_Naval_SOV_21ba92b2b6
+        - type: v19_f31ac9c3806ae6
           count: 1
         name_text:
           ru: Штаб батальона
@@ -237,33 +237,19 @@ battalions:
         name_text:
           ru: ПТ-батарея
           en: Anti-Tank Battery
-      - id: p4
-        name: Зенитная батарея
-        hq: false
-        units:
-        - type: cr_DCA_ZU_23_2_Naval_SOV_3dd92ba92c
-          count: 3
-        name_text:
-          ru: Зенитная батарея
-          en: Zenitnaya batareya
       - id: p5
         name: Разведка
         hq: false
         units:
         - type: cr_Scout_Spetsnaz_Naval_SOV_aff063112d
           count: 2
+        - type: v5_9ffeb30ff63e
+          count: 2
+        - type: v19_78882320439cf4
+          count: 4
         name_text:
           ru: Разведка
           en: Recon
-      - id: p6
-        name: Сапёрный взвод
-        hq: false
-        units:
-        - type: cr_Engineers_Naval_SOV_2befbc0ba1
-          count: 2
-        name_text:
-          ru: Сапёрный взвод
-          en: Engineer Platoon
       - id: p7
         name: Тыловая группа
         hq: false
@@ -273,15 +259,6 @@ battalions:
         name_text:
           ru: Тыловая группа
           en: Logistics Group
-      - name: Сапёрный взвод
-        hq: false
-        units:
-        - type: cr_Engineers_Naval_SOV_2befbc0ba1
-          count: 3
-        id: p8
-        name_text:
-          ru: Сапёрный взвод
-          en: Engineer Platoon
       - name: Органическое ПВО
         hq: false
         units:
@@ -295,6 +272,15 @@ battalions:
         name_text:
           ru: Органическое ПВО
           en: Organic Air Defence
+      - id: p6
+        name: Сапёрный взвод
+        hq: false
+        units:
+        - type: v19_990adddb1d9f1c
+          count: 4
+        name_text:
+          ru: Сапёрный взвод
+          en: Engineer Platoon
       name_text:
         ru: Штаб и поддержка
         en: HQ and Support
@@ -313,7 +299,7 @@ battalions:
       type: mechanized
       battle_role: fighter
       visual:
-        unit: BTR_80_Naval_SOV
+        unit: BTR_60_Naval_SOV
       icon: apc
     name: 882-й обмп
     name_text:
@@ -542,33 +528,17 @@ battalions:
         name_text:
           ru: ПТ-батарея
           en: Anti-Tank Battery
-      - id: p4
-        name: Зенитная батарея
-        hq: false
-        units:
-        - type: cr_DCA_ZU_23_2_Naval_SOV_3dd92ba92c
-          count: 3
-        name_text:
-          ru: Зенитная батарея
-          en: Zenitnaya batareya
       - id: p5
         name: Разведка
         hq: false
         units:
         - type: cr_Scout_Spetsnaz_Naval_SOV_aff063112d
           count: 2
+        - type: v5_9ffeb30ff63e
+          count: 2
         name_text:
           ru: Разведка
           en: Recon
-      - id: p6
-        name: Сапёрный взвод
-        hq: false
-        units:
-        - type: cr_Engineers_Naval_SOV_2befbc0ba1
-          count: 2
-        name_text:
-          ru: Сапёрный взвод
-          en: Engineer Platoon
       - id: p7
         name: Тыловая группа
         hq: false
@@ -578,15 +548,6 @@ battalions:
         name_text:
           ru: Тыловая группа
           en: Logistics Group
-      - name: Сапёрный взвод
-        hq: false
-        units:
-        - type: cr_Engineers_Naval_SOV_2befbc0ba1
-          count: 3
-        id: p8
-        name_text:
-          ru: Сапёрный взвод
-          en: Engineer Platoon
       - name: Органическое ПВО
         hq: false
         units:
@@ -600,6 +561,15 @@ battalions:
         name_text:
           ru: Органическое ПВО
           en: Organic Air Defence
+      - id: p6
+        name: Сапёрный взвод
+        hq: false
+        units:
+        - type: cr_Engineers_Naval_SOV_2befbc0ba1
+          count: 4
+        name_text:
+          ru: Сапёрный взвод
+          en: Engineer Platoon
       name_text:
         ru: Штаб и поддержка
         en: HQ and Support
@@ -1131,6 +1101,15 @@ battalions:
         name_text:
           ru: Управление
           en: Command
+      - id: p5
+        name: Разведывательные танки
+        name_text:
+          ru: Разведывательные танки
+          en: Naval Recon Tanks
+        hq: false
+        units:
+        - type: v19_697678be6ad020
+          count: 2
       hq: false
       id: c1
       name_text:
@@ -1174,6 +1153,15 @@ battalions:
         name_text:
           ru: Управление
           en: Command
+      - id: p5
+        name: Разведывательные танки
+        name_text:
+          ru: Разведывательные танки
+          en: Naval Recon Tanks
+        hq: false
+        units:
+        - type: v19_697678be6ad020
+          count: 2
       hq: false
       id: c2
       name_text:
@@ -1217,6 +1205,15 @@ battalions:
         name_text:
           ru: Управление
           en: Command
+      - id: p5
+        name: Разведывательные танки
+        name_text:
+          ru: Разведывательные танки
+          en: Naval Recon Tanks
+        hq: false
+        units:
+        - type: v19_697678be6ad020
+          count: 2
       hq: false
       id: c3
       name_text:
@@ -1930,203 +1927,151 @@ battalions:
       ru: Охрана объектов ЧФ
       en: Black Sea Guard
     companies:
-    - name: 1-я рота охраны
+    - id: c1
+      name: Рота охраны
+      name_text:
+        ru: Рота охраны
+        en: Security Company
+      hq: false
       platoons:
-      - name: 1-й караул
-        units:
-        - type: v5_801c48f241f0
-          count: 2
-        hq: false
-        id: p1
+      - id: p1
+        name: 1-й взвод
         name_text:
-          ru: 1-й караул
-          en: 1-y karaul
-      - name: 2-й караул
-        units:
-        - type: v5_801c48f241f0
-          count: 2
+          ru: 1-й взвод
+          en: 1 Platoon
         hq: false
-        id: p2
-        name_text:
-          ru: 2-й караул
-          en: 2-y karaul
-      - name: РПГ-7
         units:
-        - type: v5_f8ae8a9b9be9
-          count: 1
+        - type: v19_ce42a25733fadb
+          count: 3
+      - id: p2
+        name: 2-й взвод
+        name_text:
+          ru: 2-й взвод
+          en: 2 Platoon
         hq: false
-        id: p3
-        name_text:
-          ru: РПГ-7
-          en: RPG-7
-      - name: Управление роты
         units:
-        - type: cr_UAZ_469_CMD_Naval_SOV_e453c674b2
-          count: 1
-        hq: true
-        id: p4
+        - type: v19_ce42a25733fadb
+          count: 3
+      - id: p3
+        name: 3-й взвод
+        name_text:
+          ru: 3-й взвод
+          en: 3 Platoon
+        hq: false
+        units:
+        - type: v19_ce42a25733fadb
+          count: 3
+      - id: p4
+        name: Управление роты
         name_text:
           ru: Управление роты
           en: Company Command
-      hq: false
-      id: c1
-      name_text:
-        ru: 1-я рота охраны
-        en: 1st Security Company
-    - name: 2-я рота охраны
-      platoons:
-      - name: 1-й караул
-        units:
-        - type: v5_801c48f241f0
-          count: 2
-        hq: false
-        id: p1
-        name_text:
-          ru: 1-й караул
-          en: 1-y karaul
-      - name: 2-й караул
-        units:
-        - type: v5_801c48f241f0
-          count: 2
-        hq: false
-        id: p2
-        name_text:
-          ru: 2-й караул
-          en: 2-y karaul
-      - name: РПГ-7
-        units:
-        - type: v5_f8ae8a9b9be9
-          count: 1
-        hq: false
-        id: p3
-        name_text:
-          ru: РПГ-7
-          en: RPG-7
-      - name: Управление роты
-        units:
-        - type: cr_UAZ_469_CMD_Naval_SOV_e453c674b2
-          count: 1
         hq: true
-        id: p4
+        units:
+        - type: v19_e141a8f4decbbf
+          count: 1
+    - id: c2
+      name: Рота полиции
+      name_text:
+        ru: Рота полиции
+        en: Police Company
+      hq: false
+      platoons:
+      - id: p1
+        name: 1-й взвод
+        name_text:
+          ru: 1-й взвод
+          en: 1 Platoon
+        hq: false
+        units:
+        - type: v19_d1bd91dcdfe1e1
+          count: 3
+      - id: p2
+        name: 2-й взвод
+        name_text:
+          ru: 2-й взвод
+          en: 2 Platoon
+        hq: false
+        units:
+        - type: v19_d1bd91dcdfe1e1
+          count: 3
+      - id: p3
+        name: 3-й взвод
+        name_text:
+          ru: 3-й взвод
+          en: 3 Platoon
+        hq: false
+        units:
+        - type: v19_d1bd91dcdfe1e1
+          count: 3
+      - id: p4
+        name: Управление роты
         name_text:
           ru: Управление роты
           en: Company Command
-      hq: false
-      id: c2
-      name_text:
-        ru: 2-я рота охраны
-        en: 2nd Security Company
-    - name: 3-я рота охраны
-      platoons:
-      - name: 1-й караул
-        units:
-        - type: v5_801c48f241f0
-          count: 2
-        hq: false
-        id: p1
-        name_text:
-          ru: 1-й караул
-          en: 1-y karaul
-      - name: 2-й караул
-        units:
-        - type: v5_801c48f241f0
-          count: 2
-        hq: false
-        id: p2
-        name_text:
-          ru: 2-й караул
-          en: 2-y karaul
-      - name: РПГ-7
-        units:
-        - type: v5_f8ae8a9b9be9
-          count: 1
-        hq: false
-        id: p3
-        name_text:
-          ru: РПГ-7
-          en: RPG-7
-      - name: Управление роты
-        units:
-        - type: cr_UAZ_469_CMD_Naval_SOV_e453c674b2
-          count: 1
         hq: true
-        id: p4
-        name_text:
-          ru: Управление роты
-          en: Company Command
-      hq: false
-      id: c3
-      name_text:
-        ru: 3-я рота охраны
-        en: 3rd Security Company
-    - name: Рота поддержки ВМБ
-      platoons:
-      - name: ПКМ
         units:
-        - type: v5_7f39a93c5afb
-          count: 2
-        hq: false
-        id: p1
-        name_text:
-          ru: ПКМ
-          en: PKM
-      - name: СПГ-9
-        units:
-        - type: v5_abee24364630
-          count: 2
-        hq: false
-        id: p2
-        name_text:
-          ru: СПГ-9
-          en: SPG-9
-      - name: Управление роты
-        units:
-        - type: cr_UAZ_469_CMD_Naval_SOV_e453c674b2
+        - type: v19_0ba8747d9857ee
           count: 1
-        hq: true
-        id: p3
-        name_text:
-          ru: Управление роты
-          en: Company Command
-      - name: ЗУ-23-2
-        units:
-        - type: cr_DCA_ZU_23_2_Naval_SOV_3dd92ba92c
-          count: 2
-        hq: false
-        id: p4
-        name_text:
-          ru: ЗУ-23-2
-          en: ZU-23-2
-      hq: false
-      id: c4
+    - id: c3
+      name: Рота ПТ-заслона
       name_text:
-        ru: Рота поддержки ВМБ
-        en: Naval Base Support Company
-    - name: Управление и поддержка
+        ru: Рота ПТ-заслона
+        en: Anti-Tank Screen Company
+      hq: false
       platoons:
-      - name: Командование
+      - id: p1
+        name: 1-й взвод Д-44
+        name_text:
+          ru: 1-й взвод Д-44
+          en: 1 D-44 Platoon
+        hq: false
+        units:
+        - type: v19_25e9ae2957661e
+          count: 3
+      - id: p2
+        name: 2-й взвод Д-44
+        name_text:
+          ru: 2-й взвод Д-44
+          en: 2 D-44 Platoon
+        hq: false
+        units:
+        - type: v19_25e9ae2957661e
+          count: 3
+      - id: p3
+        name: Взвод «Рапира»
+        name_text:
+          ru: Взвод «Рапира»
+          en: Rapira Platoon
+        hq: false
+        units:
+        - type: v9_d2bb93a266ad
+          count: 3
+    - id: c4
+      name: Штаб и снабжение
+      name_text:
+        ru: Штаб и снабжение
+        en: Command and Supply
+      hq: true
+      platoons:
+      - id: p1
+        name: Командование гарнизона
+        name_text:
+          ru: Командование гарнизона
+          en: Garrison Command
+        hq: true
         units:
         - type: v5_16779f664539
-          count: 2
-        hq: true
-        id: p1
+          count: 1
+      - id: p2
+        name: Снабжение
         name_text:
-          ru: Командование
-          en: Command
-      - name: Охрана штаба
-        units:
-        - type: v5_d5e2cc9d6ef1
-          count: 2
+          ru: Снабжение
+          en: Supply
         hq: false
-        id: p2
-        name_text:
-          ru: Охрана штаба
-          en: HQ Security
-      hq: true
-      id: c5
-      name_text:
-        ru: Управление и поддержка
-        en: Command and Support
+        units:
+        - type: v6_65c7c72c6d57
+          count: 3
     formation:
       division_id: sov_sev_defence
       division_text:
@@ -2971,7 +2916,7 @@ battalions:
       - name: СПГ-9
         units:
         - type: v5_abee24364630
-          count: 2
+          count: 6
         hq: false
         id: p2
         name_text:
@@ -2995,6 +2940,15 @@ battalions:
         name_text:
           ru: Управление роты
           en: Company Command
+      - id: p5
+        name: ПТРК «Фагот»
+        name_text:
+          ru: ПТРК «Фагот»
+          en: Fagot ATGM Platoon
+        hq: false
+        units:
+        - type: v19_f058167687e020
+          count: 3
       hq: false
       id: c4
       name_text:
@@ -3029,6 +2983,24 @@ battalions:
         name_text:
           ru: Грузовики снабжения
           en: Gruzoviki snabzheniya
+      - id: p4
+        name: Морская разведка
+        name_text:
+          ru: Морская разведка
+          en: Naval Reconnaissance
+        hq: false
+        units:
+        - type: v19_defb8cfe7c30a4
+          count: 2
+      - id: p5
+        name: Резервисты «Стрела-3»
+        name_text:
+          ru: Резервисты «Стрела-3»
+          en: Reserve Strela-3
+        hq: false
+        units:
+        - type: v19_744fb3e326b0a4
+          count: 3
       hq: true
       id: c5
       name_text:
@@ -11948,6 +11920,15 @@ battalions:
         name_text:
           ru: Органическое ПВО
           en: Organic Air Defence
+      - id: p4
+        name: Беспилотная разведка
+        name_text:
+          ru: Беспилотная разведка
+          en: Unmanned Reconnaissance
+        hq: false
+        units:
+        - type: v19_e406d1a026d2ac
+          count: 2
       id: c1
       name_text:
         ru: Штаб и связь
@@ -11994,6 +11975,8 @@ battalions:
         units:
         - type: cr_ZIL_131_supply_Naval_SOV_f94cad4aa3
           count: 4
+        - type: v19_9738c308832b02
+          count: 2
         id: p1
         name_text:
           ru: Снабжение
@@ -12038,6 +12021,91 @@ battalions:
       name_text:
         ru: Тыловая рота
         en: Logistics Company
+    - id: c4
+      name: Рота спецназа
+      name_text:
+        ru: Рота спецназа
+        en: Naval Special Forces
+      hq: false
+      platoons:
+      - id: p1
+        name: 1-й взвод спецназа
+        name_text:
+          ru: 1-й взвод спецназа
+          en: 1 Special Forces Platoon
+        hq: false
+        units:
+        - type: v19_88d95a06be2225
+          count: 2
+        - type: v19_a25f491b207225
+          count: 2
+      - id: p2
+        name: 2-й взвод спецназа
+        name_text:
+          ru: 2-й взвод спецназа
+          en: 2 Special Forces Platoon
+        hq: false
+        units:
+        - type: v19_88d95a06be2225
+          count: 2
+        - type: v19_a25f491b207225
+          count: 2
+      - id: p3
+        name: 3-й взвод спецназа
+        name_text:
+          ru: 3-й взвод спецназа
+          en: 3 Special Forces Platoon
+        hq: false
+        units:
+        - type: v19_88d95a06be2225
+          count: 2
+        - type: v19_a25f491b207225
+          count: 2
+      - id: p4
+        name: 4-й взвод спецназа
+        name_text:
+          ru: 4-й взвод спецназа
+          en: 4 Special Forces Platoon
+        hq: false
+        units:
+        - type: v19_88d95a06be2225
+          count: 2
+        - type: v19_a25f491b207225
+          count: 2
+    - id: c5
+      name: Рота ПТО
+      name_text:
+        ru: Рота ПТО
+        en: Anti-Tank Company
+      hq: false
+      platoons:
+      - id: p1
+        name: Морские «Рапиры»
+        name_text:
+          ru: Морские «Рапиры»
+          en: Naval Rapira
+        hq: false
+        units:
+        - type: v19_4381cb492719f9
+          count: 3
+      - id: p2
+        name: Морские СПГ-9
+        name_text:
+          ru: Морские СПГ-9
+          en: Naval SPG-9
+        hq: false
+        units:
+        - type: v19_602391bf649cc1
+          count: 3
+      - id: p3
+        name: Морские «Фаготы»
+        name_text:
+          ru: Морские «Фаготы»
+          en: Naval Fagot
+        hq: false
+        units:
+        - type: v19_69cb034c62b17b
+          count: 3
     formation:
       division_id: sov_810
       division_text:
@@ -12053,68 +12121,68 @@ battalions:
       type: mechanized
       battle_role: auxiliary_support
       visual:
-        unit: 2K12_KUB_SOV
+        unit: DCA_S125_quad_Neva_SOV
       support:
         kind: air_defence
         radius_ap: 12
       icon: AA
-    name: 60-й корпус ПВО
+    name: 174-я зрбр
     name_text:
-      ru: 60-й корпус ПВО
-      en: 60th Air Defence Corps
-    organization: 60-й корпус ПВО
+      ru: 174-я зрбр
+      en: 174th SAM Brigade
+    organization: 174-я зрбр
     organization_text:
-      ru: 60-й корпус ПВО
-      en: 60th Air Defence Corps
+      ru: 174-я зрбр
+      en: 174th SAM Brigade
     companies:
-    - name: 1-я батарея «Куб-М3»
+    - name: 1-я батарея «Нева-М»
       hq: false
       platoons:
-      - name: Куб-М3
+      - name: С-125 «Нева-М»
         hq: false
         units:
-        - type: v6_b0fbcbc5cf43
+        - type: v19_7d5f3fc8a2b154
           count: 3
         id: p1
         name_text:
-          ru: Куб-М3
-          en: Kub-M3
+          ru: С-125 «Нева-М»
+          en: S-125 Neva-M
       id: c1
       name_text:
-        ru: 1-я батарея «Куб-М3»
-        en: 1st Battery Kub-M3
-    - name: 2-я батарея «Куб-М3»
+        ru: 1-я батарея «Нева-М»
+        en: 1 Neva-M Battery
+    - name: 2-я батарея «Нева-М»
       hq: false
       platoons:
-      - name: Куб-М3
+      - name: С-125 «Нева-М»
         hq: false
         units:
-        - type: v6_b0fbcbc5cf43
+        - type: v19_7d5f3fc8a2b154
           count: 3
         id: p1
         name_text:
-          ru: Куб-М3
-          en: Kub-M3
+          ru: С-125 «Нева-М»
+          en: S-125 Neva-M
       id: c2
       name_text:
-        ru: 2-я батарея «Куб-М3»
-        en: 2nd Battery Kub-M3
-    - name: 3-я батарея «Оса-АКМ»
+        ru: 2-я батарея «Нева-М»
+        en: 2 Neva-M Battery
+    - name: 3-я батарея «Нева-М»
       hq: false
       platoons:
-      - name: Оса-АКМ
+      - name: С-125 «Нева-М»
         hq: false
         units:
-        - type: v6_8f6a735183fe
+        - type: v19_7d5f3fc8a2b154
           count: 4
         id: p1
         name_text:
-          ru: Оса-АКМ
-          en: Osa-AKM
+          ru: С-125 «Нева-М»
+          en: S-125 Neva-M
       id: c3
       name_text:
-        ru: 3-я батарея «Оса-АКМ»
-        en: 3rd Battery Osa-AKM
+        ru: 3-я батарея «Нева-М»
+        en: 3 Neva-M Battery
     - name: Батарея прикрытия
       hq: false
       platoons:
@@ -12179,7 +12247,7 @@ battalions:
       division_text:
         ru: 60-й корпус ПВО
         en: 60th Air Defence Corps
-      regiment_id: sov_60_pvo_main
+      regiment_id: sov_174_sam_brigade
       emblem: Texture_Division_Emblem_AGF_Air_Defence_60
     initial_state:
       fatigue: 0
@@ -15112,3 +15180,376 @@ battalions:
         units:
         - type: v17_56107bfab244
           count: 2
+- id: usmc_beachhead_guard
+  side: nato
+  definition:
+    country: US
+    strategic:
+      type: mechanized
+      battle_role: auxiliary_support
+      visual:
+        unit: AAVP_7A1_USMC_US
+      icon: apc
+    name: Охранение высадки
+    name_text:
+      ru: Охранение высадки
+      en: Landind security
+    organization: 6-й полк КМП
+    organization_text:
+      ru: 6-й полк КМП
+      en: 6th Marine Regiment
+    companies:
+    - id: c1
+      name: 1-я охранная рота
+      hq: false
+      platoons:
+      - id: p1
+        name: 1-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 1-й стрелковый взвод
+          en: 1st Rifle Platoon
+      - id: p2
+        name: 2-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 2-й стрелковый взвод
+          en: 2nd Rifle Platoon
+      - id: p3
+        name: 3-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 3-й стрелковый взвод
+          en: 3rd Rifle Platoon
+      - id: p4
+        name: Управление роты
+        hq: true
+        units:
+        - type: cr_Rifles_USMC_CMD_US_1a0189e1f2
+          count: 1
+        - type: cr_AAVC_7A1_CMD_USMC_US_bffb7e4152
+          count: 1
+        name_text:
+          ru: Управление роты
+          en: Company Command
+      name_text:
+        ru: 1-я охранная рота
+        en: 1st Assault Company
+    - id: c2
+      name: 2-я охранная рота
+      hq: false
+      platoons:
+      - id: p1
+        name: 1-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 1-й стрелковый взвод
+          en: 1st Rifle Platoon
+      - id: p2
+        name: 2-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 2-й стрелковый взвод
+          en: 2nd Rifle Platoon
+      - id: p3
+        name: 3-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 3-й стрелковый взвод
+          en: 3rd Rifle Platoon
+      - id: p4
+        name: Управление роты
+        hq: true
+        units:
+        - type: cr_Rifles_USMC_CMD_US_1a0189e1f2
+          count: 1
+        - type: cr_AAVC_7A1_CMD_USMC_US_bffb7e4152
+          count: 1
+        name_text:
+          ru: Управление роты
+          en: Company Command
+      name_text:
+        ru: 2-я охранная рота
+        en: 2nd Assault Company
+    - id: c3
+      name: 3-я охранная рота
+      hq: false
+      platoons:
+      - id: p1
+        name: 1-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 1-й стрелковый взвод
+          en: 1st Rifle Platoon
+      - id: p2
+        name: 2-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 2-й стрелковый взвод
+          en: 2nd Rifle Platoon
+      - id: p3
+        name: 3-й стрелковый взвод
+        hq: false
+        units:
+        - type: v19_f97cf2d59c757e
+          count: 3
+        - type: v19_c575cfab829ecc
+          count: 1
+        name_text:
+          ru: 3-й стрелковый взвод
+          en: 3rd Rifle Platoon
+      - id: p4
+        name: Управление роты
+        hq: true
+        units:
+        - type: cr_Rifles_USMC_CMD_US_1a0189e1f2
+          count: 1
+        - type: cr_AAVC_7A1_CMD_USMC_US_bffb7e4152
+          count: 1
+        name_text:
+          ru: Управление роты
+          en: Company Command
+      name_text:
+        ru: 3-я охранная рота
+        en: 3rd Assault Company
+    - id: c4
+      name: Противотанковая рота
+      hq: false
+      platoons:
+      - id: p1
+        name: Группа TOW № 1
+        hq: false
+        units:
+        - type: cr_ATteam_TOW2_USMC_US_06a5bc4a3c
+          count: 3
+        name_text:
+          ru: Группа TOW № 1
+          en: Gruppa TOW № 1
+      - id: p2
+        name: Группа TOW № 2
+        hq: false
+        units:
+        - type: cr_ATteam_TOW2_USMC_US_06a5bc4a3c
+          count: 3
+        name_text:
+          ru: Группа TOW № 2
+          en: Gruppa TOW № 2
+      - id: p3
+        name: Группа «Драгон»
+        hq: false
+        units:
+        - type: cr_Rifles_USMC_Dragon_US_324d414f66
+          count: 3
+        name_text:
+          ru: Группа «Драгон»
+          en: Gruppa «Dragon»
+      - id: p4
+        name: 1-й взвод LAV-25
+        hq: false
+        units:
+        - type: v4_724e2c5b6c90
+          count: 4
+        name_text:
+          ru: 1-й взвод LAV-25
+          en: 1st LAV-25 Platoon
+      - id: p5
+        name: 2-й взвод LAV-25
+        hq: false
+        units:
+        - type: v4_724e2c5b6c90
+          count: 4
+        name_text:
+          ru: 2-й взвод LAV-25
+          en: 2nd LAV-25 Platoon
+      - id: p6
+        name: Бронемашины AAV
+        hq: false
+        units:
+        - type: cr_AAVP_7A1_USMC_US_5eb504734b
+          count: 4
+        name_text:
+          ru: Бронемашины AAV
+          en: Bronemashiny AAV
+      - id: p7
+        name: Управление ПТ
+        hq: true
+        units:
+        - type: cr_M1025_Humvee_CMD_USMC_US_9f2cd0d7b1
+          count: 1
+        name_text:
+          ru: Управление ПТ
+          en: Anti-Tank Command
+      name_text:
+        ru: Противотанковая рота
+        en: Anti-Tank Company
+    - id: c5
+      name: Штаб и рота оружия
+      hq: true
+      platoons:
+      - id: p1
+        name: Штаб батальона
+        hq: true
+        units:
+        - type: cr_AAVC_7A1_CMD_USMC_US_bffb7e4152
+          count: 1
+        name_text:
+          ru: Штаб батальона
+          en: Battalion HQ
+      - id: p2
+        name: Миномётная группа
+        hq: false
+        units:
+        - type: cr_81mm_mortar_USMC_US_ed0116cbf8
+          count: 6
+        name_text:
+          ru: Миномётная группа
+          en: Minomyotnaya gruppa
+      - id: p3
+        name: Тяжёлые пулемёты
+        hq: false
+        units:
+        - type: cr_HMGteam_M2HB_M63_USMC_US_bfe0b97cb5
+          count: 4
+        name_text:
+          ru: Тяжёлые пулемёты
+          en: Heavy Machine Guns
+      - id: p4
+        name: ПТРК TOW-2
+        hq: false
+        units:
+        - type: cr_ATteam_TOW2_USMC_US_06a5bc4a3c
+          count: 3
+        name_text:
+          ru: ПТРК TOW-2
+          en: TOW-2 ATGM
+      - id: p5
+        name: Передовая разведка
+        hq: false
+        units:
+        - type: cr_Scout_USMC_US_30fe65ca74
+          count: 2
+        name_text:
+          ru: Передовая разведка
+          en: Forward Recon
+      - id: p6
+        name: Сапёрное отделение
+        hq: false
+        units:
+        - type: cr_Engineers_USMC_US_4aa8aeff16
+          count: 2
+        name_text:
+          ru: Сапёрное отделение
+          en: Engineer Section
+      - id: p7
+        name: Взвод снабжения
+        hq: false
+        units:
+        - type: v4_bb542e99ea0a
+          count: 2
+        name_text:
+          ru: Взвод снабжения
+          en: Vzvod snabzheniya
+      - name: 'ПВО: Stinger и Avenger'
+        hq: false
+        units:
+        - type: cr_MANPAD_Stinger_C_USMC_US_b575fa16ad
+          count: 8
+        - type: v6_b9a973e7236f
+          count: 2
+        id: p8
+        name_text:
+          ru: 'ПВО: Stinger и Avenger'
+          en: Stinger and Avenger
+      name_text:
+        ru: Штаб и рота оружия
+        en: HQ and Weapons Company
+    - id: c6
+      name: Танковая рота охранения
+      name_text:
+        ru: Танковая рота охранения
+        en: Security Tank Company
+      hq: false
+      platoons:
+      - id: p1
+        name: 1-й танковый взвод
+        name_text:
+          ru: 1-й танковый взвод
+          en: 1 Tank Platoon
+        hq: false
+        units:
+        - type: cr_M60A1_RISE_Passive_USMC_US_f3997f77f1
+          count: 4
+      - id: p2
+        name: 2-й танковый взвод
+        name_text:
+          ru: 2-й танковый взвод
+          en: 2 Tank Platoon
+        hq: false
+        units:
+        - type: cr_M60A1_RISE_Passive_USMC_US_f3997f77f1
+          count: 4
+      - id: p3
+        name: 3-й танковый взвод
+        name_text:
+          ru: 3-й танковый взвод
+          en: 3 Tank Platoon
+        hq: false
+        units:
+        - type: cr_M60A1_RISE_Passive_USMC_US_f3997f77f1
+          count: 4
+      - id: p4
+        name: Управление танковой роты
+        name_text:
+          ru: Управление танковой роты
+          en: Tank Company Command
+        hq: true
+        units:
+        - type: cr_M60A1_RISE_Passive_USMC_CMD_US_d604e3ab6d
+          count: 1
+    formation:
+      division_id: us_2md
+      division_text:
+        ru: 2-я дивизия КМП
+        en: 2nd Marine Division
+      regiment_id: us_6mar
+      emblem: Texture_Division_Emblem_US_2nd_Marine_Division

@@ -20,6 +20,7 @@ from .items import map_feature_inventory, patch_items, patch_map_features, spawn
 from .storage import sha256
 from .event_localisation import publish_ingame_choices, validate_ingame_choices, script_choice_keys
 from .modgen_registry import authored_build_name
+from .ai_control import mission_cooperates
 
 
 DEFAULT_DETAILS = GAME_DATA / "197351/201602/Scenarios/CampagneStrat_Bruderkrieg_Details.dat"
@@ -949,7 +950,9 @@ def _decisive_victory_contract(graph, compiled):
     owner(target(objects[385], 'Condition'), policy['pact_capture'], 'pact')
     ending(target(objects[384], 'ActionsReussi'), 'nato')
     failure = target(objects[384], 'ConditionEchec')
-    if failure['class'] != 'TGDConditionOr' or [x['object_id'] for x in _property(failure, 'SousConditions')['items']] != [_property(objects[385], 'Condition')['object_id'], 409]:
+    expected_failure = ([_property(objects[385], 'Condition')['object_id']]
+                        if policy.get('pact_capture_immediate', True) else []) + [409]
+    if failure['class'] != 'TGDConditionOr' or [x['object_id'] for x in _property(failure, 'SousConditions')['items']] != expected_failure:
         raise ValueError('Decisive victory failure must follow opposing capture or time limit')
     dispatch = objects[_property(objects[402], 'SubActions')['items'][0]['object_id']]
     if dispatch['class'] != 'TGDDescriptorIfThenElse':
@@ -974,6 +977,43 @@ def _decisive_victory_contract(graph, compiled):
         if [_property(end,k)['value'] for k in ('VictoryReason','VictoryType','WinningAlliance')] != [6,6,1 if policy['time_limit']=='nato' else 0]:
             raise ValueError('Time-limit winner must be scripted without score-ratio reclassification')
     return dict(policy)
+
+
+def _recapture_ai_contract(graph, compiled, reachable, group_sides, scripted_groups):
+    policy = compiled['campaign'].get('ai_policy', {}).get('recapture_if_lost', {})
+    if not policy:
+        return
+    objects = graph['objects']
+    expected = {group: side for group, side in group_sides.items()
+                if group in scripted_groups and side in policy}
+    covered = set()
+    for identifier in reachable:
+        node = objects[identifier]
+        if node['class'] != 'TGDDescriptorIfThenElse':
+            continue
+        recovery = objects[_property(node, 'EffetIfFalse')['object_id']]
+        if recovery['class'] != 'TGDDescriptorStrategicMoveAndAttack':
+            continue
+        group = _property(recovery, 'Group')['object_id']
+        if group not in expected:
+            continue
+        positions = _property(recovery, 'Positions')['items']
+        side = expected[group]
+        flag = next(row for row in compiled['map']['flags'] if row['id'] == policy[side])
+        words = list(_int32_words(flag['guid']))
+        def matches_tag(tag):
+            return tag['class'] == 'TGDTagPosition' and [_property(tag, 'GUID' + str(i))['value'] for i in range(1, 5)] == words
+        if len(positions) != 1 or not matches_tag(objects[positions[0]['object_id']]):
+            continue
+        condition = objects[_property(node, 'Condition')['object_id']]
+        alliance = next((p['value'].get('value', 0) for p in condition['properties'] if p['property_name'] == 'Alliance'), 0)
+        if (condition['class'] != 'TGDConditionPositionInInfluenceMap'
+                or alliance != (1 if side == 'nato' else 0)
+                or not matches_tag(objects[_property(condition, 'Position')['object_id']])):
+            raise ValueError('AI recapture selector must observe its own coalition and capture flag')
+        covered.add(group)
+    if covered != set(expected):
+        raise ValueError('AI recapture policy lacks executable coverage for every scripted formation')
 
 
 def authored_script_contract(raw, compiled):
@@ -1008,7 +1048,7 @@ def authored_script_contract(raw, compiled):
     frozen_rows = [row for row in compiled["deployments"] if row["frozen_turns"]]
     frozen_version = compiled['adapter'].get('frozen_lifecycle_version', 1)
     launch_frozen_clear_ids = []
-    if frozen_rows and frozen_version in (1,4):
+    if frozen_rows and frozen_version in (1,4,5):
         if len(launch_ids) < len(expected_launch) + len(frozen_rows) + 1:
             raise ValueError("Native frozen-state startup actions are missing")
         clear_ids = launch_ids[len(expected_launch):len(expected_launch) + len(frozen_rows)]
@@ -1074,10 +1114,12 @@ def authored_script_contract(raw, compiled):
             for row, sequence_ref in zip(frozen, content_refs[offset:offset + len(frozen)]):
                 sequence = objects[sequence_ref['object_id']]
                 steps = _property(sequence, 'SubActions')['items']
-                if (sequence['class'] != 'TGDDescriptorSequential' or len(steps) != 4
-                        or [objects[x['object_id']]['class'] for x in steps] != [
-                            'TGDDescriptorWaitCondition', 'TGDDescriptorChangePawnActionPoint',
-                            'TGDDescriptorCompetition', 'TGDDescriptorChangePawnActionPoint']):
+                expected_steps = ['TGDDescriptorWaitCondition',
+                    *(['TGDDescriptorWaitDuration'] if frozen_version >= 5 else []),
+                    'TGDDescriptorChangePawnActionPoint', 'TGDDescriptorCompetition',
+                    'TGDDescriptorChangePawnActionPoint']
+                if (sequence['class'] != 'TGDDescriptorSequential'
+                        or [objects[x['object_id']]['class'] for x in steps] != expected_steps):
                     raise ValueError('Frozen lifecycle must begin on its owner turn and clear AP')
                 wait = objects[steps[0]['object_id']]
                 condition = objects[_property(wait, 'Condition')['object_id']]
@@ -1085,11 +1127,14 @@ def authored_script_contract(raw, compiled):
                 if (condition['class'] != 'TGDConditionStrategicIsPlayerTurn'
                         or _property(condition, 'Camp')['object_id'] != own_camp):
                     raise ValueError('Frozen initialization is bound to the wrong coalition')
-                clear_id = steps[1]['object_id']
+                if frozen_version >= 5 and _property(objects[steps[1]['object_id']], 'Duree')['value'] != compiled['adapter']['frozen_turn_refresh_delay']:
+                    raise ValueError('Frozen AP clear must wait for the native turn refresh')
+                clear_index = 2 if frozen_version >= 5 else 1
+                clear_id = steps[clear_index]['object_id']
                 if _property(objects[clear_id], 'ActionPointNumber')['value'] != 0:
                     raise ValueError('Frozen initialization must clear action points')
                 clear_ids.append(clear_id)
-                competition = objects[steps[2]['object_id']]
+                competition = objects[steps[clear_index+1]['object_id']]
                 phases = [objects[x['object_id']] for x in _property(competition, 'SubActions')['items']]
                 stop, label, countdown, capacity = phases
                 release_condition = objects[_property(stop, 'Condition')['object_id']]
@@ -1129,7 +1174,13 @@ def authored_script_contract(raw, compiled):
                     if len(phases)!=row['frozen_turns']-1:
                         raise ValueError('Frozen AP gate must cover every locked owner turn')
                     for turn,phase in enumerate(phases,2):
-                        wait_ref,clear_ref=_property(objects[phase['object_id']],'SubActions')['items']
+                        phase_steps=_property(objects[phase['object_id']],'SubActions')['items']
+                        if frozen_version >= 5:
+                            if len(phase_steps)!=3 or objects[phase_steps[1]['object_id']]['class']!='TGDDescriptorWaitDuration' or _property(objects[phase_steps[1]['object_id']], 'Duree')['value']!=compiled['adapter']['frozen_turn_refresh_delay']:
+                                raise ValueError('Frozen AP suppression must wait for the native turn refresh')
+                        elif len(phase_steps)!=2:
+                            raise ValueError('Frozen AP suppression has the wrong sequence')
+                        wait_ref,clear_ref=phase_steps[0],phase_steps[-1]
                         condition=objects[_property(objects[wait_ref['object_id']],'Condition')['object_id']]
                         number_ref,owner_ref=_property(condition,'SousConditions')['items']
                         number=objects[number_ref['object_id']]; compare=objects[_property(number,'Operator')['object_id']]
@@ -1143,7 +1194,7 @@ def authored_script_contract(raw, compiled):
                     if any(objects[item]['class']=='TGDDescriptorSetEffect' for item in subtree):
                         raise ValueError('Frozen AP gate must not leave a persistent no-regeneration effect')
         startup_refs = _property(objects[script['startup_groups']], 'SubActions')['items']
-        if frozen_version == 4 and launch_frozen_clear_ids != clear_ids:
+        if frozen_version >= 4 and launch_frozen_clear_ids != clear_ids:
             raise ValueError('Frozen launch must clear the same collected groups as the turn lifecycle')
         frozen_collectors = startup_refs[len(_initial_operational_groups(compiled)):]
         if len(frozen_collectors) != len(frozen):
@@ -1381,6 +1432,9 @@ def authored_script_contract(raw, compiled):
         if ai_mission_version>=4:
             plans = [order] + [phase for member in group_members[group]
                               for phase in compiled['campaign']['ai_policy'].get('phase_orders',{}).get(member,[])]
+            recapture = compiled['campaign']['ai_policy'].get('recapture_if_lost', {}).get(side)
+            if recapture:
+                plans.append({'type': 'counterattack', 'target': recapture, 'route': [recapture]})
             targets = {row['id']:'$/GDScript/GdItems/Tags/'+row['adapter_slot']['name']
                        for row in compiled['map']['flags']+compiled['map'].get('waypoints',[])}
             allowed_routes = set()
@@ -1394,7 +1448,7 @@ def authored_script_contract(raw, compiled):
                 if (_property(item,'Blocking')['value'] or _property(item,'ExecuteOnlyOnIAActivated')['value']
                         or not _property(item,'OrderCancelable')['value']):
                     raise ValueError('Refreshing AI needs cancelable, nonblocking missions')
-                if _property(item,'UseOnlyUnitInMissionToAttack')['value'] != (not compiled['campaign']['ai_policy']['cooperate']):
+                if _property(item,'UseOnlyUnitInMissionToAttack')['value'] != (not mission_cooperates(compiled, side)):
                     raise ValueError('Refreshing AI cooperation differs')
                 if ai_mission_version>=5 and item['class']=='TGDDescriptorStrategicMoveAndAttack':
                     actual=tuple(graph['exports'].get(p['object_id']) for p in _property(item,'Positions')['items'])
@@ -1432,7 +1486,7 @@ def authored_script_contract(raw, compiled):
             for mission in group_missions:
                 if (_property(mission, 'ExecuteOnlyOnIAActivated')['value']
                         or _property(mission, 'UseOnlyUnitInMissionToAttack')['value']
-                        != (not compiled['campaign']['ai_policy']['cooperate'])):
+                        != (not mission_cooperates(compiled, side))):
                     raise ValueError('Early AI mission activation or cooperation differs')
         defensive = order["type"] in {"defend", "hold", "reserve", "support", "air_support"}
         route = order.get("route", [order["target"]])
@@ -1504,6 +1558,7 @@ def authored_script_contract(raw, compiled):
     if ai_mission_version>=6:
         from .refresh_ai import validate_refresh_profiles
         validate_refresh_profiles(graph,compiled)
+    _recapture_ai_contract(graph, compiled, reachable, group_sides, scripted_groups)
     if reachable_classes.count("TGDDescriptorGereObjectifWithVariableOwner") != len(compiled["map"]["flags"]):
         raise ValueError("Authored flag-objective count mismatch")
     if reachable_classes.count("TGDDescriptorCutsceneDialogWithMultipleChoice") != sum(
@@ -1786,7 +1841,7 @@ def compile_authored_script(raw, compiled):
             return idle,'TGDDescriptorWaitDuration'
         mission_tags = {**flag_tags, **{row['id']:runtime_tags[row['id']] for row in compiled['map'].get('waypoints', [])}}
         position = mission_tags[order["target"]]
-        cooperate = compiled['campaign'].get('ai_policy', {}).get('cooperate', False)
+        cooperate = mission_cooperates(compiled, side)
         attack_radius = compiled['campaign'].get('ai_policy', {}).get('attack_radius', 707)
         active_only = ai_mission_version < 3
         def protect(action, kind):
@@ -2037,7 +2092,7 @@ def compile_authored_script(raw, compiled):
     frozen_deployments = [deployment for deployment in compiled["deployments"]
                           if deployment["frozen_turns"]]
     frozen_version = compiled['adapter'].get('frozen_lifecycle_version', 1)
-    if frozen_version not in (1, 2, 3, 4):
+    if frozen_version not in (1, 2, 3, 4, 5):
         raise ValueError('Unknown authored frozen lifecycle version')
 
     def owned_frozen_shell(deployment):
@@ -2095,16 +2150,26 @@ def compile_authored_script(raw, compiled):
         first_turn = add('TGDDescriptorWaitCondition', [
             prop('TGDDescriptorWaitCondition', 'Condition', ref(
                 side_turn_condition(deployment['side']), 'TGDConditionStrategicIsPlayerTurn'))])
+        refresh_delay=[]
+        if frozen_version >= 5:
+            delay=add('TGDDescriptorWaitDuration', [prop('TGDDescriptorWaitDuration', 'Duree', floating(compiled['adapter']['frozen_turn_refresh_delay']))])
+            refresh_delay=[ref(delay,'TGDDescriptorWaitDuration')]
         _property(objects[timeline], 'SubActions').update(items=[
             ref(first_turn, 'TGDDescriptorWaitCondition'),
+            *refresh_delay,
             ref(clear, 'TGDDescriptorChangePawnActionPoint'),
             ref(cloned[528], 'TGDDescriptorCompetition'),
-            ref(cloned[529], 'TGDDescriptorChangePawnActionPoint')], length=4)
+            ref(cloned[529], 'TGDDescriptorChangePawnActionPoint')], length=4+len(refresh_delay))
         if frozen_version >= 3:
             suppress=[]
             for turn in range(2,deployment['frozen_turns']+1):
-                suppress.append(ref(wait_then(clear,'TGDDescriptorChangePawnActionPoint',
-                    turn_condition(turn,deployment['side'])),'TGDDescriptorSequential'))
+                phase=wait_then(clear,'TGDDescriptorChangePawnActionPoint',turn_condition(turn,deployment['side']))
+                if frozen_version >= 5:
+                    delay=add('TGDDescriptorWaitDuration', [prop('TGDDescriptorWaitDuration', 'Duree', floating(compiled['adapter']['frozen_turn_refresh_delay']))])
+                    phase_steps=_property(objects[phase],'SubActions')
+                    phase_steps['items'].insert(1,ref(delay,'TGDDescriptorWaitDuration'))
+                    phase_steps['length']=3
+                suppress.append(ref(phase,'TGDDescriptorSequential'))
             gate=add('TGDDescriptorSimultaneous',[
                 prop('TGDDescriptorSimultaneous','SubActions',listref(suppress)),
                 prop('TGDDescriptorSimultaneous','NbExecutions',uint(1))])
@@ -2175,7 +2240,7 @@ def compile_authored_script(raw, compiled):
             collector_id, timeline_id = owned_frozen_shell(deployment)
             startup['items'].append(ref(collector_id, 'TGDDescriptorAddUnitGroupListToUnitGroup'))
             if frozen_version >= 4:
-                clear_id=_property(objects[timeline_id],'SubActions')['items'][1]['object_id']
+                clear_id=_property(objects[timeline_id],'SubActions')['items'][2 if frozen_version>=5 else 1]['object_id']
                 frozen_launch.append(ref(clear_id,'TGDDescriptorChangePawnActionPoint'))
             frozen_sequences.append((timeline_id, 'TGDDescriptorSequential'))
             continue
@@ -3013,8 +3078,10 @@ def compile_authored_script(raw, compiled):
         _property(objects[384], 'Condition').update(ref(nato_condition, 'TGDConditionPositionInInfluenceMap'))
         _property(objects[385], 'Condition').update(ref(pact_condition, 'TGDConditionPositionInInfluenceMap'))
         _property(objects[384], 'ActionsReussi').update(ref(nato_end, 'TGDDescriptorSequential'))
-        failure = add('TGDConditionOr', [prop('TGDConditionOr', 'SousConditions', listref([
-            ref(pact_condition, 'TGDConditionPositionInInfluenceMap'), ref(409, 'TGDConditionVariable')]))])
+        failure_conditions = ([ref(pact_condition, 'TGDConditionPositionInInfluenceMap')]
+                              if policy.get('pact_capture_immediate', True) else [])
+        failure_conditions.append(ref(409, 'TGDConditionVariable'))
+        failure = add('TGDConditionOr', [prop('TGDConditionOr', 'SousConditions', listref(failure_conditions))])
         _property(objects[384], 'ConditionEchec').update(ref(failure, 'TGDConditionOr'))
         dispatcher = add('TGDDescriptorIfThenElse', [
             prop('TGDDescriptorIfThenElse', 'Condition', ref(pact_condition, 'TGDConditionPositionInInfluenceMap')),

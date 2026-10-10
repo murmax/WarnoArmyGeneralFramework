@@ -1,0 +1,230 @@
+{
+  "format": "agf-kacha-orientation-migration/v1",
+  "source": "crimea-1989-v19",
+  "destination": "crimea-1989-v20",
+  "previous_raster_origin": "southwest",
+  "raster_origin": "northwest",
+  "world_height": 1310720,
+  "coordinate_transform": "x_new=x_old; y_new=world_height-y_old",
+  "map_name": "AGFCrimeanLittoralV20NorthUp",
+  "spatial_counts": {
+    "ai.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "aviation.yaml": {
+      "positions": 2,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "campaign.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "cinematics.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "deployments.yaml": {
+      "positions": 21,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "emblems.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "event-images.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "events.yaml": {
+      "positions": 2,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "localization.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "map.yaml": {
+      "positions": 39,
+      "bounds": 1,
+      "rotations": 0,
+      "cells": 2640
+    },
+    "packs.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "production.yaml": {
+      "positions": 6,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "profile.yaml": {
+      "positions": 0,
+      "bounds": 3,
+      "rotations": 0,
+      "cells": 0
+    },
+    "reinforcements.yaml": {
+      "positions": 0,
+      "bounds": 0,
+      "rotations": 0,
+      "cells": 0
+    },
+    "world.yaml": {
+      "positions": 5664,
+      "bounds": 1,
+      "rotations": 5664,
+      "cells": 0
+    }
+  },
+  "source_files": {
+    "ai.yaml": "a7f713d6b07ccc0ae875490a7431e51a425224c1456ecd7024d9552a3e915e32",
+    "ASSET_CREDITS.md": "bc8f50cc528e2984c93320c57677182b2a0921dfd47d83a6b610da4aba121544",
+    "aviation.yaml": "165c0a56f3d02e788a23aba2945b8338459d10db2b8e489cc64bba4ded7c6299",
+    "campaign.yaml": "0bdf6283a5ab645a7a916a2e67165efcaea57bf2446ae11ebbe5537a496e8ad6",
+    "cinematics.yaml": "3acc0cae1b7c9ecf3803b4c9d82ebbded9d4923a12babdef74c839572fd05dcb",
+    "deployments.yaml": "7ae17742532a7a1dff8608b125c65443e088a94595f181d068a753cdc43aadf9",
+    "emblems.yaml": "3d4bb31aa84aa4fec4144d64f11dbfa2a819b349bcd500220e7e800192fad51b",
+    "event-images.yaml": "c71921596281e3a7fbf6aef864f808ef104bcb17ad39491229af93bcea79df53",
+    "events.yaml": "f3f9932f747c7f3bb7ef21aeeb508cd5d4be91d418e80459232b06e12d83ec35",
+    "GEODATA.json": "3ebced0052eab9f4e3f05a90b0fabf90f2f8411284764accb424db5e18702663",
+    "localization.yaml": "fb0847cb989743c8f7c24d3f967e89dc1bc4b5d490109ceff0199108b1466fb2",
+    "map.yaml": "19d2edbf08274da4746dd16dc1eb2ef9b7b44a8b559258f5c42dcdb203033d88",
+    "OPERATIONS.md": "2dcc3d31f5b953fec0b926d1fe63cd6e5db7a0173ce25d0967f2440afdd68d33",
+    "packs.yaml": "1bd16f013c184d8b11aa31435e7900dd5f5a7d9e46b8e25677c46b28836e2885",
+    "production.yaml": "46ecf0ee47681fd51302432ffa433914627441f2036e38214f6f28d4b2e15057",
+    "profile.yaml": "97c6f58767bc9eba6fe08306eae1fc33b00a6a6b920265e3d755f9be11630869",
+    "README.md": "0d1f958d61a372fc271476b2b8564e724ffbc09086d04d47377f69dd3cd47142",
+    "reinforcements.yaml": "38f8fa322e5189d877ce04e47a11a35e4beb5e59b6396be40e490601151577f5",
+    "REVISION.md": "d2df4476a429fb623222c6954afb8af0a04f61ad54016e747a041ef68e1a7b10",
+    "V10.md": "4779b4a04e7fd4d99f802516489356536c0da54e9e852b8a4b01864d3d098cc7",
+    "V6.md": "6f5fda31f81a6cb561a2072ac0be1152c2fc6ee2a949f015d1afc4c22ee1922b",
+    "V7.md": "e7799af1d4db5fb95f3dd88deb1f07b71e09a0acfcf28fd5821bba2b538fa01a",
+    "V8.md": "7b7ac7127141c67e65253223c2c2b7caccc99eb57e4944cff222a5efbf604332",
+    "V9.md": "c2a0287d9895233f4718fd70eea835384083d5217b930e7d2c1ce0e6e9f1acaf",
+    "world.yaml": "771b909e699f6d849e4a32e55d9ebf57209f67e2af3046ffe5c4c859cd690d6e",
+    "artwork/heightmap.png": "ea880fe2125b1aab7cfc8e75f755911d61f66104fc4ba819787fa466bbbdca61",
+    "artwork/surface.png": "74c7a1058feceeef0cbcbb9f6f1a34554d530c75f56a2bbd8b9c50699717d6ec",
+    "battalions/forces.yaml": "ad4523b0c836ee7b4f6713968337b6a014c06619cf8bc27ada4ac84aae5af67f",
+    "artwork/emblems/Air_Defence_60.png": "fb98c5c819642aa08db549a87da9aa806fc623db999aa3c1e461ed412fb2a7ee",
+    "artwork/emblems/Crimea_Army.png": "89563c616fd84a0a9e311c2de4f1cd6793290ce76b908ff95a51410155b8fc71",
+    "artwork/emblems/Fleet_Defence.png": "f0cf04d7f0380986003274d614b51a9e3f547d4cc310cdfc1eb3b1ec433dec61",
+    "artwork/emblems/KGB_Border.png": "368e56c5cc1e3e0c155a3c72721afed84bcbf860fa72255cb655d73f79af2894",
+    "artwork/emblems/Militsiya.png": "e064ae98e8751ace475e377b66cd25c5522996d896f38a2f8f0cf620ca086045",
+    "artwork/emblems/SOURCES.json": "c9926087eb526bc3ffedd7cecb32478e3e542072d16e06adf5d6995daf6ede9c",
+    "artwork/emblems/SOV_810.png": "7e963326998e7d7f4db2c9c2f6cc8467399e61a22da45ba306295d952c63aa3c",
+    "artwork/events/carrier-withdrawal.png": "5830209d3840d4fabcb534fc01a41879388857adb5a76e565b6af742148e5435",
+    "artwork/events/ending-sevastopol-ruins.png": "af5f55e861773fc01f8a17c678e3d4ac90af7b7be25fad7ee4ea5f7afabfd364",
+    "artwork/events/ending-soviet-flag.png": "078aed4793e4a7664b21ebccd48fc87901364097a1c6af1337e43942c03f0ac5",
+    "artwork/events/ending-us-flag.png": "401f4a8ce33c05d18cd1b380d1fc211f7d20475407cc6918aebba56670bbf5e2",
+    "artwork/events/ending_sevastopol.png": "4d85fbfffad22a05b3eb43955af49748040d04a273c0b8eb29599e2d08b7699f",
+    "artwork/events/fighter_option.png": "43a0a8ce90a7b399b174e61c783870788b5229a31af41dbdbdc627fd098fdaad",
+    "artwork/events/front-air-pact-photo.png": "4ccc91d5d89380f75319883fe1b1f4728b6d628f04afad5b65b86a5de98020c6",
+    "artwork/events/front-aircraft.png": "510b895b8b94d47e61f75191309b61375cd4c473cacf1ba98626ae906fe52776",
+    "artwork/events/intro-810-photo.png": "e2c9fdbcf77708b91fe0a1318092622fea592bfc658ef0af40c269e0a0a3359c",
+    "artwork/events/intro-nato-deck-air.png": "474f5761863abeca5cb42cc90ac9e7b1ce6917b4aaaac1a55ba2d7a0ca132d59",
+    "artwork/events/intro-pact-airfield-damage.png": "0ba076490b569770a3b40f8987271e3eadccb6bcd054e34ac91f52aa319862ca",
+    "artwork/events/intro_157-v2.png": "9b74e84701ebdc893a09db1fd71a683c1275ecb40060ec03190d6025b2f2d03e",
+    "artwork/events/intro_157.png": "d66206405d1a78f1c4bb3defb45aeea06f215fc291d8be2e5c8ea3136d6a78a2",
+    "artwork/events/intro_airfield.png": "2d5c3f7f7ed07f30a2a6fc7eab26f4854bf69f4d2610c5dffe62c2d40032a7eb",
+    "artwork/events/intro_beach.png": "5ce7693a073976cd7a183a9ebc0fd85b86bcf4cda988a43199102fb38b9bb00a",
+    "artwork/events/intro_soviet_coast.png": "5ce7693a073976cd7a183a9ebc0fd85b86bcf4cda988a43199102fb38b9bb00a",
+    "artwork/events/mig27-option.png": "8356d951094d394d17ddc0b70c461933eeabfd1798f61a0ce12af9e34016f6c8",
+    "artwork/events/nato-armor-notice-photo.png": "fa02092b029fc812e526c206f24d641999f2f9f3bb616dac8ad95098b860ec80",
+    "artwork/events/nato-difficulty-normal.png": "8da49646ac03ab134e66d641c72285719bc67947985353f7baa84fa8bfd4b158",
+    "artwork/events/nato_air_assault.png": "2ae6257d2b3e899945485710b3c9dd35596c2885e71a84343444d53b58f4bd46",
+    "artwork/events/nato_armor.png": "75eee0632da6e2db17c76badbc19049e25de74b4bfcedaa512682aa24b7b5fc8",
+    "artwork/events/pact_artillery.png": "690a94171be131486533c6bc4baa7088925761df9b0bc227beba2c9dba50f5ef",
+    "artwork/events/pact_naval_infantry-v2.png": "f99efca977dfc5cbf5f35334992f6fbb8919ad2024d1611de0da7c59472617a2",
+    "artwork/events/pact_naval_infantry.png": "72940a1f91463690a1d8a607cacb245afbd068d79594344cd775ed23d7abab3d",
+    "artwork/events/reserve_plan_nato.png": "b892e60d5e798ad06a5566cfef30ae4116ddc4a293bd5a601880484360c58e7a",
+    "artwork/events/reserve_plan_pact.png": "7a3d5fc9bf60986f97061e8b34f2b6d40dd89ae79cbb9654d0114124105ae0d7",
+    "artwork/events/seal_balaklava.png": "8fe6b38135a2270da17ebc68b464dc0fff68a3c0fbf4d3ca142052d727f18a20",
+    "artwork/events/seal_kacha.png": "d12be8e16d02367207aed2ab2f21f8f930fe264d941082de439617ad88c7b071",
+    "artwork/events/sov_emergency.png": "5f12fea3e5684292279fc90086b50edfb681d8fe55d529adb5c932e78a73e0c5",
+    "artwork/events/sov_prepared-v2.png": "e0b22d330b472970cf64afceef11ec5544448c1e9245ebff28817cfb2f78213d",
+    "artwork/events/sov_prepared.png": "904adb6c09e321c40d5ec33b4e78d7d664cca56e0ffe85e08628cb4c13c58b6a",
+    "artwork/events/strike_option.png": "c11b6991bf1c9ba8961590c3c7a16f8104baccf46195ca895c36a7152f4a9717",
+    "artwork/events/su25-option.png": "e21ce9cb53f144c48baa0eed9cc476ac4eeda4561a156ccac4c10653fb190d85",
+    "artwork/menu/kacha-menu-original.png": "f2d94e1d0e7a71a2ec0928a038455054660586ddae8715dcfb78b25d9dfc2cd3",
+    "artwork/emblems/wikimedia/Air_Defence_60-metadata.json": "3d588d0eb7a02ca2eec805b3f14bcba9d90cd752e677765fb6697ce8f2514e0f",
+    "artwork/emblems/wikimedia/Air_Defence_60-preview.png": "f7326a1888f3643d3ff09ab4d29f5ef42a03795d9f8fceeb4470c20ce948981a",
+    "artwork/emblems/wikimedia/Air_Defence_60.svg": "9deb0476d7000425ae68a7eb80c077cee2b395416363ca59c6f53325751d4948",
+    "artwork/emblems/wikimedia/Crimea_Army-metadata.json": "1b00bbfa02ee734813c953c5fddb333afca1aabe83e164fb712c25981419add1",
+    "artwork/emblems/wikimedia/Crimea_Army-preview.png": "c1804949bbd6963664923fcfcf39c4f2a09998fb9676299cf43c94616729785b",
+    "artwork/emblems/wikimedia/Crimea_Army.svg": "f6741b67fcf8934c47f2482a54440ab406ae82763c9c7676b9972f476232127f",
+    "artwork/emblems/wikimedia/Fleet_Defence-metadata.json": "6edcca2b4ee82eb6ba23194b380036f628a82923ebc46757f81e76fc0f5853d6",
+    "artwork/emblems/wikimedia/Fleet_Defence-preview.png": "bca7ba5138ebe614c6a4852fa9e996637f9b1c56672a01854433e1e0590f7f9b",
+    "artwork/emblems/wikimedia/Fleet_Defence.svg": "fa95118ac280bbd70c6df08b5706981c2e192856fef934ac68eb0bdf35f9ccb1",
+    "artwork/emblems/wikimedia/KGB_Border-metadata.json": "781998603e87bb0b17145633223db26b5dd7f9344fe09620a31d8146863a0410",
+    "artwork/emblems/wikimedia/KGB_Border-preview.png": "03126786febe00323eb3890462271609e2465058b7f14d9116e9c21475cb5f41",
+    "artwork/emblems/wikimedia/KGB_Border.svg": "1b578daffe725b504e85dba40ead2f2c11f383b0d759a7ac311b3bdf2b699a74",
+    "artwork/emblems/wikimedia/Militsiya-metadata.json": "35adac2abdd09165f199143332fd41e2253b33d7093a1e7baed548bf4a2ddbc2",
+    "artwork/emblems/wikimedia/Militsiya-preview.png": "5791d1856d0b46cfd6cd4f6fa73637d50db743f2f0ac737aedd78b06ce432ff3",
+    "artwork/emblems/wikimedia/Militsiya.svg": "56cce311e83717d8633172dd84bcd13ddad7005ed4b785b3e628bac1be07e0bb",
+    "artwork/emblems/wikimedia/SOV_810-metadata.json": "6562f57742cf1846f1bd5944515286404534a8a243f44efc289e386071057319",
+    "artwork/emblems/wikimedia/SOV_810-preview.png": "d3ac6da36aae040fd99f3ee4d847f4f678afb0910e881953f586c1b24548cbb1",
+    "artwork/emblems/wikimedia/SOV_810.svg": "deb0967344712ead3230f9aec0040937fa7f0267d7eb6b9e38ec005dffc14a1e"
+  },
+  "changed_files": {
+    "aviation.yaml": {
+      "before": "165c0a56f3d02e788a23aba2945b8338459d10db2b8e489cc64bba4ded7c6299",
+      "after": "7a46e41f39b8d451318988d6e8ee407b29c087dfa0dc223b2a9b50a978991be0"
+    },
+    "deployments.yaml": {
+      "before": "7ae17742532a7a1dff8608b125c65443e088a94595f181d068a753cdc43aadf9",
+      "after": "94d147c39eaea46ba74cf6c452320af591950df5428686341292786c8a0f109f"
+    },
+    "events.yaml": {
+      "before": "f3f9932f747c7f3bb7ef21aeeb508cd5d4be91d418e80459232b06e12d83ec35",
+      "after": "16b3050fd0c416e5153f3c638223a2d1e228d67bf7f80905f31529f10803a66f"
+    },
+    "map.yaml": {
+      "before": "19d2edbf08274da4746dd16dc1eb2ef9b7b44a8b559258f5c42dcdb203033d88",
+      "after": "f72835ddd2f37b85403a1d786b8a9ca30cd572b9793fa84cd208374d5aa9f7cf"
+    },
+    "production.yaml": {
+      "before": "46ecf0ee47681fd51302432ffa433914627441f2036e38214f6f28d4b2e15057",
+      "after": "1d6a2f6f07496e7741b42d2c4227790fe474708617f574ce207632c1b7547df6"
+    },
+    "profile.yaml": {
+      "before": "97c6f58767bc9eba6fe08306eae1fc33b00a6a6b920265e3d755f9be11630869",
+      "after": "2bcd1eda86819a99ebe3aeef8f1b098f9d0eee42b6645b71be0cf69ffd1bb27a"
+    },
+    "world.yaml": {
+      "before": "771b909e699f6d849e4a32e55d9ebf57209f67e2af3046ffe5c4c859cd690d6e",
+      "after": "68893b3af0cb531680dc1b8dadee35b61da38830c00378ac1d6d8ad13ef25758"
+    },
+    "artwork/heightmap.png": {
+      "before": "ea880fe2125b1aab7cfc8e75f755911d61f66104fc4ba819787fa466bbbdca61",
+      "after": "9530e1390f2492cea2eff7589deb1ec22798aec2f6bb33f404c8274c773200dd"
+    },
+    "artwork/surface.png": {
+      "before": "74c7a1058feceeef0cbcbb9f6f1a34554d530c75f56a2bbd8b9c50699717d6ec",
+      "after": "f0352d82079b130e37b150d3f6982ca2ced5f89860305bd64f0909f849fbdc51"
+    }
+  },
+  "runtime_verified": false
+}

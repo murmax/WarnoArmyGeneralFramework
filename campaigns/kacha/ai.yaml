@@ -9,15 +9,11 @@ orders:
   - inkerman
   - sevastopol
 - unit: dep_usmc_1st_landing
-  type: attack
-  target: sevastopol
+  type: defend
+  target: kacha_beach
   start_turn: 1
   route:
-  - kacha_crossroads
-  - orlovka
-  - belbek
-  - inkerman
-  - sevastopol
+  - kacha_beach
 - unit: dep_usmc_2nd_landing
   type: attack
   target: sevastopol
@@ -122,3 +118,9 @@ orders:
   type: defend
   target: simferopol
   start_turn: 1
+- unit: dep_usmc_beachhead_guard
+  type: defend
+  target: kacha_beach
+  start_turn: 1
+  route:
+  - kacha_beach

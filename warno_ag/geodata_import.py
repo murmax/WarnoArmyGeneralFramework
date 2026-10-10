@@ -64,8 +64,11 @@ def import_geographic_map(bounds_wgs84, destination, cache, *, resolution=2048,
         rendered = rewrite_report(stage / 'surface' / 'osm-tiles.json',
                                   {'source': '../osm/source.gpkg',
                                    'dem': '../dem/dem-source.tif'})
+        if cropped.get('raster_origin') != 'northwest' or rendered.get('raster_origin') != 'northwest':
+            raise ValueError('Geographic import requires aligned north-up height and surface rasters')
         report = {
             'format': 'agf-geographic-map-import/v1',
+            'raster_origin': 'northwest',
             'bounds_wgs84': list(bounds), 'heightmap': 'heightmap/heightmap.png',
             'preview': 'dem-preview/preview.png',
             'surface': 'surface/surface.png',

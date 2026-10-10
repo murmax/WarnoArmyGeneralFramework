@@ -49,7 +49,7 @@ surface:
 ./.venv/Scripts/python.exe -B scripts/campaign.py check campaigns/my-campaign --game $game --output artifacts/geography-check-01
 ```
 
-The imported images start at the **southwest**: columns increase along native x and rows along native y. A usual north-up GIS image needs the proper vertical orientation before use. Change height and surface together. A north-up camera does not transform the source pixels.
+New imported images are **north-up**, with a **northwest** origin: columns increase eastward along native x, and rows increase southward along native y. Use the generated surface, heightmap and cells together without flipping them. Releases through 1.1.0 incorrectly emitted south-up geography; old projects need an explicit coordinated migration, not another flip on new imports. Legacy `raster_origin: southwest` is still readable and is never silently migrated. Camera orientation does not transform source pixels.
 
 ## Three independent map products
 
@@ -98,13 +98,13 @@ Do not mix file and inline height samples. Native extent must equal render-case 
 
 The maximum raster value reaches `max_altitude_lbu ×215` native units. Terrain must stay strictly below the 5000-unit strategic overlay. Increasing the DEM normalization ceiling reduces relative heights; lowering it raises contrast but clips peaks. Changing the world maximum changes absolute rendered altitude. Inspect both; do not raise the whole map to create mountain contrast.
 
-Optional `georeference` requires `crs: EPSG:4326`, geographic bounds, `elevation_ceiling_m` 1–10000, 64-character lowercase source SHA256, and `raster_origin: southwest`. Use the DEM source hash from the report. This records provenance and mapping, not automatic unit relocation.
+Optional `georeference` requires `crs: EPSG:4326`, geographic bounds, `elevation_ceiling_m` 1–10000, 64-character lowercase source SHA256, and `raster_origin: northwest`. Use the DEM source hash from the report. This records provenance and mapping, not automatic unit relocation.
 
 For an unrotated geographic/world rectangle, coordinate conversion is:
 
 ```text
 x = min_x + (longitude - west) / (east - west) * (max_x - min_x)
-y = min_y + (latitude  - south) / (north - south) * (max_y - min_y)
+y = min_y + (north - latitude) / (north - south) * (max_y - min_y)
 ```
 
 Check recognizable corner landmarks before assigning many placements. Longitude/latitude widths do not represent equal physical distances; choose a sensible extent/aspect ratio for the selected area.
@@ -150,4 +150,4 @@ these classes rather than an unrelated pattern/graph registration.
 
 ## Troubleshooting
 
-Mirrored/upside-down map: compare raster axes, southwest origin, coordinate formula and camera orientation separately. Water movement mismatch: review preliminary masks and manually correct cells. Old scenery in a new region: replace object positions and other campaign placements. Cache-source mismatch: change matching map_name in world/profile and use a new build output. Floating scenery: use ground offset rather than adding terrain twice. Flat/overlay-crossing mountains: distinguish normalization ceiling from absolute world altitude. For local GeoTIFF/OSM files and exact renderer layers continue with [the advanced input guide](13-local-geodata.md).
+Mirrored/upside-down map: releases through 1.1.0 emitted a known south-up reflection. New imports are north-up; check `raster_origin` and do not flip them again. For a legacy map, migrate surface, heightmap, movement rows/bounds and all geographic placements together; a camera rotation alone cannot repair a reflection. Water movement mismatch: review preliminary masks and manually correct cells. Old scenery in a new region: replace object positions and other campaign placements. Cache-source mismatch: change matching map_name in world/profile and use a new build output. Floating scenery: use ground offset rather than adding terrain twice. Flat/overlay-crossing mountains: distinguish normalization ceiling from absolute world altitude. For local GeoTIFF/OSM files and exact renderer layers continue with [the advanced input guide](13-local-geodata.md).

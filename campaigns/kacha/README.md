@@ -1,6 +1,6 @@
-# Kacha: Defense of Sevastopol — source example
+﻿# Kacha: Defense of Sevastopol — source example
 
-This folder contains the authoring source of **Kacha V17.2**, the locally accepted version published to [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3811284575). It is a complete example, not a precompiled game mod.
+This folder contains the authoring source of **Kacha V20**, with corrected north-up geography and the V19 rosters, events and AI rules. The map surface, heightmap, movement cells and spatial placements were migrated together; see ORIENTATION_MIGRATION.json. New geographic imports need no transposition. It is a complete source example, not a precompiled game mod. The [Workshop campaign](https://steamcommunity.com/sharedfiles/filedetails/?id=3811284575) may be at a different release; source validation is separate from gameplay acceptance.
 
 Start with [the guide](../../docs/GETTING_STARTED.md) or [русской инструкцией](../../docs/GETTING_STARTED_RU.md). Every YAML file is described in the [reference](../../docs/YAML_REFERENCE.md) / [справочнике](../../docs/YAML_REFERENCE_RU.md).
 

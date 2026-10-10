@@ -5,7 +5,7 @@ airfields:
   country: US
   position:
   - 778721.88
-  - 629558.43
+  - 681161.57
   name:
     ru: Авиагруппа десанта
     en: Landing Carrier Group
@@ -14,7 +14,7 @@ airfields:
   country: SOV
   position:
   - 1280500
-  - 890500
+  - 420220
   name:
     ru: Аэродром ВВС ОдВО
     en: Odessa MD Airbase

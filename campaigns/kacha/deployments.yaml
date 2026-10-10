@@ -5,7 +5,7 @@ deployments:
   side: nato
   position:
   - 851500
-  - 513500
+  - 797220
   fatigue: 1
   action_points: 12
   frozen_turns: 0
@@ -15,8 +15,8 @@ deployments:
   battalion: usmc_1st_landing
   side: nato
   position:
-  - 838500
-  - 526500
+  - 864500
+  - 745220
   fatigue: 0
   action_points: 12
   frozen_turns: 0
@@ -25,7 +25,7 @@ deployments:
   side: nato
   position:
   - 851500
-  - 539500
+  - 771220
   fatigue: 0
   action_points: 12
   frozen_turns: 0
@@ -34,7 +34,7 @@ deployments:
   side: nato
   position:
   - 851500
-  - 526500
+  - 784220
   fatigue: 0
   action_points: 12
   frozen_turns: 0
@@ -43,7 +43,7 @@ deployments:
   side: pact
   position:
   - 890500
-  - 539500
+  - 771220
   fatigue: 1
   action_points: 7
   frozen_turns: 0
@@ -52,7 +52,7 @@ deployments:
   side: pact
   position:
   - 903500
-  - 448500
+  - 862220
   fatigue: 0
   action_points: 8
   frozen_turns: 0
@@ -61,7 +61,7 @@ deployments:
   side: pact
   position:
   - 890500
-  - 500500
+  - 810220
   fatigue: 2
   action_points: 11
   frozen_turns: 0
@@ -72,7 +72,7 @@ deployments:
   side: pact
   position:
   - 1085500
-  - 487500
+  - 823220
   fatigue: 0
   action_points: 11
   frozen_turns: 0
@@ -81,7 +81,7 @@ deployments:
   side: pact
   position:
   - 890500
-  - 422500
+  - 888220
   fatigue: 0
   action_points: 11
   frozen_turns: 0
@@ -90,7 +90,7 @@ deployments:
   side: pact
   position:
   - 903500
-  - 383500
+  - 927220
   fatigue: 0
   action_points: 12
   frozen_turns: 0
@@ -99,7 +99,7 @@ deployments:
   side: pact
   position:
   - 838500
-  - 331500
+  - 979220
   fatigue: 0
   action_points: 10
   frozen_turns: 0
@@ -108,7 +108,7 @@ deployments:
   side: pact
   position:
   - 851500
-  - 331500
+  - 979220
   fatigue: 0
   action_points: 5
   frozen_turns: 0
@@ -117,7 +117,7 @@ deployments:
   side: pact
   position:
   - 1098500
-  - 500500
+  - 810220
   fatigue: 0
   action_points: 5
   frozen_turns: 0
@@ -126,7 +126,7 @@ deployments:
   side: pact
   position:
   - 877500
-  - 864500
+  - 446220
   fatigue: 0
   action_points: 10
   frozen_turns: 2
@@ -135,7 +135,7 @@ deployments:
   side: pact
   position:
   - 1228500
-  - 695500
+  - 615220
   fatigue: 0
   action_points: 10
   frozen_turns: 2
@@ -144,7 +144,7 @@ deployments:
   side: pact
   position:
   - 877500.0
-  - 383500.0
+  - 927220.0
   fatigue: 0
   action_points: 10
   frozen_turns: 2
@@ -153,7 +153,7 @@ deployments:
   side: pact
   position:
   - 916500.0
-  - 357500.0
+  - 953220.0
   fatigue: 0
   action_points: 10
   frozen_turns: 3
@@ -162,7 +162,7 @@ deployments:
   side: pact
   position:
   - 838500
-  - 318500
+  - 992220
   fatigue: 0
   action_points: 12
   frozen_turns: 0
@@ -171,7 +171,7 @@ deployments:
   side: pact
   position:
   - 851500.0
-  - 318500.0
+  - 992220.0
   fatigue: 0
   action_points: 4
   frozen_turns: 0
@@ -180,7 +180,16 @@ deployments:
   side: pact
   position:
   - 1267500.0
-  - 695500.0
+  - 615220.0
   fatigue: 0
   action_points: 10
   frozen_turns: 2
+- id: dep_usmc_beachhead_guard
+  battalion: usmc_beachhead_guard
+  side: nato
+  position:
+  - 838500
+  - 784220
+  fatigue: 0
+  action_points: 12
+  frozen_turns: 5

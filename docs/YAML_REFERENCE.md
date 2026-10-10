@@ -518,7 +518,7 @@ More objects can increase city/forest density; terrain names do not automaticall
 
 ### georeference
 
-If present, requires crs EPSG:4326, bounds_wgs84 `[west,south,east,north]`, elevation_ceiling_m 1…10000, source_sha256 64 lowercase hex characters, raster_origin southwest. Longitude is −180…180, latitude −90…90, ordered nonempty bounds. This is provenance/geographic mapping; units/events still use game x/y.
+If present, requires crs EPSG:4326, bounds_wgs84 `[west,south,east,north]`, elevation_ceiling_m 1…10000, source_sha256 64 lowercase hex characters, raster_origin northwest for new north-up geography (legacy southwest remains readable without automatic migration). Longitude is −180…180, latitude −90…90, ordered nonempty bounds. This is provenance/geographic mapping; units/events still use game x/y.
 
 GeoTIFF/OSM tools: geotiff-inspect, geotiff-crop, geodata-import. Run `-m warno_ag <command> --help` for arguments and see the geography recipe. Retain source-data license/attribution.
 

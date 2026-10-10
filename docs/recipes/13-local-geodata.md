@@ -18,7 +18,7 @@ Open its `preview.png` and `geotiff.json`. The preview is north-up. Choose an en
 ./.venv/Scripts/python.exe -B -m warno_ag geotiff-crop data/my-dem.tif 32.45 44.28 34.15 45.55 2048 artifacts/dem-crop-01 --elevation-ceiling-m 1200
 ```
 
-Replace source/coordinates. Crop output `heightmap.png` is southwest-origin, ready for the world's row convention; use `crop.json` for bounds and hash. Destination must be new.
+Replace source/coordinates. Crop output `heightmap.png` is northwest-origin and north-up, ready for the world's row convention; use `crop.json` for bounds and hash. Destination must be new.
 
 | Argument | Limits / effect |
 | --- | --- |
@@ -77,7 +77,7 @@ Colors/line widths and polygon filters are fixed by the current renderer; they a
 
 Administrative boundaries, address labels, POI symbols, transit routes and contour lines are not drawn. This is a deliberately limited renderer, not the complete OpenStreetMap Carto style. Polygon drawing uses exterior rings; interior-hole fidelity is limited. Bridges/tunnels do not have a full cartographic stacking model.
 
-Contrast is multiplied by 1.12 and brightness by 0.84 for strategic lighting. The image is first rendered in EPSG:3857, then cropped/reprojected to the chosen EPSG:4326 rectangle and flipped to southwest origin. Zoom 8–13, surface size 512–8192 and the 48-million intermediate pixel bound apply to this local-file call too.
+Contrast is multiplied by 1.12 and brightness by 0.84 for strategic lighting. The image is first rendered in EPSG:3857, then cropped/reprojected to the chosen EPSG:4326 rectangle and retains its north-up, northwest-origin orientation. Zoom 8–13, surface size 512–8192 and the 48-million intermediate pixel bound apply to this local-file call too.
 
 ## Preliminary terrain classification
 

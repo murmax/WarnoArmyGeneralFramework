@@ -1,5 +1,6 @@
 """Per-turn, nonblocking strategic missions using native ownership selectors."""
 import copy
+from .ai_control import mission_cooperates
 
 
 def battle_profile(policy,side,turn,defensive=False):
@@ -60,7 +61,7 @@ def scheduled_missions(group,order,side,members,compiled,*,add,prop,ref,boolean,
             properties=[prop(cls,'Blocking',boolean(False)),prop(cls,'Group',ref(group,'TGDVariableUnitGroup')),
                 prop(cls,'ExecuteOnlyOnIAActivated',boolean(False)),prop(cls,'OrderCancelable',boolean(True)),
                 prop(cls,'AttackEnemyInRadius',integer(attack_radius)),
-                prop(cls,'UseOnlyUnitInMissionToAttack',boolean(not compiled['campaign']['ai_policy']['cooperate'])),
+                prop(cls,'UseOnlyUnitInMissionToAttack',boolean(not mission_cooperates(compiled, side))),
                 prop(cls,'WaypointReachedRadius',integer(waypoint_radius)),
                 prop(cls,'Position' if defensive else 'Positions',ref(tags[target],'TGDTagPosition') if defensive
                      else listref([ref(tags[point],'TGDTagPosition') for point in remaining]))]
@@ -105,6 +106,16 @@ def scheduled_missions(group,order,side,members,compiled,*,add,prop,ref,boolean,
         for phase in changes:
             if phase['from_turn']<=turn:plan=phase
         action,kind=one(plan,turn)
+        recapture = compiled['campaign']['ai_policy'].get('recapture_if_lost', {}).get(side)
+        if recapture:
+            recovery, recovery_kind = one({'type': 'counterattack', 'target': recapture,
+                                           'route': [recapture]}, turn)
+            action = add('TGDDescriptorIfThenElse', [
+                prop('TGDDescriptorIfThenElse', 'Condition',
+                     ref(owner(recapture, side), 'TGDConditionPositionInInfluenceMap')),
+                prop('TGDDescriptorIfThenElse', 'EffetIfTrue', ref(action, kind)),
+                prop('TGDDescriptorIfThenElse', 'EffetIfFalse', ref(recovery, recovery_kind))])
+            kind = 'TGDDescriptorIfThenElse'
         count=add('TGDVariableInteger',[prop('TGDVariableInteger','Value',integer(0))])
         read=add('TGDDescriptorSetVariableIntegerFromUnitGroup',[
             prop('TGDDescriptorSetVariableIntegerFromUnitGroup','Group',ref(group,'TGDVariableUnitGroup')),

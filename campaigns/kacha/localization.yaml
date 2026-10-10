@@ -33,6 +33,7 @@ translations:
     Ognevaya gruppa: Fire Group
     Komandnyy punkt: Command Post
     Komandnoe zveno: Command Flight
+    Landing Security Battalion: Landing Security Battalion
   fr:
     Landing Carrier Group: Groupe aéronaval du débarquement
     Odessa MD Airbase: Base aérienne du district d'Odessa
@@ -905,6 +906,136 @@ translations:
     Harsh: Impitoyable
     For a first campaign.: Pour découvrir la campagne.
     For experienced commanders.: Pour les commandants expérimentés.
+    ? 'Date: 7 September 1989
+
+      Duration: 20 turns
+
+      Area: Kacha — Belbek — Sevastopol, Crimea
+
+
+      With both alliances committed in Central Europe, US command opens a new front on the Black Sea.
+      The 2nd Marine Division lands at Kacha to secure its beachhead, break through Belbek and seize Sevastopol.
+
+
+      The Black Sea Fleet is caught during mobilization. The 810th Naval Infantry Brigade faces the first
+      assault while local garrisons buy time. Incomplete regimental groups of the 157th Motor Rifle Division
+      assemble at Simferopol and enter the battle in successive waves.
+
+
+      NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
+      blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
+      operation ends in failure for the American invasion.
+
+
+      Losing Kacha does not end the campaign immediately: US forces can retake the beachhead before the
+      operation deadline.'
+    : 'Date : 7 septembre 1989
+
+      Durée : 20 tours
+
+      Zone : Katcha — Belbek — Sébastopol, Crimée
+
+
+      Alors que les deux alliances combattent en Europe centrale, le commandement américain ouvre un nouveau
+      front sur la mer Noire. La 2e division de Marines débarque à Katcha pour consolider sa tête de pont,
+      percer à Belbek et prendre Sébastopol.
+
+
+      La flotte de la mer Noire est surprise en pleine mobilisation. La 810e brigade d''infanterie de
+      marine subit le premier choc, tandis que les garnisons locales gagnent du temps. Les groupements
+      incomplets de la 157e division motorisée se rassemblent à Simferopol et entrent successivement dans
+      la bataille.
+
+
+      L''OTAN doit prendre Sébastopol ; l''URSS doit reprendre Katcha et briser le débarquement. La prise
+      de Simferopol bloque les renforts divisionnaires soviétiques. Sans objectif décisif atteint au terme
+      des vingt tours, l''invasion américaine est un échec.
+
+
+      Prenez Sébastopol avant le début du tour 20. Le bataillon de sécurité du débarquement reste immobile
+      aux tours 1 à 5. La perte de Katcha ne termine pas immédiatement la campagne : reprenez la tête
+      de pont avant l’échéance.'
+    Landing Security Battalion: Sécurité du débarquement
+    ? 'Hold Sevastopol until the operation deadline. Retake Kacha to cut US supply. Capturing the beachhead
+      does not immediately end the campaign; US forces can counterattack before the deadline.
+
+
+      Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
+      begins, the 157th cannot deploy.
+
+
+      Preserve the regular battalions for a counterattack. District aviation will support you when it
+      arrives.'
+    : 'Tenez Sébastopol jusqu’à l’échéance de l’opération. Reprenez Katcha pour couper le ravitaillement
+      américain. La prise de la tête de pont ne termine pas immédiatement la campagne ; les forces américaines
+      peuvent contre-attaquer avant l’échéance.
+
+
+      Bakhtchissaraï garde la route de Simferopol. Si les Américains prennent Simferopol avant le début
+      du neuvième tour, la 157e division ne pourra pas se déployer.
+
+
+      Préservez les bataillons réguliers pour une contre-attaque. L''aviation du district vous appuiera
+      dès son arrivée.'
+    ? 'Capture Sevastopol before turn 20 begins. The landing security battalion cannot move during turns
+      1–5. Losing Kacha does not end the campaign immediately: retake the beachhead before the deadline.
+
+
+      Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
+      turn nine begins prevents the Soviet 157th Division from deploying.
+
+
+      Move quickly while you hold the advantage.'
+    : 'Prenez Sébastopol avant le début du tour 20. Le bataillon de sécurité du débarquement reste immobile
+      aux tours 1 à 5. La perte de Katcha ne termine pas immédiatement la campagne : reprenez la tête
+      de pont avant l’échéance.
+
+
+      Belbek ouvre l''approche nord ; Balaklava ouvre la route sud. Prendre Simferopol avant le début
+      du neuvième tour empêche le déploiement de la 157e division soviétique.
+
+
+      Avancez vite tant que l''avantage est de votre côté.'
+    174th SAM Brigade: 174e brigade SAM
+    Landind security: Sécurité du débarquement
+    Anti-Tank Screen Company: Compagnie écran antichar
+    Command and Supply: Commandement et ravitaillement
+    Fagot ATGM Platoon: Section AT Fagot
+    Garrison Command: Commandement de garnison
+    Naval Fagot: Fagot des fusiliers marins
+    Naval Rapira: Rapira des fusiliers marins
+    Naval Recon Tanks: Chars de reconnaissance navals
+    Naval Reconnaissance: Reconnaissance navale
+    Naval SPG-9: SPG-9 des fusiliers marins
+    Naval Special Forces: Spetsnaz naval
+    Police Company: Compagnie de police
+    Rapira Platoon: Section Rapira
+    Reserve Strela-3: Strela-3 de réserve
+    S-125 Neva-M: S-125 Neva-M
+    Security Company: Compagnie de sécurité
+    Security Tank Company: Compagnie chars de sécurité
+    Tank Company Command: Commandement compagnie chars
+    Unmanned Reconnaissance: Reconnaissance par drones
+    1 Platoon: 1. section
+    2 Platoon: 2. section
+    3 Platoon: 3. section
+    4 Platoon: 4. section
+    1 Tank Platoon: 1. peloton de chars
+    2 Tank Platoon: 2. peloton de chars
+    3 Tank Platoon: 3. peloton de chars
+    4 Tank Platoon: 4. peloton de chars
+    1 D-44 Platoon: 1. section D-44
+    2 D-44 Platoon: 2. section D-44
+    3 D-44 Platoon: 3. section D-44
+    4 D-44 Platoon: 4. section D-44
+    1 Neva-M Battery: 1. batterie Neva-M
+    2 Neva-M Battery: 2. batterie Neva-M
+    3 Neva-M Battery: 3. batterie Neva-M
+    4 Neva-M Battery: 4. batterie Neva-M
+    1 Special Forces Platoon: 1. section Spetsnaz
+    2 Special Forces Platoon: 2. section Spetsnaz
+    3 Special Forces Platoon: 3. section Spetsnaz
+    4 Special Forces Platoon: 4. section Spetsnaz
   de:
     Landing Carrier Group: Luftgruppe der Landungsflotte
     Odessa MD Airbase: Luftwaffenbasis des Militärbezirks Odessa
@@ -1778,6 +1909,136 @@ translations:
     Harsh: Hart
     For a first campaign.: Zum Kennenlernen der Kampagne.
     For experienced commanders.: Für erfahrene Kommandeure.
+    ? 'Date: 7 September 1989
+
+      Duration: 20 turns
+
+      Area: Kacha — Belbek — Sevastopol, Crimea
+
+
+      With both alliances committed in Central Europe, US command opens a new front on the Black Sea.
+      The 2nd Marine Division lands at Kacha to secure its beachhead, break through Belbek and seize Sevastopol.
+
+
+      The Black Sea Fleet is caught during mobilization. The 810th Naval Infantry Brigade faces the first
+      assault while local garrisons buy time. Incomplete regimental groups of the 157th Motor Rifle Division
+      assemble at Simferopol and enter the battle in successive waves.
+
+
+      NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
+      blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
+      operation ends in failure for the American invasion.
+
+
+      Losing Kacha does not end the campaign immediately: US forces can retake the beachhead before the
+      operation deadline.'
+    : 'Datum: 7. September 1989
+
+      Dauer: 20 Runden
+
+      Gebiet: Katscha — Belbek — Sewastopol, Krim
+
+
+      Während beide Bündnisse in Mitteleuropa gebunden sind, eröffnet die amerikanische Führung eine neue
+      Front am Schwarzen Meer. Die 2. Marineinfanteriedivision landet bei Katscha, um den Brückenkopf
+      zu sichern, Belbek zu durchbrechen und Sewastopol einzunehmen.
+
+
+      Die Schwarzmeerflotte wird während ihrer Mobilisierung überrascht. Die 810. Marineinfanteriebrigade
+      fängt den ersten Schlag ab, während örtliche Garnisonen Zeit gewinnen. Unvollständige Regimentsgruppen
+      der 157. Mot.-Schützen-Division sammeln sich in Simferopol und greifen in aufeinanderfolgenden Wellen
+      ein.
+
+
+      Die NATO muss Sewastopol einnehmen; die UdSSR muss Katscha zurückerobern und die Landung zerschlagen.
+      Simferopols Eroberung blockiert sowjetische Divisionsverstärkungen. Wird das entscheidende Ziel
+      bis Runde 20 nicht erreicht, scheitert die amerikanische Invasion.
+
+
+      Erobern Sie Sewastopol vor Beginn von Runde 20. Das Landungssicherungsbataillon bleibt in den Runden
+      1–5 unbeweglich. Der Verlust von Katscha beendet den Feldzug nicht sofort: Erobern Sie den Brückenkopf
+      vor Ablauf der Frist zurück.'
+    Landing Security Battalion: Landungssicherung
+    ? 'Hold Sevastopol until the operation deadline. Retake Kacha to cut US supply. Capturing the beachhead
+      does not immediately end the campaign; US forces can counterattack before the deadline.
+
+
+      Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
+      begins, the 157th cannot deploy.
+
+
+      Preserve the regular battalions for a counterattack. District aviation will support you when it
+      arrives.'
+    : 'Halten Sie Sewastopol bis zum Ende der Operation. Erobern Sie Katscha zurück, um den US-Nachschub
+      abzuschneiden. Die Einnahme des Brückenkopfs beendet den Feldzug nicht sofort; US-Truppen können
+      vor Fristende gegenangreifen.
+
+
+      Bachtschyssaraj schützt die Straße aus Simferopol. Erobern die Amerikaner Simferopol vor Beginn
+      der neunten Runde, kann die 157. Division nicht aufmarschieren.
+
+
+      Schonen Sie reguläre Bataillone für einen Gegenangriff. Die Bezirksluftstreitkräfte unterstützen
+      Sie nach ihrer Ankunft.'
+    ? 'Capture Sevastopol before turn 20 begins. The landing security battalion cannot move during turns
+      1–5. Losing Kacha does not end the campaign immediately: retake the beachhead before the deadline.
+
+
+      Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
+      turn nine begins prevents the Soviet 157th Division from deploying.
+
+
+      Move quickly while you hold the advantage.'
+    : 'Erobern Sie Sewastopol vor Beginn von Runde 20. Das Landungssicherungsbataillon bleibt in den Runden
+      1–5 unbeweglich. Der Verlust von Katscha beendet den Feldzug nicht sofort: Erobern Sie den Brückenkopf
+      vor Ablauf der Frist zurück.
+
+
+      Belbek öffnet den nördlichen Zugang, Balaklawa den südlichen Weg. Die Eroberung Simferopols vor
+      Beginn der neunten Runde verhindert den Aufmarsch der sowjetischen 157. Division.
+
+
+      Handeln Sie schnell, solange Sie im Vorteil sind.'
+    174th SAM Brigade: 174. Fla-Raketenbrigade
+    Landind security: Landungssicherung
+    Anti-Tank Screen Company: Panzerabwehr-Sperrkompanie
+    Command and Supply: Führung und Versorgung
+    Fagot ATGM Platoon: Fagot-Panzerabwehrzug
+    Garrison Command: Garnisonsführung
+    Naval Fagot: Marine-Fagot
+    Naval Rapira: Marine-Rapira
+    Naval Recon Tanks: Marine-Aufklärungspanzer
+    Naval Reconnaissance: Marineaufklärung
+    Naval SPG-9: Marine-SPG-9
+    Naval Special Forces: Marine-Spezialkräfte
+    Police Company: Polizeikompanie
+    Rapira Platoon: Rapira-Zug
+    Reserve Strela-3: Reserve Strela-3
+    S-125 Neva-M: S-125 Newa-M
+    Security Company: Sicherungskompanie
+    Security Tank Company: Sicherungs-Panzerkompanie
+    Tank Company Command: Führung Panzerkompanie
+    Unmanned Reconnaissance: Drohnenaufklärung
+    1 Platoon: 1. Zug
+    2 Platoon: 2. Zug
+    3 Platoon: 3. Zug
+    4 Platoon: 4. Zug
+    1 Tank Platoon: 1. Panzerzug
+    2 Tank Platoon: 2. Panzerzug
+    3 Tank Platoon: 3. Panzerzug
+    4 Tank Platoon: 4. Panzerzug
+    1 D-44 Platoon: 1. D-44-Zug
+    2 D-44 Platoon: 2. D-44-Zug
+    3 D-44 Platoon: 3. D-44-Zug
+    4 D-44 Platoon: 4. D-44-Zug
+    1 Neva-M Battery: 1. Newa-M-Batterie
+    2 Neva-M Battery: 2. Newa-M-Batterie
+    3 Neva-M Battery: 3. Newa-M-Batterie
+    4 Neva-M Battery: 4. Newa-M-Batterie
+    1 Special Forces Platoon: 1. Spezialkräftezug
+    2 Special Forces Platoon: 2. Spezialkräftezug
+    3 Special Forces Platoon: 3. Spezialkräftezug
+    4 Special Forces Platoon: 4. Spezialkräftezug
   es:
     Landing Carrier Group: Grupo aeronaval de desembarco
     Odessa MD Airbase: Base aérea del distrito de Odesa
@@ -2649,6 +2910,135 @@ translations:
     Harsh: Implacable
     For a first campaign.: Para conocer la campaña.
     For experienced commanders.: Para comandantes experimentados.
+    ? 'Date: 7 September 1989
+
+      Duration: 20 turns
+
+      Area: Kacha — Belbek — Sevastopol, Crimea
+
+
+      With both alliances committed in Central Europe, US command opens a new front on the Black Sea.
+      The 2nd Marine Division lands at Kacha to secure its beachhead, break through Belbek and seize Sevastopol.
+
+
+      The Black Sea Fleet is caught during mobilization. The 810th Naval Infantry Brigade faces the first
+      assault while local garrisons buy time. Incomplete regimental groups of the 157th Motor Rifle Division
+      assemble at Simferopol and enter the battle in successive waves.
+
+
+      NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
+      blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
+      operation ends in failure for the American invasion.
+
+
+      Losing Kacha does not end the campaign immediately: US forces can retake the beachhead before the
+      operation deadline.'
+    : 'Fecha: 7 de septiembre de 1989
+
+      Duración: 20 turnos
+
+      Zona: Kacha — Belbek — Sebastopol, Crimea
+
+
+      Con ambas alianzas comprometidas en Europa Central, el mando estadounidense abre un nuevo frente
+      en el Mar Negro. La 2.ª División de Marines desembarca en Kacha para asegurar su cabeza de playa,
+      romper la defensa de Belbek y tomar Sebastopol.
+
+
+      La Flota del Mar Negro es sorprendida durante la movilización. La 810.ª Brigada de Infantería de
+      Marina recibe el primer golpe mientras las guarniciones locales ganan tiempo. Grupos incompletos
+      de la 157.ª División Motorizada se concentran en Simferópol y entran en combate por oleadas.
+
+
+      La OTAN debe tomar Sebastopol; la URSS debe recuperar Kacha y derrotar el desembarco. Tomar Simferópol
+      bloquea los refuerzos divisionarios soviéticos. Sin lograr el objetivo decisivo al llegar al turno
+      20, la invasión estadounidense fracasa.
+
+
+      Capture Sebastopol antes del inicio del turno 20. El batallón de seguridad del desembarco permanece
+      inmóvil en los turnos 1–5. Perder Kacha no termina inmediatamente la campaña: recupere la cabeza
+      de playa antes del plazo.'
+    Landing Security Battalion: Seguridad del desembarco
+    ? 'Hold Sevastopol until the operation deadline. Retake Kacha to cut US supply. Capturing the beachhead
+      does not immediately end the campaign; US forces can counterattack before the deadline.
+
+
+      Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
+      begins, the 157th cannot deploy.
+
+
+      Preserve the regular battalions for a counterattack. District aviation will support you when it
+      arrives.'
+    : 'Defienda Sebastopol hasta el plazo de la operación. Recupere Kacha para cortar el suministro estadounidense.
+      Capturar la cabeza de playa no termina inmediatamente la campaña; los estadounidenses pueden contraatacar
+      antes del plazo.
+
+
+      Bajchisarái protege la carretera de Simferópol. Si los estadounidenses toman Simferópol antes de
+      comenzar el noveno turno, la 157.ª División no podrá desplegarse.
+
+
+      Reserve los batallones regulares para un contraataque. La aviación del distrito le apoyará cuando
+      llegue.'
+    ? 'Capture Sevastopol before turn 20 begins. The landing security battalion cannot move during turns
+      1–5. Losing Kacha does not end the campaign immediately: retake the beachhead before the deadline.
+
+
+      Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
+      turn nine begins prevents the Soviet 157th Division from deploying.
+
+
+      Move quickly while you hold the advantage.'
+    : 'Capture Sebastopol antes del inicio del turno 20. El batallón de seguridad del desembarco permanece
+      inmóvil en los turnos 1–5. Perder Kacha no termina inmediatamente la campaña: recupere la cabeza
+      de playa antes del plazo.
+
+
+      Belbek abre el acceso norte; Balaklava, la ruta sur. Tomar Simferópol antes del noveno turno impide
+      desplegar a la 157.ª División soviética.
+
+
+      Avance con rapidez mientras tenga la ventaja.'
+    174th SAM Brigade: 174.ª Brigada SAM
+    Landind security: Seguridad del desembarco
+    Anti-Tank Screen Company: Compañía de barrera AT
+    Command and Supply: Mando y suministro
+    Fagot ATGM Platoon: Pelotón AT Fagot
+    Garrison Command: Mando de guarnición
+    Naval Fagot: Fagot de infantería naval
+    Naval Rapira: Rapira de infantería naval
+    Naval Recon Tanks: Carros de exploración navales
+    Naval Reconnaissance: Reconocimiento naval
+    Naval SPG-9: SPG-9 de infantería naval
+    Naval Special Forces: Fuerzas especiales navales
+    Police Company: Compañía de policía
+    Rapira Platoon: Pelotón Rapira
+    Reserve Strela-3: Strela-3 de reserva
+    S-125 Neva-M: S-125 Neva-M
+    Security Company: Compañía de seguridad
+    Security Tank Company: Compañía de carros de guardia
+    Tank Company Command: Mando de compañía de carros
+    Unmanned Reconnaissance: Reconocimiento con drones
+    1 Platoon: 1. pelotón
+    2 Platoon: 2. pelotón
+    3 Platoon: 3. pelotón
+    4 Platoon: 4. pelotón
+    1 Tank Platoon: 1. pelotón de carros
+    2 Tank Platoon: 2. pelotón de carros
+    3 Tank Platoon: 3. pelotón de carros
+    4 Tank Platoon: 4. pelotón de carros
+    1 D-44 Platoon: 1. pelotón D-44
+    2 D-44 Platoon: 2. pelotón D-44
+    3 D-44 Platoon: 3. pelotón D-44
+    4 D-44 Platoon: 4. pelotón D-44
+    1 Neva-M Battery: 1. batería Neva-M
+    2 Neva-M Battery: 2. batería Neva-M
+    3 Neva-M Battery: 3. batería Neva-M
+    4 Neva-M Battery: 4. batería Neva-M
+    1 Special Forces Platoon: 1. pelotón especial
+    2 Special Forces Platoon: 2. pelotón especial
+    3 Special Forces Platoon: 3. pelotón especial
+    4 Special Forces Platoon: 4. pelotón especial
   pl:
     Landing Carrier Group: Grupa lotnicza desantu
     Odessa MD Airbase: Baza lotnicza Odeskiego OW
@@ -3509,6 +3899,131 @@ translations:
     Harsh: Surowy
     For a first campaign.: Na poznanie kampanii.
     For experienced commanders.: Dla doświadczonych dowódców.
+    ? 'Date: 7 September 1989
+
+      Duration: 20 turns
+
+      Area: Kacha — Belbek — Sevastopol, Crimea
+
+
+      With both alliances committed in Central Europe, US command opens a new front on the Black Sea.
+      The 2nd Marine Division lands at Kacha to secure its beachhead, break through Belbek and seize Sevastopol.
+
+
+      The Black Sea Fleet is caught during mobilization. The 810th Naval Infantry Brigade faces the first
+      assault while local garrisons buy time. Incomplete regimental groups of the 157th Motor Rifle Division
+      assemble at Simferopol and enter the battle in successive waves.
+
+
+      NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
+      blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
+      operation ends in failure for the American invasion.
+
+
+      Losing Kacha does not end the campaign immediately: US forces can retake the beachhead before the
+      operation deadline.'
+    : 'Data: 7 września 1989
+
+      Czas: 20 tur
+
+      Obszar: Kacza — Belbek — Sewastopol, Krym
+
+
+      Gdy oba sojusze są zaangażowane w Europie Środkowej, amerykańskie dowództwo otwiera nowy front nad
+      Morzem Czarnym. 2. Dywizja Piechoty Morskiej ląduje w Kaczy, by zabezpieczyć przyczółek, przełamać
+      Belbek i zdobyć Sewastopol.
+
+
+      Flota Czarnomorska zostaje zaskoczona w trakcie mobilizacji. 810. Brygada Piechoty Morskiej przyjmuje
+      pierwsze uderzenie, a miejscowe garnizony zyskują czas. Niepełne zgrupowania pułkowe 157. Dywizji
+      Zmotoryzowanej zbierają się w Symferopolu i wchodzą do walki kolejnymi falami.
+
+
+      NATO musi zdobyć Sewastopol; ZSRR musi odbić Kaczę i rozbić desant. Zajęcie Symferopola blokuje
+      radzieckie posiłki dywizyjne. Brak osiągnięcia decydującego celu do 20. tury oznacza fiasko amerykańskiej
+      inwazji.
+
+
+      Zdobądź Sewastopol przed rozpoczęciem tury 20. Batalion ochrony desantu pozostaje nieruchomy w turach
+      1–5. Utrata Kaczy nie kończy kampanii natychmiast: odbij przyczółek przed upływem terminu.'
+    Landing Security Battalion: Ochrona przyczółka
+    ? 'Hold Sevastopol until the operation deadline. Retake Kacha to cut US supply. Capturing the beachhead
+      does not immediately end the campaign; US forces can counterattack before the deadline.
+
+
+      Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
+      begins, the 157th cannot deploy.
+
+
+      Preserve the regular battalions for a counterattack. District aviation will support you when it
+      arrives.'
+    : 'Utrzymaj Sewastopol do końca operacji. Odbij Kaczę, aby odciąć amerykańskie zaopatrzenie. Zdobycie
+      przyczółka nie kończy kampanii natychmiast; Amerykanie mogą kontratakować przed upływem terminu.
+
+
+      Bachczysaraj osłania drogę z Symferopola. Jeśli Amerykanie zajmą Symferopol przed rozpoczęciem dziewiątej
+      tury, 157. Dywizja nie zdoła się rozwinąć.
+
+
+      Zachowaj regularne bataliony do kontrataku. Lotnictwo okręgu udzieli wsparcia po przybyciu.'
+    ? 'Capture Sevastopol before turn 20 begins. The landing security battalion cannot move during turns
+      1–5. Losing Kacha does not end the campaign immediately: retake the beachhead before the deadline.
+
+
+      Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
+      turn nine begins prevents the Soviet 157th Division from deploying.
+
+
+      Move quickly while you hold the advantage.'
+    : 'Zdobądź Sewastopol przed rozpoczęciem tury 20. Batalion ochrony desantu pozostaje nieruchomy w
+      turach 1–5. Utrata Kaczy nie kończy kampanii natychmiast: odbij przyczółek przed upływem terminu.
+
+
+      Belbek otwiera północne podejście, a Bałakława południową drogę. Zajęcie Symferopola przed dziewiątą
+      turą uniemożliwia rozwinięcie radzieckiej 157. Dywizji.
+
+
+      Działaj szybko, dopóki masz przewagę.'
+    174th SAM Brigade: 174. brygada plot.
+    Landind security: Ochrona desantu
+    Anti-Tank Screen Company: Kompania zapory ppanc.
+    Command and Supply: Dowództwo i zaopatrzenie
+    Fagot ATGM Platoon: Pluton PPK Fagot
+    Garrison Command: Dowództwo garnizonu
+    Naval Fagot: Morski Fagot
+    Naval Rapira: Morska Rapira
+    Naval Recon Tanks: Morskie czołgi zwiadowcze
+    Naval Reconnaissance: Zwiad morski
+    Naval SPG-9: Morski SPG-9
+    Naval Special Forces: Specnaz piechoty morskiej
+    Police Company: Kompania policji
+    Rapira Platoon: Pluton Rapira
+    Reserve Strela-3: Rezerwa Strieła-3
+    S-125 Neva-M: S-125 Newa-M
+    Security Company: Kompania ochrony
+    Security Tank Company: Kompan. czołgów ochrony
+    Tank Company Command: Dowództwo kompanii czołgów
+    Unmanned Reconnaissance: Zwiad bezzałogowy
+    1 Platoon: 1. pluton
+    2 Platoon: 2. pluton
+    3 Platoon: 3. pluton
+    4 Platoon: 4. pluton
+    1 Tank Platoon: 1. pluton czołgów
+    2 Tank Platoon: 2. pluton czołgów
+    3 Tank Platoon: 3. pluton czołgów
+    4 Tank Platoon: 4. pluton czołgów
+    1 D-44 Platoon: 1. pluton D-44
+    2 D-44 Platoon: 2. pluton D-44
+    3 D-44 Platoon: 3. pluton D-44
+    4 D-44 Platoon: 4. pluton D-44
+    1 Neva-M Battery: 1. bateria Newa-M
+    2 Neva-M Battery: 2. bateria Newa-M
+    3 Neva-M Battery: 3. bateria Newa-M
+    4 Neva-M Battery: 4. bateria Newa-M
+    1 Special Forces Platoon: 1. pluton specnazu
+    2 Special Forces Platoon: 2. pluton specnazu
+    3 Special Forces Platoon: 3. pluton specnazu
+    4 Special Forces Platoon: 4. pluton specnazu
   zh:
     Landing Carrier Group: 登陆舰队航空群
     Odessa MD Airbase: 敖德萨军区航空基地
@@ -4302,3 +4817,117 @@ translations:
     Harsh: 严酷
     For a first campaign.: 适合初次体验战役。
     For experienced commanders.: 适合经验丰富的指挥官。
+    ? 'Date: 7 September 1989
+
+      Duration: 20 turns
+
+      Area: Kacha — Belbek — Sevastopol, Crimea
+
+
+      With both alliances committed in Central Europe, US command opens a new front on the Black Sea.
+      The 2nd Marine Division lands at Kacha to secure its beachhead, break through Belbek and seize Sevastopol.
+
+
+      The Black Sea Fleet is caught during mobilization. The 810th Naval Infantry Brigade faces the first
+      assault while local garrisons buy time. Incomplete regimental groups of the 157th Motor Rifle Division
+      assemble at Simferopol and enter the battle in successive waves.
+
+
+      NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
+      blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
+      operation ends in failure for the American invasion.
+
+
+      Losing Kacha does not end the campaign immediately: US forces can retake the beachhead before the
+      operation deadline.'
+    : '日期：1989年9月7日
+
+      时限：20回合
+
+      区域：卡恰—别尔别克—塞瓦斯托波尔，克里米亚
+
+
+      双方联盟主力正投入中欧战场，美军司令部在黑海开辟新战线。第2海军陆战师在卡恰登陆，旨在稳固登陆场、突破别尔别克并攻占塞瓦斯托波尔。
+
+
+      黑海舰队在动员过程中遭到突袭。第810海军陆战旅迎接第一波进攻，地方驻军争取时间。第157摩步师尚未齐装的团级集群在辛菲罗波尔集结，分批投入战斗。
+
+
+      北约必须攻占塞瓦斯托波尔；苏联必须夺回卡恰，击败登陆部队。占领辛菲罗波尔将阻止苏军师级增援。若到第20回合仍未达成决定性目标，美军入侵将宣告失败。
+
+
+      在第20回合开始前夺取塞瓦斯托波尔。登陆场警卫营在第1至第5回合不能移动。失去卡恰不会立即结束战役：请在期限前夺回登陆场。'
+    Landing Security Battalion: 登陆场警卫营
+    ? 'Hold Sevastopol until the operation deadline. Retake Kacha to cut US supply. Capturing the beachhead
+      does not immediately end the campaign; US forces can counterattack before the deadline.
+
+
+      Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
+      begins, the 157th cannot deploy.
+
+
+      Preserve the regular battalions for a counterattack. District aviation will support you when it
+      arrives.'
+    : '坚守塞瓦斯托波尔直到行动期限。夺回卡恰以切断美军补给。占领登陆场不会立即结束战役，美军仍可在期限前反击。
+
+
+      巴赫奇萨赖守卫来自辛菲罗波尔的道路。如果美军在第9回合开始前占领辛菲罗波尔，第157师将无法展开。
+
+
+      保存正规营的力量，准备反攻。军区航空兵抵达后将提供支援。'
+    ? 'Capture Sevastopol before turn 20 begins. The landing security battalion cannot move during turns
+      1–5. Losing Kacha does not end the campaign immediately: retake the beachhead before the deadline.
+
+
+      Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
+      turn nine begins prevents the Soviet 157th Division from deploying.
+
+
+      Move quickly while you hold the advantage.'
+    : '在第20回合开始前夺取塞瓦斯托波尔。登陆场警卫营在第1至第5回合不能移动。失去卡恰不会立即结束战役：请在期限前夺回登陆场。
+
+
+      别尔别克通向北部入口，巴拉克拉瓦打开南部道路。在第9回合开始前攻占辛菲罗波尔，可以阻止苏军第157师展开。
+
+
+      趁优势仍在我军手中，迅速行动。'
+    174th SAM Brigade: 第174防空导弹旅
+    Landind security: 登陆警卫
+    Anti-Tank Screen Company: 反坦克阻击连
+    Command and Supply: 指挥与补给
+    Fagot ATGM Platoon: 巴松反坦克导弹排
+    Garrison Command: 驻军指挥部
+    Naval Fagot: 海军巴松
+    Naval Rapira: 海军花剑
+    Naval Recon Tanks: 海军侦察坦克
+    Naval Reconnaissance: 海军侦察
+    Naval SPG-9: 海军SPG-9
+    Naval Special Forces: 海军特种部队
+    Police Company: 警察连
+    Rapira Platoon: 花剑排
+    Reserve Strela-3: 预备役箭-3
+    S-125 Neva-M: S-125涅瓦-M
+    Security Company: 警卫连
+    Security Tank Company: 警卫坦克连
+    Tank Company Command: 坦克连指挥部
+    Unmanned Reconnaissance: 无人侦察
+    1 Platoon: 1. 排
+    2 Platoon: 2. 排
+    3 Platoon: 3. 排
+    4 Platoon: 4. 排
+    1 Tank Platoon: 1. 坦克排
+    2 Tank Platoon: 2. 坦克排
+    3 Tank Platoon: 3. 坦克排
+    4 Tank Platoon: 4. 坦克排
+    1 D-44 Platoon: 1. D-44排
+    2 D-44 Platoon: 2. D-44排
+    3 D-44 Platoon: 3. D-44排
+    4 D-44 Platoon: 4. D-44排
+    1 Neva-M Battery: 1. 涅瓦-M连
+    2 Neva-M Battery: 2. 涅瓦-M连
+    3 Neva-M Battery: 3. 涅瓦-M连
+    4 Neva-M Battery: 4. 涅瓦-M连
+    1 Special Forces Platoon: 1. 特种部队排
+    2 Special Forces Platoon: 2. 特种部队排
+    3 Special Forces Platoon: 3. 特种部队排
+    4 Special Forces Platoon: 4. 特种部队排

@@ -12,6 +12,13 @@ bounds:
 - 1310720
 battalion_catalog: {}
 event_images:
+  ending_sevastopol_ruins: AGF_EVT_crimean_littoral_1989_v4_ending_sevastopol_ruins
+  ending_us_flag: AGF_EVT_crimean_littoral_1989_v4_ending_us_flag
+  ending_soviet_flag: AGF_EVT_crimean_littoral_1989_v4_ending_soviet_flag
+  intro_pact_airfield_damage: AGF_EVT_crimean_littoral_1989_v4_intro_pact_airfield_damage
+  intro_nato_deck_air: AGF_EVT_crimean_littoral_1989_v4_intro_nato_deck_air
+  front_air_pact_photo: AGF_EVT_crimean_littoral_1989_v4_front_air_pact_photo
+  nato_armor_notice: AGF_EVT_crimean_littoral_1989_v4_nato_armor_notice
   nato_armor: AGF_EVT_crimean_littoral_1989_v4_nato_armor
   nato_air_assault: AGF_EVT_crimean_littoral_1989_v4_nato_air_assault
   pact_naval_infantry: AGF_EVT_crimean_littoral_1989_v4_pact_naval_infantry
@@ -22,7 +29,6 @@ event_images:
   seal_balaklava: AGF_EVT_crimean_littoral_1989_v4_seal_balaklava
   intro_airfield: AGF_EVT_crimean_littoral_1989_v4_intro_airfield
   intro_beach: AGF_EVT_crimean_littoral_1989_v4_intro_beach
-  ending_sevastopol: AGF_EVT_crimean_littoral_1989_v4_ending_sevastopol
   nato_seal_cards: AGF_EVT_crimean_littoral_1989_v4_nato_seal_cards
   intro_soviet_coast: AGF_EVT_crimean_littoral_1989_v4_intro_soviet_coast
   reserve_plan_nato: AGF_EVT_crimean_littoral_1989_v4_reserve_plan_nato
@@ -32,6 +38,8 @@ event_images:
   sov_air_cards: AGF_EVT_crimean_littoral_1989_v4_sov_air_cards
   carrier_withdrawal: AGF_EVT_crimean_littoral_1989_v4_carrier_withdrawal
   front_aircraft: AGF_EVT_crimean_littoral_1989_v4_front_aircraft
+  nato_difficulty_normal: AGF_EVT_crimean_littoral_1989_v4_nato_difficulty_normal
+  intro_810_photo: AGF_EVT_crimean_littoral_1989_v4_intro_810_photo
 capacity:
   initial_per_side: 0
   flags: 0
@@ -62,15 +70,15 @@ script:
   - 300
 strategic_map:
   id: crimean_littoral_1989_v4_grid
-  map_name: AGFCrimeanLittoralV4S
+  map_name: AGFCrimeanLittoralV20NorthUp
   dimensions:
     width: 48
     height: 55
   playable_bounds:
   - 676000
-  - 208000
+  - 387720
   - 1300000
-  - 923000
+  - 1102720
   render_cases:
     width: 2
     height: 2
@@ -81,3 +89,4 @@ strategic_map:
   - 1310720
   default_terrain: StrategicPlain
   tactical_policy: terrain_pool
+frozen_turn_refresh_delay: 0.125

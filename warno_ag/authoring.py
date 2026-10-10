@@ -311,7 +311,7 @@ def _compile_oob(row, campaign_id, catalog, pack_signatures):
 
 def _load_profile(path):
     profile = _read_yaml(path)
-    optional = {field for field in ('registration', 'strategic_map') if field in profile}
+    optional = {field for field in ('registration', 'strategic_map', 'frozen_turn_refresh_delay') if field in profile}
     _exact(profile, {"schema", "id", "template", "bounds", "capacity", "slots", "script",
                      "battalion_catalog", "event_images"} | optional, "map profile")
     if profile["schema"] != SCHEMA:
@@ -319,6 +319,12 @@ def _load_profile(path):
     _identifier(profile["id"], "profile.id")
     if profile.get('registration', 'legacy_slots') not in {'legacy_slots', 'dynamic'}:
         raise ValueError('profile.registration must be legacy_slots or dynamic')
+    if 'frozen_turn_refresh_delay' in profile:
+        delay = profile['frozen_turn_refresh_delay']
+        if type(delay) not in (int, float) or not 0 < delay <= 1:
+            raise ValueError('Frozen turn refresh delay must be between 0 and 1 seconds, exclusive of zero')
+        if profile.get('registration') != 'dynamic':
+            raise ValueError('Frozen turn refresh delay requires dynamic registration')
     if 'strategic_map' in profile:
         strategic_map = StrategicMapContract.from_config(profile['strategic_map'])
         if list(strategic_map.bounds) != [float(value) for value in profile['bounds']]:
@@ -1034,9 +1040,13 @@ def compile_campaign(source, profile_path, destination=None):
     if 'ai_policy' in campaign:
         policy = campaign['ai_policy']
         from .ai_distances import FIELDS as distance_fields
-        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until','transit_waypoints','native_controller_sides','scripted_exceptions','native_strategies'}|distance_fields)
+        _exact(policy, {'attack_radius', 'cooperate'}, 'campaign.ai_policy',optional={'refresh_each_turn','phase_orders','continuous_route','retain_route_progress','aggressive_until','transit_waypoints','native_controller_sides','scripted_exceptions','native_strategies','recapture_if_lost','cooperate_by_side'}|distance_fields)
         if type(policy['attack_radius']) is not int or not 530 <= policy['attack_radius'] <= 2120 or type(policy['cooperate']) is not bool:
             raise ValueError('Invalid campaign AI attack policy')
+        cooperation = policy.get('cooperate_by_side', {})
+        if (not isinstance(cooperation, dict)
+                or any(side not in SIDES or type(value) is not bool for side, value in cooperation.items())):
+            raise ValueError('AI cooperate_by_side requires coalition names and boolean values')
         if set(policy)&distance_fields:
             import math
             if (set(policy)&distance_fields!=distance_fields or not policy.get('refresh_each_turn') or not policy.get('continuous_route')
@@ -1074,6 +1084,12 @@ def compile_campaign(source, profile_path, destination=None):
                 or aggression and not policy.get('refresh_each_turn')):
             raise ValueError('AI aggressive_until needs side-specific dated refresh plans')
         phases=policy.get('phase_orders',{})
+        recapture = policy.get('recapture_if_lost', {})
+        if (not isinstance(recapture, dict)
+                or any(side not in SIDES or flag not in flag_ids for side, flag in recapture.items())
+                or recapture and not policy.get('refresh_each_turn')
+                or set(recapture) & set(policy.get('native_controller_sides', []))):
+            raise ValueError('AI recapture requires authored flags and refreshed scripted coalition control')
         if not isinstance(phases,dict) or any(key not in battalion_by_id for key in phases):
             raise ValueError('AI phase_orders references an unknown battalion')
         for changes in phases.values():
@@ -1090,7 +1106,9 @@ def compile_campaign(source, profile_path, destination=None):
                 previous=phase['from_turn']
     if 'victory' in campaign:
         policy = campaign['victory']
-        _exact(policy, {'nato_capture', 'pact_capture', 'time_limit'}, 'campaign.victory')
+        _exact(policy, {'nato_capture', 'pact_capture', 'time_limit'}, 'campaign.victory', optional={'pact_capture_immediate'})
+        if type(policy.get('pact_capture_immediate', True)) is not bool:
+            raise ValueError('pact_capture_immediate must be boolean')
         if policy['nato_capture'] not in flag_ids or policy['pact_capture'] not in flag_ids or policy['nato_capture'] == policy['pact_capture'] or policy['time_limit'] not in ('draw','nato','pact'):
             raise ValueError('Victory requires distinct authored capture goals and a valid time-limit outcome')
     if 'capture_deadline' in campaign:
@@ -1136,8 +1154,10 @@ def compile_campaign(source, profile_path, destination=None):
         "adapter": {
             "ai_mission_version": 7 if 'attack_radius_cells' in campaign.get('ai_policy',{}) else 6 if (campaign.get('ai_policy',{}).get('retain_route_progress') or campaign.get('ai_policy',{}).get('aggressive_until')) else 5 if campaign.get('ai_policy',{}).get('continuous_route') else 4 if campaign.get('ai_policy',{}).get('refresh_each_turn') else 3 if 'ai_policy' in campaign else 2,
             **({'ai_startup_version':2} if 'ai_policy' in campaign else {}),
-            **({'frozen_lifecycle_version': 4}
+            **({'frozen_lifecycle_version': 5 if 'frozen_turn_refresh_delay' in profile else 4}
                if dynamic and any(row['frozen_turns'] for row in resolved_deployments) else {}),
+            **({'frozen_turn_refresh_delay': profile['frozen_turn_refresh_delay']}
+               if 'frozen_turn_refresh_delay' in profile else {}),
             **({'production_ai_version': 2} if directed_production else {}),
             **({'registration': 'dynamic'} if dynamic else {}),
             **({'strategic_map': StrategicMapContract.from_config(profile['strategic_map']).as_dict()}

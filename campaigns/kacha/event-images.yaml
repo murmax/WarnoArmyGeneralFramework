@@ -1,6 +1,13 @@
 schema: agf-event-images/v2
 namespace: crimean_littoral_1989_v4
 images:
+  ending_sevastopol_ruins: artwork/events/ending-sevastopol-ruins.png
+  ending_us_flag: artwork/events/ending-us-flag.png
+  ending_soviet_flag: artwork/events/ending-soviet-flag.png
+  intro_pact_airfield_damage: artwork/events/intro-pact-airfield-damage.png
+  intro_nato_deck_air: artwork/events/intro-nato-deck-air.png
+  front_air_pact_photo: artwork/events/front-air-pact-photo.png
+  nato_armor_notice: artwork/events/nato-armor-notice-photo.png
   nato_armor: artwork/events/nato_armor.png
   nato_air_assault: artwork/events/nato_air_assault.png
   pact_naval_infantry: artwork/events/pact_naval_infantry-v2.png
@@ -9,7 +16,6 @@ images:
   seal_balaklava: artwork/events/seal_balaklava.png
   intro_airfield: artwork/events/intro_airfield.png
   intro_beach: artwork/events/intro_beach.png
-  ending_sevastopol: artwork/events/ending_sevastopol.png
   intro_soviet_coast: artwork/events/intro_soviet_coast.png
   reserve_plan_nato: artwork/events/reserve_plan_nato.png
   reserve_plan_pact: artwork/events/reserve_plan_pact.png
@@ -17,11 +23,13 @@ images:
   strike_option: artwork/events/su25-option.png
   carrier_withdrawal: artwork/events/carrier-withdrawal.png
   front_aircraft: artwork/events/front-aircraft.png
+  nato_difficulty_normal: artwork/events/nato-difficulty-normal.png
+  intro_810_photo: artwork/events/intro-810-photo.png
 composites:
   nato_second_wave_cards:
     kind: two_cards
     cards:
-    - nato_armor
+    - nato_difficulty_normal
     - nato_air_assault
   pact_counterstroke_cards:
     kind: two_cards

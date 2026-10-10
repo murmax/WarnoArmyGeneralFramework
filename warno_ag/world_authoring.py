@@ -142,7 +142,7 @@ def compile_world(source, destination=None, *, scenery_catalog=None):
                               'source_sha256', 'raster_origin'}, 'georeference')
         coordinates = georeference['bounds_wgs84']
         if (georeference['crs'] != 'EPSG:4326'
-                or georeference['raster_origin'] != 'southwest'
+                or georeference['raster_origin'] not in ('northwest', 'southwest')
                 or not isinstance(coordinates, list) or len(coordinates) != 4
                 or any(type(item) not in (int, float) or not math.isfinite(item)
                        for item in coordinates)

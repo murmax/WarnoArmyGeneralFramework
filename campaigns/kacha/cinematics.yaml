@@ -72,7 +72,7 @@ intro:
 
 
         Soviet aircraft will be redeployed to Crimea, but air support is scarce for now.'
-    image: pact_naval_infantry
+    image: intro_810_photo
     voice_script:
       ru: 'Основу ваших сил составляет 810-я отдельная бригада морской пехоты.
 
@@ -117,7 +117,7 @@ intro:
 
 
         Airfield guards and surviving technical personnel form a separate defensive group.'
-    image: intro_airfield
+    image: intro_pact_airfield_damage
     voice_script:
       ru: 'Американцы начали операцию с массированного удара крылатыми ракетами и палубной авиацией.
 
@@ -140,7 +140,9 @@ intro:
       ru: 157-я МОТОСТРЕЛКОВАЯ ДИВИЗИЯ
       en: 157TH MOTOR RIFLE DIVISION
     text:
-      ru: 'Удержите Севастополь до конца операции. Возврат Качи немедленно сорвёт высадку.
+      ru: 'Удержите Севастополь до срока окончания операции. Отбейте Качу, чтобы перерезать снабжение
+        США. Захват плацдарма не завершает кампанию немедленно: американцы могут контратаковать до истечения
+        срока.
 
 
         Бахчисарай прикрывает дорогу из Симферополя. Если американцы захватят Симферополь до начала девятого
@@ -148,7 +150,8 @@ intro:
 
 
         Сохраните регулярные части для контрудара. Авиация округа окажет поддержку, когда прибудет в сектор.'
-      en: 'Hold Sevastopol until the operation ends. Retaking Kacha immediately defeats the landing.
+      en: 'Hold Sevastopol until the operation deadline. Retake Kacha to cut US supply. Capturing the
+        beachhead does not immediately end the campaign; US forces can counterattack before the deadline.
 
 
         Bakhchysarai guards the road from Simferopol. If the Americans seize Simferopol before turn nine
@@ -304,7 +307,7 @@ intro:
 
 
         This advantage is temporary: the enemy is already redeploying aircraft from other sectors.'
-    image: nato_air_assault
+    image: intro_nato_deck_air
     voice_script:
       ru: 'Авианосная группа продолжает прикрывать операцию.
 
@@ -331,8 +334,8 @@ intro:
       ru: ВРЕМЯ ПРОТИВ НАС
       en: TIME IS AGAINST US
     text:
-      ru: 'Захватите Севастополь до конца двадцатого хода. Удержите Качу: потеря плацдарма немедленно
-        сорвёт операцию.
+      ru: 'Захватите Севастополь до начала 20-го хода. Охранение высадки неподвижно в ходах 1–5. Потеря
+        Качи не завершает кампанию немедленно: отбейте плацдарм до срока операции.
 
 
         Бельбек открывает северный подступ к городу, Балаклава — южный. Захват Симферополя до начала девятого
@@ -340,8 +343,9 @@ intro:
 
 
         Действуйте быстро, пока преимущество на вашей стороне.'
-      en: 'Capture Sevastopol before the twenty-turn operation ends. Hold Kacha: losing the beachhead
-        immediately defeats the landing.
+      en: 'Capture Sevastopol before turn 20 begins. The landing security battalion cannot move during
+        turns 1–5. Losing Kacha does not end the campaign immediately: retake the beachhead before the
+        deadline.
 
 
         Belbek opens the northern approach; Balaklava opens the southern route. Taking Simferopol before
@@ -423,7 +427,7 @@ endings:
             Удержание плацдарма уже не может изменить её исход.
           en: Sevastopol has not fallen. The landing failed to achieve its main objective, and command
             is terminating the operation. Holding the beachhead cannot change the outcome.
-        image: ending_sevastopol
+        image: ending_soviet_flag
     sevastopol:
       taken:
         title:
@@ -432,7 +436,7 @@ endings:
         text:
           ru: Морская пехота заняла главную базу ЧФ. Основная цель выполнена.
           en: Marines occupy the Black Sea Fleet base. The main objective is complete.
-        image: ending_sevastopol
+        image: ending_us_flag
       surrounded:
         title:
           ru: СЕВАСТОПОЛЬ ИЗОЛИРОВАН
@@ -440,7 +444,7 @@ endings:
         text:
           ru: Наши силы держат полосу Кача — Балаклава. Сухопутные пути к городу перерезаны.
           en: We hold the Kacha–Balaklava corridor. The city's land routes are cut.
-        image: ending_sevastopol
+        image: ending_sevastopol_ruins
       held:
         title:
           ru: СЕВАСТОПОЛЬ УСТОЯЛ
@@ -449,7 +453,7 @@ endings:
           ru: Севастополь не взят и не изолирован полностью. Штурм потребует продолжения операции.
           en: Sevastopol has not been taken or completely isolated. An assault would require extending
             the operation.
-        image: ending_sevastopol
+        image: ending_soviet_flag
     invasion:
       lost:
         title:
@@ -504,7 +508,7 @@ endings:
         text:
           ru: Севастополь потерян. Оставшиеся части отходят к Симферополю и готовятся к контрудару.
           en: Sevastopol is lost. Surviving units withdraw toward Simferopol and prepare a counterattack.
-        image: ending_sevastopol
+        image: ending_us_flag
     sevastopol:
       taken:
         title:
@@ -513,7 +517,7 @@ endings:
         text:
           ru: Главная база ЧФ занята американцами. Уцелевшие части отходят к востоку.
           en: US forces occupy the Black Sea Fleet base. Survivors withdraw east.
-        image: ending_sevastopol
+        image: ending_us_flag
       surrounded:
         title:
           ru: СЕВАСТОПОЛЬ В ОКРУЖЕНИИ
@@ -521,7 +525,7 @@ endings:
         text:
           ru: США контролируют полосу от Качи до Балаклавы. Гарнизон отрезан от Симферополя.
           en: US forces hold the corridor from Kacha to Balaklava. The garrison is cut off.
-        image: ending_sevastopol
+        image: ending_sevastopol_ruins
       held:
         title:
           ru: СЕВАСТОПОЛЬ УДЕРЖАН
@@ -529,7 +533,7 @@ endings:
         text:
           ru: Севастополь удержан. Полное окружение не замкнуто; сухопутные пути требуют охраны.
           en: Sevastopol remains Soviet. Encirclement is incomplete; the land routes still need protection.
-        image: ending_sevastopol
+        image: ending_soviet_flag
     invasion:
       lost:
         title:

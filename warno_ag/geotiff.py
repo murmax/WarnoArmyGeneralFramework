@@ -1,8 +1,8 @@
-"""Inspect and crop georeferenced elevation for the editor's south-up raster.
+"""Inspect and crop georeferenced elevation as a north-up world raster.
 
 GeoTIFFs remain source inputs. The exported editor heightmap is a 16-bit PNG
-whose first row corresponds to the map's southern edge, as required by the
-existing ``columns_x_rows_y`` world contract and WPF terrain mesh.
+whose first row corresponds to the map's northern edge. Columns map to native
+x and rows to native y; the geographic y coordinate increases southward.
 """
 import hashlib
 import json
@@ -100,7 +100,7 @@ def crop_geotiff(source, bounds_wgs84, resolution, destination, *, elevation_cei
     """Reproject a user-picked rectangle and convert metres to editor height.
 
     Coordinates are west/south/east/north. The north-up GeoTIFF output is
-    explicitly flipped for the south-up editor/world raster convention.
+    retained north-up: row zero is the northern edge of the authored world.
     """
     if (not isinstance(bounds_wgs84, (tuple, list)) or len(bounds_wgs84) != 4
             or any(type(value) not in (int, float) or not math.isfinite(value)
@@ -138,15 +138,16 @@ def crop_geotiff(source, bounds_wgs84, resolution, destination, *, elevation_cei
             raise ValueError('Selected GeoTIFF rectangle contains no land elevation')
         maximum = float(heights.max())
         scaled = np.rint(np.clip(heights / elevation_ceiling_m, 0, 1) * 65535).astype('uint16')
-        # Raster row 0 is the southern edge in the editor and LevelBuild.
-        image = Image.fromarray(np.flipud(scaled).copy())
+        # Keep the GeoTIFF orientation. Flipping here mirrored every imported
+        # map and forced authors to place geography in a reflected world.
+        image = Image.fromarray(scaled)
         report = {'format': 'agf-geotiff-crop/v1', 'source': str(path),
                   'source_sha256': _digest(path), 'source_crs': dataset.crs.to_string(),
                   'bounds_wgs84': [west, south, east, north],
                   'resolution': [resolution, resolution],
                   'elevation_ceiling_m': float(elevation_ceiling_m),
                   'sample_max_m': maximum, 'sample_land_pixels': int(np.count_nonzero(heights > 0.75)),
-                  'raster_origin': 'southwest', 'heightmap': 'heightmap.png',
+                  'raster_origin': 'northwest', 'heightmap': 'heightmap.png',
                   'runtime_verified': False}
     finally:
         dataset.close()

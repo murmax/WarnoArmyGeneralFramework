@@ -43,11 +43,26 @@ ai_policy:
       route:
       - inkerman
       - sevastopol_north
+    usmc_beachhead_guard:
+    - from_turn: 6
+      type: attack
+      target: sevastopol
+      route:
+      - kacha_crossroads
+      - orlovka
+      - belbek
+      - inkerman
+      - sevastopol
   continuous_route: true
+  recapture_if_lost:
+    nato: kacha_beach
+  cooperate_by_side:
+    nato: false
 victory:
   nato_capture: sevastopol
   pact_capture: kacha_beach
   time_limit: pact
+  pact_capture_immediate: false
 menu:
   header:
     ru: '#US #SOV #medium{ЧЁРНОЕ МОРЕ — СЕНТЯБРЬ 1989} Кача: оборона Севастополя'
@@ -75,7 +90,10 @@ menu:
 
       НАТО должно взять Севастополь; СССР — отбить Качу и сорвать высадку. Захват Симферополя блокирует
       советские дивизионные подкрепления. Если к исходу 20-го хода решающая цель не достигнута, операция
-      считается провалом американского вторжения.'
+      считается провалом американского вторжения.
+
+
+      Потеря Качи не завершает кампанию немедленно: американцы могут отбить плацдарм до общего срока операции.'
     en: 'Date: 7 September 1989
 
       Duration: 20 turns
@@ -94,7 +112,11 @@ menu:
 
       NATO must capture Sevastopol; the USSR must retake Kacha and break the landing. Taking Simferopol
       blocks Soviet divisional reinforcements. If neither decisive objective is achieved by turn 20, the
-      operation ends in failure for the American invasion.'
+      operation ends in failure for the American invasion.
+
+
+      Losing Kacha does not end the campaign immediately: US forces can retake the beachhead before the
+      operation deadline.'
   side_forces:
     nato:
       ru: 'Основные силы:

@@ -110,7 +110,7 @@ def main():
     geotiff_info = sub.add_parser('geotiff-inspect', help='Read GeoTIFF CRS and render a north-up crop-picker preview')
     geotiff_info.add_argument('source')
     geotiff_info.add_argument('destination')
-    geotiff_crop = sub.add_parser('geotiff-crop', help='Crop WGS84 GeoTIFF terrain into an editor south-up heightmap')
+    geotiff_crop = sub.add_parser('geotiff-crop', help='Crop WGS84 GeoTIFF terrain into a north-up heightmap')
     geotiff_crop.add_argument('source')
     geotiff_crop.add_argument('west', type=float)
     geotiff_crop.add_argument('south', type=float)

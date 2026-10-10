@@ -1,7 +1,7 @@
 """Render reproducible OSM-derived raster tiles for authored offline maps.
 
 Input is an OSM GeoPackage extract licensed under ODbL. This module renders
-its own web-map-style PNG tiles and a south-up game surface. It never scrapes
+its own web-map-style PNG tiles and a north-up game surface. It never scrapes
 OpenStreetMap Foundation's public tile servers for offline use.
 """
 import hashlib
@@ -154,7 +154,7 @@ def _world_copy(source, src_transform, src_shape, bounds, destination_size):
         reproject(values[:, :, index], target[index], src_transform=src_transform,
                   src_crs='EPSG:3857', dst_transform=target_transform,
                   dst_crs='EPSG:4326', dst_nodata=0, resampling=Resampling.bilinear)
-    return np.flipud(np.moveaxis(target, 0, 2)).copy()
+    return np.moveaxis(target, 0, 2).copy()
 
 
 def render_osm_tiles(geopackage, geotiff, bounds_wgs84, destination, *, zoom=12,
@@ -281,7 +281,7 @@ def render_osm_tiles(geopackage, geotiff, bounds_wgs84, destination, *, zoom=12,
             reproject(pixels, cells, src_transform=transform, src_crs='EPSG:3857',
                       dst_transform=target_transform, dst_crs='EPSG:4326',
                       resampling=Resampling.average)
-            masks[key] = np.flipud(cells).copy()
+            masks[key] = cells
         terrain = []
         counts_by_terrain = {}
         for row in range(101):
@@ -301,7 +301,7 @@ def render_osm_tiles(geopackage, geotiff, bounds_wgs84, destination, *, zoom=12,
                   'tile_range': [left_tile, top_tile, right_tile, bottom_tile],
                   'tile_count': (right_tile - left_tile) * (bottom_tile - top_tile),
                   'surface_size': [surface_size, surface_size],
-                  'raster_origin': 'southwest',
+                  'raster_origin': 'northwest',
                   'labels_rendered': render_labels,
                   'source_attribution': 'Map data © OpenStreetMap contributors (ODbL)',
                   'feature_counts': counts, 'terrain_cells': counts_by_terrain,

@@ -4,7 +4,7 @@ deployment_points:
   side: nato
   position:
   - 851500
-  - 565500
+  - 745220
   name:
     ru: Плацдарм Качи
     en: Kacha Landing Pier
@@ -12,7 +12,7 @@ deployment_points:
   side: nato
   position:
   - 929500
-  - 448500
+  - 862220
   name:
     ru: Бельбекский узел
     en: Belbek Forward Depot
@@ -20,7 +20,7 @@ deployment_points:
   side: pact
   position:
   - 812500
-  - 305500
+  - 1005220
   name:
     ru: Военно-морская база
     en: Sevastopol Naval Base
@@ -28,7 +28,7 @@ deployment_points:
   side: pact
   position:
   - 1267500
-  - 695500
+  - 615220
   name:
     ru: Симферопольский вокзал
     en: Simferopol Railhead
@@ -36,7 +36,7 @@ deployment_points:
   side: pact
   position:
   - 1254500
-  - 474500
+  - 836220
   name:
     ru: Восточный резерв
     en: Eastern Reserve
@@ -44,7 +44,7 @@ deployment_points:
   side: pact
   position:
   - 888000
-  - 861000
+  - 449720
   name:
     ru: Десант у Сак
     en: Saky Air Landing
