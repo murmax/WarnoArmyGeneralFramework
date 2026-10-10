@@ -1,5 +1,7 @@
 # Getting started: create a campaign from Kacha
 
+This guide uses framework **1.1.1** and the **Kacha V20** source example. New geographic imports are north-up with `raster_origin: northwest`; do not flip them again. Kacha's surface, heightmap, movement cells and spatial placements were migrated together. Start a fresh campaign: older saves are not migrated. Legacy `southwest` metadata remains readable without automatic coordinate conversion. See [geographic inputs](recipes/13-geography.md) for the current coordinate formula and legacy-map guidance. V20's verified build and startup are separate from fresh-game gameplay acceptance.
+
 No Python-programming or NDF knowledge is required. Copy these commands into PowerShell and edit YAML in a UTF-8 text editor. The [file reference](YAML_REFERENCE.md) describes fields and limits; [recipes](RECIPES.md) show coordinated changes. [Русская версия](GETTING_STARTED_RU.md).
 
 ## 1. Install the authoring environment

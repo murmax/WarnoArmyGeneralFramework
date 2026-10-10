@@ -1,6 +1,6 @@
 # YAML reference: complete campaign format
 
-For **framework 1.1.0**, using [Kacha V17.2](../campaigns/kacha/README.md). [Setup/build](GETTING_STARTED.md) · [Recipes](RECIPES.md) · [Русский справочник](YAML_REFERENCE_RU.md).
+For **framework 1.1.1**, using [Kacha V20](../campaigns/kacha/README.md). [Setup/build](GETTING_STARTED.md) · [Recipes](RECIPES.md) · [Русский справочник](YAML_REFERENCE_RU.md).
 
 These are public authoring fields, not WARNO's internal script objects. Only documented keys are accepted. Required fields remain required when their value is `[]` or `null`. Asset paths are campaign-relative, use `/` and cannot escape through `..`.
 
@@ -45,6 +45,8 @@ Required files: campaign.yaml, map.yaml, deployments.yaml, reinforcements.yaml, 
 
 ## 1. campaign.yaml
 
+**Optional `victory.pact_capture_immediate`:** boolean, default `true`. Kacha V20 sets it to `false`, so Soviet capture of `pact_capture` does not immediately end the campaign; the existing time-limit/score rules remain. NATO's `nato_capture` goal is unchanged. This option does not create a separate recapture timer.
+
 | Field | Required | Meaning |
 | --- | --- | --- |
 | `schema` | Yes | 1 |
@@ -76,7 +78,7 @@ capture_deadline:
   division: sov_157
 ```
 
-Each block requires every displayed field. Victory goals are distinct map flag IDs; capture by the corresponding side ends the campaign. `time_limit` is draw/nato/pact. Without victory, the base result/score mechanism applies. Flag scores and immediate capture victory are different rules.
+Each block requires every displayed field. Victory goals are distinct map flag IDs; by default, capture by the corresponding side ends the campaign (see pact_capture_immediate above). `time_limit` is draw/nato/pact. Without victory, the base result/score mechanism applies. Flag scores and immediate capture victory are different rules.
 
 The early-capture rule names an existing flag, side, cutoff 2…turns and production division. That division's groups cannot arrive before the cutoff. It requires directed production with AI plans for all groups. An early capture latches deployment prevention; later recapture does not undo it. The deadline-notice event reports the result but does not define the rule.
 
@@ -261,6 +263,8 @@ Types: attack, counterattack, move_to; defend, hold, reserve, support, air_suppo
 Route has 1–11 distinct known targets, ends with target; a multi-point route is allowed only for attack/counterattack/move_to. Arriving reserves get their AI in the relevant arrival document, not this initial-order table.
 
 ## 7. campaign.ai_policy
+
+**Additional 1.1.1 options:** `cooperate_by_side` is an optional `{nato: boolean, pact: boolean}` mapping that overrides `cooperate` only for the specified sides. `recapture_if_lost` maps a scripted side to an existing flag ID, for example `{nato: kacha_beach}`. It requires `refresh_each_turn: true` and cannot name a side in `native_controller_sides`. On the side's AI turns, eligible ground missions target the lost objective; normal plans resume after ownership is restored. It does not issue orders to human-controlled armies.
 
 Required inside the optional block: attack_radius and cooperate. Retain a working policy while changing one coordinated option set at a time. Inspect actual missions in play; valid settings do not guarantee desired AI maneuvers.
 
@@ -524,9 +528,11 @@ GeoTIFF/OSM tools: geotiff-inspect, geotiff-crop, geodata-import. Run `-m warno_
 
 ## 17. profile.yaml
 
+**Optional `frozen_turn_refresh_delay`:** a number greater than zero and at most 1 second, requiring `registration: dynamic`. Kacha V20 uses `0.125`. It delays each locked owner-turn AP clear until after the native AP refresh while preserving the formation's positive capacity/recovery. Omitting it retains the previous lifecycle. It is separate from `deployments[].frozen_turns`; do not set permanent AP capacity to zero for a temporary lock.
+
 The profile binds the public source to an inspected native adapter. Kacha includes it. Usually change identities, map geometry/name and image tokens; do not guess script IDs or replace hashes.
 
-Required: schema 1, id, template, bounds, capacity, slots, script, battalion_catalog, event_images. Optional registration, strategic_map.
+Required: schema 1, id, template, bounds, capacity, slots, script, battalion_catalog, event_images. Optional registration, strategic_map, frozen_turn_refresh_delay.
 
 | Field | Meaning |
 | --- | --- |
